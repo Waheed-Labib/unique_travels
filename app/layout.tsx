@@ -23,24 +23,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased bg-base-100`}
+        className={`${inter.className} antialiased bg-base-100 relative`}
       >
 
         <Navbar></Navbar>
 
-        <div className="flex">
-
-          <div className="w-full lg:w-3/4">
-            {children}
-          </div>
-
-          <div className="w-1/4 hidden lg:block">
-            <RightSideBar></RightSideBar>
-          </div>
-
-        </div>
+        {children}
 
       </body>
-    </html>
+    </html >
   );
 }
