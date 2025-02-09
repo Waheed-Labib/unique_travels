@@ -63,7 +63,7 @@ export default function Navbar() {
                         <li><Link href={'/work-abroad'}>Work Abroad</Link></li>
                     </ul>
                 </div>
-                <Link href={'/'} className="btn btn-ghost text-lg">
+                <Link href={'/'} className="btn btn-ghost">
                     <Image src={circleLogo} alt='logo' className="w-8 h-8"></Image>
                     <p className={`${josefinSans.className} mt-2`}>UNIQUE TRAVELS</p>
                 </Link>
