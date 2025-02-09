@@ -14,7 +14,7 @@ export default {
     },
   },
   daisyui: {
-    themes: ["corporate"],
+    themes: ["emerald"],
   },
   plugins: [
     require('daisyui'),

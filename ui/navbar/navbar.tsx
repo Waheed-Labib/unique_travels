@@ -2,11 +2,11 @@ import Link from "next/link";
 import circleLogo from '../../app/favicon.ico'
 import Image from "next/image";
 import { BsFillTelephoneFill } from "react-icons/bs";
-import { Josefin_Sans } from "next/font/google";
+import { Outfit } from "next/font/google";
 
-const josefinSans = Josefin_Sans({
+const outfit = Outfit({
     subsets: ['latin'],
-    weight: ['400', '700']
+    weight: ['400']
 })
 
 export default function Navbar() {
@@ -64,8 +64,8 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <Link href={'/'} className="btn btn-ghost">
-                    <Image src={circleLogo} alt='logo' className="w-8 h-8"></Image>
-                    <p className={`${josefinSans.className} mt-2`}>UNIQUE TRAVELS</p>
+                    <Image src={circleLogo} alt='logo' className="w-10 h-10"></Image>
+                    <p className={`${outfit.className} mt-2 text-lg`}>UNIQUE TRAVELS</p>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">

@@ -29,15 +29,12 @@ export default function RootLayout({
         <Navbar></Navbar>
 
         <div className="flex">
-          <div className="w-1/5 hidden lg:block">
-            <LeftSideBar></LeftSideBar>
-          </div>
 
-          <div className="w-full lg:w-3/5">
+          <div className="w-full lg:w-3/4">
             {children}
           </div>
 
-          <div className="w-1/5 hidden lg:block">
+          <div className="w-1/4 hidden lg:block">
             <RightSideBar></RightSideBar>
           </div>
 
