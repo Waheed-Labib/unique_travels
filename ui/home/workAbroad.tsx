@@ -6,7 +6,7 @@ export default function WorkAbroad() {
             <Header
                 smallText="Want to"
                 largeText="Work Abroad?"
-                underlineColor="secondary"
+                underlineColor="primary"
             ></Header>
         </div>
     )

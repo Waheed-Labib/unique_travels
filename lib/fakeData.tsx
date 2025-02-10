@@ -22,7 +22,7 @@ export const fakeCountries = [
     },
     {
         id: 4,
-        name: 'philippines',
+        name: 'Philippines',
         href: '/destinations/philippines',
         landscapeImage: 'https://images.unsplash.com/photo-1461230185679-aad82a673415?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA0NDh8&ixlib=rb-4.0.3',
         portraitImage: 'https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE2MTJ8&ixlib=rb-4.0.3'

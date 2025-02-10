@@ -10,12 +10,12 @@ export default function Destinations() {
             <Header
                 smallText="Choose Your"
                 largeText="Destination"
-                underlineColor="primary"
+                underlineColor="secondary"
             ></Header>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-12">
                 {
-                    fakeCountries.map(country => <div key={country.id} className="card bg-base-100 image-full w-80 shadow-xl border-4 border-base-100 hover:border-primary hover:shadow-2xl transition">
+                    fakeCountries.map(country => <div key={country.id} className="card bg-base-100 image-full w-full shadow-xl border-4 border-base-100 border-dashed hover:border-secondary hover:shadow-2xl transition">
                         <figure>
                             <Image
                                 src={country.landscapeImage}
