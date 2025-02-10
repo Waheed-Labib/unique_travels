@@ -1,6 +1,9 @@
 // import Image from "next/image";
+import Link from "next/link";
 import { fakePackages } from "../../lib/fakeData";
 import Header from "../header";
+import { FaArrowCircleRight } from "react-icons/fa";
+import { outfit } from "../../app/layout";
 
 export default function Packages() {
 
@@ -54,6 +57,13 @@ export default function Packages() {
                     </div>)
                 }
             </div>
+
+            <Link href={'/packages'} className={`mt-12 text-neutral hover:underline flex items-center gap-2 ${outfit.className}`}>
+                <p>View More Packages</p>
+                <div className="text-3xl text-primary">
+                    <FaArrowCircleRight></FaArrowCircleRight>
+                </div>
+            </Link>
         </div>
     )
 }
