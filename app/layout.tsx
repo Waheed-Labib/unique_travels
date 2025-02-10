@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "../ui/navbar/navbar";
 
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '700']
+})
+
+export const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['400']
 })
 
 export const metadata: Metadata = {

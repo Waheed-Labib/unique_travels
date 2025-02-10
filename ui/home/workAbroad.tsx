@@ -1,11 +1,11 @@
 import Header from "../header";
 
-export default function Packages() {
+export default function WorkAbroad() {
     return (
         <div className="mt-12 lg:mt-24">
             <Header
-                smallText="We Offer"
-                largeText="Suitable Packages"
+                smallText="Want to"
+                largeText="Work Abroad?"
             ></Header>
         </div>
     )

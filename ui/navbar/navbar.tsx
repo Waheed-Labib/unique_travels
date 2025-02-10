@@ -2,13 +2,20 @@ import Link from "next/link";
 import circleLogo from '../../app/favicon.ico'
 import Image from "next/image";
 import { BsFillTelephoneFill } from "react-icons/bs";
-import { Outfit } from "next/font/google";
 import { fakeCountries } from "../../lib/fakeData";
+import { outfit } from "../../app/layout";
 
-const outfit = Outfit({
-    subsets: ['latin'],
-    weight: ['400']
-})
+const packagesLink = <Link href={'/packages'}>
+    Packages
+</Link>
+
+const countriesLinks = <ul className="p-2">
+    {
+        fakeCountries.map(country => <li key={country.name}><Link href={country.href}>{country.name}</Link></li>)
+    }
+</ul>
+
+const workAbroadLink = <Link href={'/work-abroad'}>Work Abroad</Link>
 
 export default function Navbar() {
 
@@ -34,19 +41,15 @@ export default function Navbar() {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                         <li>
-                            <Link href={'/packages'}>
-                                Packages
-                            </Link>
+                            {packagesLink}
                         </li>
                         <li>
                             <Link href={'/destinations'}>Destinations</Link>
-                            <ul className="p-2">
-                                {
-                                    fakeCountries.map(country => <li key={country.countryName}><Link href={country.href}>{country.countryName}</Link></li>)
-                                }
-                            </ul>
+                            {countriesLinks}
                         </li>
-                        <li><Link href={'/work-abroad'}>Work Abroad</Link></li>
+                        <li>
+                            {workAbroadLink}
+                        </li>
                     </ul>
                 </div>
                 <Link href={'/'} className="btn btn-ghost">
@@ -57,21 +60,17 @@ export default function Navbar() {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal gap-4 px-1">
                     <li>
-                        <Link href={'/packages'}>
-                            Packages
-                        </Link>
+                        {packagesLink}
                     </li>
                     <li>
                         <details>
                             <summary>Destinations</summary>
-                            <ul className="p-2">
-                                {
-                                    fakeCountries.map(country => <li key={country.countryName}><Link href={country.href}>{country.countryName}</Link></li>)
-                                }
-                            </ul>
+                            {countriesLinks}
                         </details>
                     </li>
-                    <li><Link href={'/work-abroad'}>Work Abroad</Link></li>
+                    <li>
+                        {workAbroadLink}
+                    </li>
                 </ul>
             </div>
             <div className="navbar-end">
