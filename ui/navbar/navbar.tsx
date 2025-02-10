@@ -3,6 +3,7 @@ import circleLogo from '../../app/favicon.ico'
 import Image from "next/image";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { Outfit } from "next/font/google";
+import { fakeCountries } from "../../lib/fakeData";
 
 const outfit = Outfit({
     subsets: ['latin'],
@@ -10,21 +11,6 @@ const outfit = Outfit({
 })
 
 export default function Navbar() {
-
-    const fakeCountries = [
-        {
-            countryName: 'Indonesia',
-            href: '/destinations/indonesia'
-        },
-        {
-            countryName: 'Malayasia',
-            href: '/destinations/malayasia'
-        },
-        {
-            countryName: 'Nepal',
-            href: '/destinations/nepal'
-        },
-    ]
 
     return (
         <div className="navbar bg-base-100 text-neutral shadow-lg sticky top-0 left-0">
