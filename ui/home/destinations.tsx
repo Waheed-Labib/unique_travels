@@ -17,7 +17,7 @@ export default function Destinations() {
                     fakeCountries.map(country => <div key={country.id} className="card bg-base-100 image-full w-80 shadow-xl">
                         <figure>
                             <Image
-                                src={country.image}
+                                src={country.landscapeImage}
                                 alt="country landscape image"
                                 fill={true} />
                         </figure>
