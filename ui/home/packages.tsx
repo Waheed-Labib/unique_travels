@@ -20,7 +20,7 @@ export default function Packages() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
-                    fakePackages.map(pkg => <div key={pkg.id} className="card bg-base-100 w-96 shadow-xl text-neutral">
+                    fakePackages.slice(0, 6).map(pkg => <div key={pkg.id} className="group card bg-base-100 w-96 shadow-xl text-neutral border border-base-100 hover:shadow-2xl hover:border-neutral cursor-pointer transition">
                         <div className="badge">Package&nbsp;&nbsp;<span className="text-lg font-semibold">{pkg.id}</span></div>
 
                         {/* <div className="w-full flex justify-center mt-4">
@@ -45,6 +45,7 @@ export default function Packages() {
                                     pkg.countries.map((country, idx) => <span key={country}>{country}&nbsp;{pkg.countries.length === idx + 1 || '+'}</span>)
                                 }
                             </h2>
+
                             <p>{pkg.details.slice(0, 100)}...</p>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-sm btn-ghost text-accent">See More</button>
