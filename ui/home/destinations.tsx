@@ -6,14 +6,14 @@ import { outfit } from "../../app/layout";
 
 export default function Destinations() {
     return (
-        <div className="mt-12 lg:mt-24 flex flex-col items-center">
+        <div className="section">
             <Header
                 smallText="Choose Your"
                 largeText="Destination"
                 underlineColor="primary"
             ></Header>
 
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-12">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     fakeCountries.map(country => <div key={country.id} className="group card bg-base-100 image-full w-full shadow-xl  transition overflow-hidden h-48">
                         <figure>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import circleLogo from '../../app/favicon.ico'
 import Image from "next/image";
-import { BsFillTelephoneFill } from "react-icons/bs";
+import whatsAppLogo from "../../public/assets/whatsApp-logo.webp"
 import { fakeCountries } from "../../lib/fakeData";
 import { outfit } from "../../app/layout";
 
@@ -20,7 +20,7 @@ const workAbroadLink = <Link href={'/work-abroad'}>Work Abroad</Link>
 export default function Navbar() {
 
     return (
-        <div className="navbar bg-base-100 text-neutral shadow-lg sticky top-0 left-0 z-50">
+        <div className="navbar bg-base-100/95 text-neutral shadow-lg sticky top-0 left-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -74,8 +74,13 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-primary btn-circle text-base-100 text-xl">
-                    <BsFillTelephoneFill />
+                <a href="https://wa.me/8801788458189?text=Hello!%20How%20can%20we%20help%20you?" target="_blank">
+                    <Image
+                        src={whatsAppLogo}
+                        alt="whatsApp"
+                        width={50}
+                        height={50}
+                    ></Image>
                 </a>
             </div>
         </div>

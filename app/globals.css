@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.section {
+  @apply mt-12 lg:mt-24 flex flex-col items-center px-12
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

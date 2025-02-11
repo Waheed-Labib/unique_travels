@@ -14,14 +14,14 @@ export default function Packages() {
     // }
 
     return (
-        <div className="mt-12 lg:mt-24 flex flex-col items-center">
+        <div className="section">
             <Header
                 smallText="We Offer"
                 largeText="Suitable Packages"
                 underlineColor="accent"
             ></Header>
 
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-12">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     fakePackages.slice(0, 6).map(pkg => <div key={pkg.id} className="group card bg-base-100 w-full shadow-xl text-neutral border border-base-100 border-dotted hover:shadow-2xl hover:bg-white cursor-pointer transition">
                         <div className="badge border-accent border-dotted text-sm">Package&nbsp;&nbsp;<span className="font-semibold">{pkg.id}</span></div>
@@ -44,9 +44,9 @@ export default function Packages() {
                         <div className="card-body">
 
                             <div className="border-b border-secondary border-dotted group-hover:border-solid">
-                                <h2 className={`card-title text-secondary text-xl ${outfit.className}`}>
+                                <h2 className={`card-title text-secondary text-xl ${outfit.className} flex-wrap gap-0`}>
                                     {
-                                        pkg.countries.map((country, idx) => <span key={country}>{country}&nbsp;{pkg.countries.length === idx + 1 || '+'}</span>)
+                                        pkg.countries.map((country, idx) => <span key={country}>{country}&nbsp;{pkg.countries.length === idx + 1 || '+'}&nbsp;</span>)
                                     }
                                 </h2>
                             </div>

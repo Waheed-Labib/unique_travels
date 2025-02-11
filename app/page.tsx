@@ -3,7 +3,6 @@ import logo from "../public/assets/logo.jpeg"
 import Packages from "../ui/home/packages";
 import Destinations from "../ui/home/destinations";
 import WorkAbroad from "../ui/home/workAbroad";
-import ContactUs from "../ui/home/contactUs";
 
 export default function Home() {
   return (
@@ -12,7 +11,6 @@ export default function Home() {
       <Packages></Packages>
       <Destinations></Destinations>
       <WorkAbroad></WorkAbroad>
-      <ContactUs></ContactUs>
     </div>
   );
 }

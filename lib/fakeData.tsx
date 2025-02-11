@@ -170,3 +170,5 @@ export const fakeRegions = [
         image: 'https://images.unsplash.com/photo-1471874708433-acd480424946?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkyNDA4NzV8&ixlib=rb-4.0.3'
     },
 ]
+
+export const hotline = '01766404828'
