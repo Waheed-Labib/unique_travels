@@ -3,15 +3,16 @@ import Header from "../../header";
 import { address, hotline } from "../../../lib/fakeData";
 import CopyNumberBtn from "./copyNumberBtn";
 import { ImOffice } from "react-icons/im";
+import Section from "../Section";
 
 export default function ContactUs() {
 
     return (
-        <div className="section">
+        <Section>
             <Header
                 smallText=""
                 largeText="Contact Us"
-                underlineColor="primary"
+                underlineColor="accent"
             ></Header>
 
             <div className="card bg-primary-content/95 text-base-100 w-full py-4">
@@ -47,6 +48,6 @@ export default function ContactUs() {
                     </div>
                 </div>
             </div>
-        </div>
+        </Section>
     )
 }

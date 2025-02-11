@@ -3,10 +3,11 @@ import { fakeCountries } from "../../lib/fakeData";
 import Header from "../header";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { outfit } from "../../app/layout";
+import Section from "./Section";
 
 export default function Destinations() {
     return (
-        <div className="section">
+        <Section>
             <Header
                 smallText="Choose Your"
                 largeText="Destination"
@@ -34,7 +35,6 @@ export default function Destinations() {
                     </div>)
                 }
             </div>
-
-        </div>
+        </Section>
     )
 }

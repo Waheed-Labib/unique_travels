@@ -3,17 +3,18 @@ import { fakeRegions } from "../../lib/fakeData";
 import Header from "../header";
 import { FaArrowRight } from "react-icons/fa";
 import { outfit } from "../../app/layout";
+import Section from "./Section";
 
 export default function WorkAbroad() {
     return (
-        <div className="mt-12 lg:mt-24 flex flex-col items-center">
+        <Section>
             <Header
                 smallText="Want to"
                 largeText="Work Abroad?"
                 underlineColor="secondary"
             ></Header>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     fakeRegions.map(region => <div key={region.id} className="card glass w-full group">
                         <figure>
@@ -36,7 +37,6 @@ export default function WorkAbroad() {
                     </div>)
                 }
             </div>
-
-        </div>
+        </Section>
     )
 }

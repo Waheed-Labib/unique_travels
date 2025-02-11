@@ -4,6 +4,7 @@ import { fakePackages } from "../../lib/fakeData";
 import Header from "../header";
 import { FaArrowCircleRight, FaArrowRight } from "react-icons/fa";
 import { outfit } from "../../app/layout";
+import Section from "./Section";
 
 export default function Packages() {
 
@@ -14,7 +15,7 @@ export default function Packages() {
     // }
 
     return (
-        <div className="section">
+        <Section>
             <Header
                 smallText="We Offer"
                 largeText="Suitable Packages"
@@ -69,6 +70,6 @@ export default function Packages() {
                     <FaArrowCircleRight></FaArrowCircleRight>
                 </div>
             </Link>
-        </div>
+        </Section>
     )
 }
