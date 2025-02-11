@@ -1,7 +1,6 @@
 import Link from "next/link";
 import circleLogo from '../../app/favicon.ico'
 import Image from "next/image";
-import whatsAppLogo from "../../public/assets/whatsApp-logo.webp"
 import { fakeCountries } from "../../lib/fakeData";
 import { outfit } from "../../app/layout";
 
@@ -20,7 +19,7 @@ const workAbroadLink = <Link href={'/work-abroad'}>Work Abroad</Link>
 export default function Navbar() {
 
     return (
-        <div className="navbar bg-base-100/95 text-neutral shadow-lg sticky top-0 left-0 z-50">
+        <div className="navbar py-0 min-h-12 bg-base-100/95 text-neutral shadow-lg sticky top-0 left-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -53,8 +52,8 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <Link href={'/'} className="btn btn-ghost">
-                    <Image src={circleLogo} alt='logo' className="w-10 h-10"></Image>
-                    <p className={`${outfit.className} mt-2 text-lg`}>UNIQUE TRAVELS</p>
+                    <Image src={circleLogo} alt='logo' className="w-6 h-6 lg:w-8 lg:h-8"></Image>
+                    <p className={`${outfit.className} text-sm lg:text-base`}>UNIQUE TRAVELS</p>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -74,14 +73,7 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a href="https://wa.me/8801788458189?text=Hello!%20How%20can%20we%20help%20you?" target="_blank">
-                    <Image
-                        src={whatsAppLogo}
-                        alt="whatsApp"
-                        width={50}
-                        height={50}
-                    ></Image>
-                </a>
+                <a className="btn btn-sm text-base-100 btn-neutral font-medium">Contact Us</a>
             </div>
         </div>
     )
