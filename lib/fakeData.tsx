@@ -155,3 +155,18 @@ export const fakePackages = [
         details: 'MALDIVES & SRILANKA 6 NIGHTS 7 DAYS STANDARD PACKAGE TOUR @ 45,900 PER PERSON Travel Date: 2nd FEBRUARY 2025 Hotel :- *02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast. *01 night stay in The White Harp Beach Hotel (Hulhumale) including Breakfast. *2 night stay in Kandy at Gangaaddara Hotel including Breakfast. *1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast. 🛻*Mode of transfer: Return Airport Transfers by car + 🚤Speed boat (Combine)'
     },
 ]
+
+export const fakeRegions = [
+    {
+        id: 1,
+        name: 'Middle East',
+        href: '/work-abroad/middle-east',
+        image: 'https://images.unsplash.com/photo-1553195028-eef77bb016cd?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkyNDA4Mjd8&ixlib=rb-4.0.3'
+    },
+    {
+        id: 2,
+        name: 'Europe',
+        href: 'work-abroad/europe',
+        image: 'https://images.unsplash.com/photo-1471874708433-acd480424946?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkyNDA4NzV8&ixlib=rb-4.0.3'
+    },
+]

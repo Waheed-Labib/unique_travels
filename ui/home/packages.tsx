@@ -43,7 +43,7 @@ export default function Packages() {
 
                         <div className="card-body">
 
-                            <div className="border-b border-secondary">
+                            <div className="border-b border-secondary border-dotted group-hover:border-solid">
                                 <h2 className={`card-title text-secondary text-xl ${outfit.className}`}>
                                     {
                                         pkg.countries.map((country, idx) => <span key={country}>{country}&nbsp;{pkg.countries.length === idx + 1 || '+'}</span>)
@@ -53,7 +53,7 @@ export default function Packages() {
 
                             <p className="text-sm">{pkg.details.slice(0, 100)}...</p>
                             <div className="card-actions justify-end">
-                                <button className={`btn btn-sm text-base btn-ghost text-accent ${outfit.className} group-hover:bg-base-100 group-hover:border group-hover:border-accent`}>View Details</button>
+                                <button className={`btn btn-sm text-base btn-ghost text-accent ${outfit.className} group-hover:bg-base-100 border-dotted group-hover:border group-hover:border-accent`}>View Details</button>
                             </div>
                         </div>
                     </div>)

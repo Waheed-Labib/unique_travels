@@ -15,7 +15,7 @@ export default function Destinations() {
 
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-12">
                 {
-                    fakeCountries.map(country => <div key={country.id} className="group card bg-base-100 image-full w-full shadow-xl  transition overflow-hidden">
+                    fakeCountries.map(country => <div key={country.id} className="group card bg-base-100 image-full w-full shadow-xl  transition overflow-hidden h-48">
                         <figure>
                             <Image
                                 src={country.landscapeImage}
@@ -25,7 +25,7 @@ export default function Destinations() {
                         </figure>
                         <div className="card-body">
                             <h2 className={`card-title ${outfit.className} underline-offset-4 group-hover:underline transition`}>{country.name}</h2>
-                            <div className="card-actions justify-end">
+                            <div className="card-actions justify-end mt-12">
                                 <button className="btn btn-sm btn-primary">
                                     <FaArrowCircleRight></FaArrowCircleRight>
                                 </button>
