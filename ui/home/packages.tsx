@@ -43,11 +43,13 @@ export default function Packages() {
 
                         <div className="card-body">
 
-                            <h2 className={`card-title text-secondary text-xl ${outfit.className}`}>
-                                {
-                                    pkg.countries.map((country, idx) => <span key={country}>{country}&nbsp;{pkg.countries.length === idx + 1 || '+'}</span>)
-                                }
-                            </h2>
+                            <div className="border-b border-secondary">
+                                <h2 className={`card-title text-secondary text-xl ${outfit.className}`}>
+                                    {
+                                        pkg.countries.map((country, idx) => <span key={country}>{country}&nbsp;{pkg.countries.length === idx + 1 || '+'}</span>)
+                                    }
+                                </h2>
+                            </div>
 
                             <p className="text-sm">{pkg.details.slice(0, 100)}...</p>
                             <div className="card-actions justify-end">
