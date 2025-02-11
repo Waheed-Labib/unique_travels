@@ -173,3 +173,4 @@ export const fakeRegions = [
 
 export const hotline = '01788458189'
 export const whatsAppNumber = '8801788458189'
+export const address = '4th floor, House No. 20, Central Road, Maijdee Court, Noakhali'
