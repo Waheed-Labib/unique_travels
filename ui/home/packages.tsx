@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { fakePackages } from "../../lib/fakeData";
 import Header from "../header";
-import { FaArrowCircleRight } from "react-icons/fa";
+import { FaArrowCircleRight, FaArrowRight } from "react-icons/fa";
 import { outfit } from "../../app/layout";
 
 export default function Packages() {
@@ -53,7 +53,10 @@ export default function Packages() {
 
                             <p className="text-sm">{pkg.details.slice(0, 100)}...</p>
                             <div className="card-actions justify-end">
-                                <button className={`btn btn-sm text-base btn-ghost text-accent ${outfit.className} group-hover:bg-base-100 border-dotted group-hover:border group-hover:border-accent`}>View Details</button>
+                                <button className={`btn btn-xs btn-ghost text-accent group-hover:bg-base-100 border-dotted group-hover:border group-hover:border-accent`}>
+                                    <p>View Details</p>
+                                    <FaArrowRight></FaArrowRight>
+                                </button>
                             </div>
                         </div>
                     </div>)

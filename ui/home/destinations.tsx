@@ -10,7 +10,7 @@ export default function Destinations() {
             <Header
                 smallText="Choose Your"
                 largeText="Destination"
-                underlineColor="secondary"
+                underlineColor="primary"
             ></Header>
 
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-12">
