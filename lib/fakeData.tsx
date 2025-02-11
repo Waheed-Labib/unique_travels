@@ -171,4 +171,5 @@ export const fakeRegions = [
     },
 ]
 
-export const hotline = '01766404828'
+export const hotline = '01788458189'
+export const whatsAppNumber = '8801788458189'

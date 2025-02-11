@@ -2,6 +2,7 @@ import Image from "next/image";
 import { fakeRegions } from "../../lib/fakeData";
 import Header from "../header";
 import { FaArrowRight } from "react-icons/fa";
+import { outfit } from "../../app/layout";
 
 export default function WorkAbroad() {
     return (
@@ -24,7 +25,7 @@ export default function WorkAbroad() {
                             ></Image>
                         </figure>
                         <div className="card-body">
-                            <h2 className="card-title text-secondary">{region.name}</h2>
+                            <h2 className={`card-title text-secondary ${outfit.className}`}>{region.name}</h2>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-sm btn-ghost text-neutral hover:bg-base-100 border border-base-100 border-dotted group-hover:border-neutral">
                                     <p>Job Circulars</p>
