@@ -16,7 +16,7 @@ export default function Destinations() {
 
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
-                    fakeCountries.map(country => <div key={country.id} className="group card bg-base-100 image-full w-full shadow-xl  transition overflow-hidden h-48">
+                    fakeCountries.map(country => <div key={country.id} className="group card bg-base-100 image-full w-full shadow-xl  transition overflow-hidden">
                         <figure>
                             <Image
                                 src={country.landscapeImage}

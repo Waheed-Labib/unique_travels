@@ -22,7 +22,7 @@ export default function WorkAbroad() {
                                 src={region.image}
                                 alt="region ladscape image"
                                 width={1600}
-                                height={800}
+                                height={900}
                             ></Image>
                         </figure>
                         <div className="card-body">
