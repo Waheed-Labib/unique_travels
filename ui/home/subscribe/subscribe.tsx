@@ -1,3 +1,4 @@
+import { FaRegCheckSquare } from "react-icons/fa";
 import Header from "../../header";
 import Section from "../Section";
 
@@ -19,7 +20,13 @@ export default function Subscribe() {
                         </div>
                         <input type="email" placeholder="Email" className="input input-bordered w-full" />
                         <div className="label">
-                            <span className="label-text-alt text-sm w-full text-base-200">Keep updated with latest tour package, Job Circulars, etc</span>
+                            <div className="label-text-alt mt-1 text-sm w-full text-base-200 flex items-start gap-2">
+                                <div className="text-lg pt-1">
+                                    <FaRegCheckSquare />
+                                </div>
+
+                                <p>Update me with latest tour package and Job Circulars</p>
+                            </div>
                             {/* <span className="label-text-alt">Bottom Right label</span> */}
                         </div>
                     </label>

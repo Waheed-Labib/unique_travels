@@ -1,7 +1,6 @@
 import { BsFillTelephoneFill } from "react-icons/bs";
 import Header from "../../header";
 import { address, hotline } from "../../../lib/fakeData";
-import CopyNumberBtn from "./copyNumberBtn";
 import { ImOffice } from "react-icons/im";
 import Section from "../Section";
 
@@ -27,7 +26,10 @@ export default function ContactUs() {
 
                         <div className="flex items-center gap-2 md:gap-8 flex-col md:flex-row">
                             <p className="text-lg text-base-200">{hotline}</p>
-                            <CopyNumberBtn></CopyNumberBtn>
+                            {/* <CopyNumberBtn></CopyNumberBtn> */}
+                            <a href={`tel:${hotline}`}>
+                                <button className={`btn btn-sm btn-accent`}>Call Now</button>
+                            </a>
                         </div>
 
                     </div>
