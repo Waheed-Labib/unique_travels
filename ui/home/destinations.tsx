@@ -11,7 +11,7 @@ export default function Destinations() {
             <Header
                 smallText="Choose Your"
                 largeText="Destination"
-                underlineColor="accent"
+                sequence="small, large"
             ></Header>
 
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -19,7 +19,7 @@ export default function Destinations() {
                     fakeCountries.map(country => <div key={country.id} className="group card bg-base-100 image-full w-full shadow-xl  transition overflow-hidden">
                         <figure>
                             <Image
-                                src={country.landscapeImage}
+                                src={country.image}
                                 alt="country landscape image"
                                 fill={true}
                                 className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-110" />

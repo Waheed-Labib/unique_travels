@@ -5,64 +5,64 @@ export const fakeCountries = [
         id: 1,
         name: 'Indonesia',
         href: '/destinations/indonesia',
-        landscapeImage: 'https://images.unsplash.com/photo-1482784160316-6eb046863ece?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjAzOTh8&ixlib=rb-4.0.3',
-        portraitImage: 'https://images.unsplash.com/photo-1507614498949-edbabc86a14f?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzEzNDV8&ixlib=rb-4.0.3'
+        image: 'https://images.unsplash.com/photo-1482784160316-6eb046863ece?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjAzOTh8&ixlib=rb-4.0.3',
+        // portraitImage: 'https://images.unsplash.com/photo-1507614498949-edbabc86a14f?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzEzNDV8&ixlib=rb-4.0.3'
     },
     {
         id: 2,
         name: 'Malaysia',
         href: '/destinations/malaysia',
-        landscapeImage: 'https://images.unsplash.com/photo-1510776632413-f3e527a8dc42?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA0ODd8&ixlib=rb-4.0.3',
-        portraitImage: 'https://images.unsplash.com/photo-1568214697537-ace27ffd6cf3?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE0NTJ8&ixlib=rb-4.0.3'
+        image: 'https://images.unsplash.com/photo-1510776632413-f3e527a8dc42?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA0ODd8&ixlib=rb-4.0.3',
+        // portraitImage: 'https://images.unsplash.com/photo-1568214697537-ace27ffd6cf3?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE0NTJ8&ixlib=rb-4.0.3'
     },
     {
         id: 3,
         name: 'Nepal',
         href: '/destinations/nepal',
-        landscapeImage: 'https://images.unsplash.com/photo-1462290625486-c142817fb94d?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA1NDB8&ixlib=rb-4.0.3',
-        portraitImage: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE1NTN8&ixlib=rb-4.0.3'
+        image: 'https://images.unsplash.com/photo-1462290625486-c142817fb94d?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA1NDB8&ixlib=rb-4.0.3',
+        // portraitImage: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE1NTN8&ixlib=rb-4.0.3'
     },
     {
         id: 4,
         name: 'Philippines',
         href: '/destinations/philippines',
-        landscapeImage: 'https://images.unsplash.com/photo-1461230185679-aad82a673415?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA0NDh8&ixlib=rb-4.0.3',
-        portraitImage: 'https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE2MTJ8&ixlib=rb-4.0.3'
+        image: 'https://images.unsplash.com/photo-1461230185679-aad82a673415?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA0NDh8&ixlib=rb-4.0.3',
+        // portraitImage: 'https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE2MTJ8&ixlib=rb-4.0.3'
     },
     {
         id: 5,
         name: 'Thailand',
         href: '/destinations/thailand',
-        landscapeImage: 'https://images.unsplash.com/photo-1443527216320-7e744084f5a7?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjM4MDF8&ixlib=rb-4.0.3',
-        portraitImage: 'https://images.unsplash.com/photo-1497290756760-23ac55edf36f?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE2NzZ8&ixlib=rb-4.0.3'
+        image: 'https://images.unsplash.com/photo-1443527216320-7e744084f5a7?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjM4MDF8&ixlib=rb-4.0.3',
+        // portraitImage: 'https://images.unsplash.com/photo-1497290756760-23ac55edf36f?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE2NzZ8&ixlib=rb-4.0.3'
     },
     {
         id: 6,
         name: 'Singapore',
         href: '/destinations/singapore',
-        landscapeImage: 'https://images.unsplash.com/photo-1601204483351-4c1fcbd496cb?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA2MzZ8&ixlib=rb-4.0.3',
-        portraitImage: 'https://images.unsplash.com/photo-1536692546400-ac0af3f293fd?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzEyMDN8&ixlib=rb-4.0.3'
+        image: 'https://images.unsplash.com/photo-1601204483351-4c1fcbd496cb?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA2MzZ8&ixlib=rb-4.0.3',
+        // portraitImage: 'https://images.unsplash.com/photo-1536692546400-ac0af3f293fd?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzEyMDN8&ixlib=rb-4.0.3'
     },
     {
         id: 7,
         name: 'Bhutan',
         href: '/destinations/bhutan',
-        landscapeImage: 'https://images.unsplash.com/photo-1504892612018-159ffa1d147f?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA3NTR8&ixlib=rb-4.0.3',
-        portraitImage: 'https://images.unsplash.com/photo-1508349937151-22b68b72d5b1?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE3Mzd8&ixlib=rb-4.0.3'
+        image: 'https://images.unsplash.com/photo-1504892612018-159ffa1d147f?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA3NTR8&ixlib=rb-4.0.3',
+        // portraitImage: 'https://images.unsplash.com/photo-1508349937151-22b68b72d5b1?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE3Mzd8&ixlib=rb-4.0.3'
     },
     {
         id: 8,
         name: 'China',
         href: '/destinations/china',
-        landscapeImage: 'https://images.unsplash.com/photo-1536585806558-81c7ea4d393d?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA4MDN8&ixlib=rb-4.0.3',
-        portraitImage: 'https://images.unsplash.com/photo-1562095241-8c6714fd4178?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE3ODV8&ixlib=rb-4.0.3'
+        image: 'https://images.unsplash.com/photo-1536585806558-81c7ea4d393d?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA4MDN8&ixlib=rb-4.0.3',
+        // portraitImage: 'https://images.unsplash.com/photo-1562095241-8c6714fd4178?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE3ODV8&ixlib=rb-4.0.3'
     },
     {
         id: 9,
         name: 'Srilanka',
         href: '/destinations/srilanka',
-        landscapeImage: 'https://images.unsplash.com/photo-1510279770292-4b34de9f5c23?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzM1MjR8&ixlib=rb-4.0.3',
-        portraitImage: 'https://images.unsplash.com/photo-1491147334573-44cbb4602074?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzM0ODd8&ixlib=rb-4.0.3'
+        image: 'https://images.unsplash.com/photo-1510279770292-4b34de9f5c23?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzM1MjR8&ixlib=rb-4.0.3',
+        // portraitImage: 'https://images.unsplash.com/photo-1491147334573-44cbb4602074?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzM0ODd8&ixlib=rb-4.0.3'
     },
 ]
 

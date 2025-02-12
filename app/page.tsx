@@ -4,6 +4,7 @@ import Packages from "../ui/home/packages/packages";
 import Destinations from "../ui/home/destinations";
 import WorkAbroad from "../ui/home/workAbroad";
 import ContactUs from "../ui/home/contact/contactUs";
+import Subscribe from "../ui/home/subscribe/subscribe";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Destinations></Destinations>
       <WorkAbroad></WorkAbroad>
       <ContactUs></ContactUs>
+      <Subscribe></Subscribe>
     </div>
   );
 }

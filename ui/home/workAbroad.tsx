@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { fakeRegions } from "../../lib/fakeData";
 import Header from "../header";
-import { FaArrowRight } from "react-icons/fa";
 import { outfit } from "../../app/layout";
 import Section from "./Section";
+import { FaArrowRight } from "react-icons/fa";
 
 export default function WorkAbroad() {
     return (
@@ -11,12 +11,12 @@ export default function WorkAbroad() {
             <Header
                 smallText="Want to"
                 largeText="Work Abroad?"
-                underlineColor="accent"
+                sequence="small, large"
             ></Header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
-                    fakeRegions.map(region => <div key={region.id} className="card glass w-full group hover:bg-white hover:shadow-lg">
+                    fakeRegions.map(region => <div key={region.id} className="card glass w-full group hover:shadow-lg max-h-64 bg-neutral text-base-200">
                         <figure>
                             <Image
                                 src={region.image}
@@ -26,9 +26,9 @@ export default function WorkAbroad() {
                             ></Image>
                         </figure>
                         <div className="card-body">
-                            <h2 className={`card-title text-secondary/95 group-hover:text-secondary ${outfit.className}`}>{region.name}</h2>
+                            <h2 className={`card-title text-2xl ${outfit.className}`}>{region.name}</h2>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-xs btn-outline btn-neutral border-dotted group-hover:bg-base-100 group-hover:text-neutral group-hover:border-solid">
+                                <button className="btn btn-xs btn-outline btn-accent">
                                     <p>Job Circulars</p>
                                     <FaArrowRight></FaArrowRight>
                                 </button>

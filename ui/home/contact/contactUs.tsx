@@ -12,10 +12,10 @@ export default function ContactUs() {
             <Header
                 smallText=""
                 largeText="Contact Us"
-                underlineColor="accent"
+                sequence="small, large"
             ></Header>
 
-            <div className="card bg-gradient-to-b from-neutral via-neutral/95 to-neutral text-base-100 w-full py-4">
+            <div className="card glass bg-neutral text-base-100 w-full py-4">
                 <div className="card-body w-full">
                     <div className="w-full flex justify-center items-center gap-4 md:gap-8 py-8 flex-col md:flex-row text-center">
                         <div className="flex items-center gap-2 text-accent">
