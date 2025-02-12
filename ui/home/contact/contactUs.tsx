@@ -25,7 +25,7 @@ export default function ContactUs() {
                             <p className="text-base-200">Hotline :</p>
                         </div>
 
-                        <div className="flex items-center gap-2 md:gap-4 flex-col md:flex-row">
+                        <div className="flex items-center gap-2 md:gap-8 flex-col md:flex-row">
                             <p className="text-lg text-base-200">{hotline}</p>
                             <CopyNumberBtn></CopyNumberBtn>
                         </div>

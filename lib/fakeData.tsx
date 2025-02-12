@@ -1,3 +1,5 @@
+import { pkg } from "./definitions"
+
 export const fakeCountries = [
     {
         id: 1,
@@ -68,7 +70,7 @@ export const fakeCountries = [
 // random-image-api
 // https://api.unsplash.com/photos/random?client_id=Y-Zv6OTYaQQ8ZpINzFTxP60tCuSwUAkrAni5IMsSApk&query=singapore-nature&orientation=landscape
 
-export const fakePackages = [
+export const fakePackages: pkg[] = [
     {
         id: 1,
         countries: ['Malaysia', 'Indonesia'],

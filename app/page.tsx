@@ -1,6 +1,6 @@
 import Image from "next/image";
 import logo from "../public/assets/logo.jpeg"
-import Packages from "../ui/home/packages";
+import Packages from "../ui/home/packages/packages";
 import Destinations from "../ui/home/destinations";
 import WorkAbroad from "../ui/home/workAbroad";
 import ContactUs from "../ui/home/contact/contactUs";
