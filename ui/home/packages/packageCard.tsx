@@ -1,6 +1,6 @@
-import { FaArrowRight } from "react-icons/fa"
 import { outfit } from "../../../app/layout"
 import { pkg } from "../../../lib/definitions"
+import DefaultBtn from "../../buttons/defaultBtn"
 
 export default function PackageCard({ pkg }: {
     pkg: pkg
@@ -11,7 +11,7 @@ export default function PackageCard({ pkg }: {
     //     return countryImage
     // }
 
-    return (<div className="group card w-full shadow-xl text-neutral border border-base-100 border-dotted hover:shadow-2xlcursor-pointer transition glass bg-neutral/95 hover:bg-neutral">
+    return (<div className="group card w-full shadow-xl text-neutral border border-base-100 border-dotted hover:shadow-2xl cursor-pointer transition glass bg-neutral">
         <div className="badge border-neutral/90 border-dotted text-sm">Package Code&nbsp;&nbsp;<span className="font-semibold">{pkg.id}</span></div>
 
         {/* <div className="w-full flex justify-center mt-4">
@@ -41,10 +41,11 @@ export default function PackageCard({ pkg }: {
 
             <p className="text-xs text-base-200">{pkg.details.slice(0, 100)}...</p>
             <div className="card-actions justify-end">
-                <button className={`btn btn-xs btn-ghost text-accent/90 group-hover:bg-neutral/90 border-dotted group-hover:border-solid`}>
+                <DefaultBtn
+                    addOutline={false}
+                >
                     <p>See More</p>
-                    <FaArrowRight></FaArrowRight>
-                </button>
+                </DefaultBtn>
             </div>
         </div>
     </div>)
