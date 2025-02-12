@@ -22,7 +22,7 @@ export default function ContactUs() {
                             <div className="text-2xl text-accent">
                                 <BsFillTelephoneFill></BsFillTelephoneFill>
                             </div>
-                            <p className="text-base-200">Hotline :</p>
+                            <p className="text-lg text-base-200">Hotline :</p>
                         </div>
 
                         <div className="flex items-center gap-2 md:gap-8 flex-col md:flex-row">
@@ -39,11 +39,11 @@ export default function ContactUs() {
                             <div className="text-2xl text-accent">
                                 <ImOffice />
                             </div>
-                            <p className="text-base-200">Address :</p>
+                            <p className="text-lg text-base-200">Address :</p>
                         </div>
 
                         <div>
-                            <p className="text-sm text-base-200">{address}</p>
+                            <p className="text-base-200">{address}</p>
                         </div>
                     </div>
                 </div>

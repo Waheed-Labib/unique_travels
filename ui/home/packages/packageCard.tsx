@@ -11,8 +11,8 @@ export default function PackageCard({ pkg }: {
     //     return countryImage
     // }
 
-    return (<div className="group card bg-base-100 w-full shadow-xl text-neutral border border-base-100 border-dotted hover:shadow-2xl hover:bg-white cursor-pointer transition">
-        <div className="badge border-accent border-dotted text-sm">Package Code&nbsp;&nbsp;<span className="font-semibold">{pkg.id}</span></div>
+    return (<div className="group card w-full shadow-xl text-neutral border border-base-100 border-dotted hover:shadow-2xlcursor-pointer transition glass bg-neutral/95 hover:bg-neutral">
+        <div className="badge border-neutral/90 border-dotted text-sm">Package Code&nbsp;&nbsp;<span className="font-semibold">{pkg.id}</span></div>
 
         {/* <div className="w-full flex justify-center mt-4">
             {
@@ -31,17 +31,17 @@ export default function PackageCard({ pkg }: {
 
         <div className="card-body">
 
-            <div className="border-b border-secondary border-dotted group-hover:border-solid">
-                <h2 className={`card-title text-secondary/95 group-hover:text-secondary text-xl ${outfit.className} flex-wrap gap-0`}>
+            <div className="border-b pb-2 border-base-200 border-dotted group-hover:border-solid">
+                <h2 className={`card-title text-base-200 group-hover:text-base-100 text-2xl ${outfit.className} flex-wrap gap-0`}>
                     {
                         pkg.countries.map((country, idx) => <span key={country}>{country}&nbsp;{pkg.countries.length === idx + 1 || '+'}&nbsp;</span>)
                     }
                 </h2>
             </div>
 
-            <p className="text-sm text-neutral/90">{pkg.details.slice(0, 100)}...</p>
+            <p className="text-xs text-base-200">{pkg.details.slice(0, 100)}...</p>
             <div className="card-actions justify-end">
-                <button className={`btn btn-xs btn-ghost text-neutral/90 group-hover:bg-base-100 border-dotted group-hover:border group-hover:border-neutral`}>
+                <button className={`btn btn-xs btn-ghost text-accent/90 group-hover:bg-neutral/90 border-dotted group-hover:border-solid`}>
                     <p>See More</p>
                     <FaArrowRight></FaArrowRight>
                 </button>
