@@ -6,7 +6,6 @@ import { FaArrowCircleRight } from "react-icons/fa";
 import { outfit } from "../../../app/layout";
 import Section from "../Section";
 import PackageCard from "./packageCard";
-import TestingPackageCard from "./testingPackageCard";
 
 export default function Packages() {
 
@@ -21,21 +20,20 @@ export default function Packages() {
                 sequence="small, large"
             ></Header>
 
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-[1fr]">
                 {
-                    featuredPackages.map(pkg => <TestingPackageCard
+                    featuredPackages.map(pkg => <PackageCard
                         key={pkg.id}
                         pkg={pkg}
-                    ></TestingPackageCard>)
+                    ></PackageCard>)
                 }
 
                 {
                     firstThreeUnfeaturedPackages.map(pkg =>
-                        <div key={pkg.id} className="w-full hidden md:block">
-                            <TestingPackageCard
-                                pkg={pkg}>
-                            </TestingPackageCard>
-                        </div>
+                        <PackageCard
+                            key={pkg.id}
+                            pkg={pkg}>
+                        </PackageCard>
                     )
                 }
             </div>

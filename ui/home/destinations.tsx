@@ -21,6 +21,7 @@ export default function Destinations() {
                         className=""
                         actionBtn={true}
                         hoverEffect={true}
+                        height='max'
                     ></CountryCard>
                     )
                 }

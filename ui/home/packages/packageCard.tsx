@@ -1,52 +1,45 @@
-import { outfit } from "../../../app/layout"
 import { pkg } from "../../../lib/definitions"
-import DefaultBtn from "../../buttons/defaultBtn"
+import { fakeCountries } from "../../../lib/fakeData"
+import CountryCard from "../../countryCard";
+import { FaArrowRight } from "react-icons/fa";
 
 export default function PackageCard({ pkg }: {
     pkg: pkg
 }) {
-    // const findCountryImage = (countryName: string): string | undefined => {
-    //     const country = fakeCountries.find(country => country.name === countryName);
-    //     const countryImage = country?.portraitImage;
-    //     return countryImage
-    // }
 
-    return (<div className="group card w-full shadow-xl text-neutral border border-base-100 border-dotted hover:shadow-2xl cursor-pointer transition glass bg-neutral">
-        <div className="badge border-neutral/90 border-dotted text-sm">Package Code&nbsp;&nbsp;<span className="font-semibold">{pkg.id}</span></div>
+    const getCountryImage = (countryName: string) => {
+        const country = fakeCountries.find(country => country.name === countryName);
 
-        {/* <div className="w-full flex justify-center mt-4">
-            {
-                pkg.countries.map(country => {
-                    const countryImg = findCountryImage(country);
-                    if (countryImg) return <Image
-                        key={country}
-                        src={fakeCountries[0].portraitImage}
-                        alt=''
-                        width={360 / pkg.countries.length}
-                        height={120}
-                        className="border border-base-100"></Image>
-                })
-            }
-        </div> */}
+        if (country) {
+            const countryImage = country.image;
+            return countryImage
+        }
+    }
 
-        <div className="card-body">
+    const images = pkg.countries.map(countryName => getCountryImage(countryName))
 
-            <div className="border-b pb-2 border-base-200 border-dotted group-hover:border-solid">
-                <h2 className={`card-title text-base-200 group-hover:text-base-100 text-2xl ${outfit.className} flex-wrap gap-0`}>
-                    {
-                        pkg.countries.map((country, idx) => <span key={country}>{country}&nbsp;{pkg.countries.length === idx + 1 || '+'}&nbsp;</span>)
-                    }
-                </h2>
-            </div>
-
-            <p className="text-xs text-base-200">{pkg.details.slice(0, 100)}...</p>
-            <div className="card-actions justify-end">
-                <DefaultBtn
-                    addOutline={false}
-                >
-                    <p>See More</p>
-                </DefaultBtn>
-            </div>
+    return (
+        <div className="bg-accent flex flex-col justify-end">
+            <div className="border-2 border-accent ">
+                {
+                    pkg.countries.map((countryName, idx) => <CountryCard
+                        key={countryName}
+                        image={images[idx]}
+                        countryName={countryName}
+                        className="rounded-sm border border-accent"
+                        actionBtn={false}
+                        hoverEffect={false}
+                        height='min'
+                    ></CountryCard>
+                    )
+                }
+                <button className="w-full btn btn-accent rounded-sm">
+                    <p>Package Code 0{pkg.id}</p>
+                    <div className="rounded-full bg-neutral text-base-200 p-2 ml-2">
+                        <FaArrowRight></FaArrowRight>
+                    </div>
+                </button>
+            </div >
         </div>
-    </div>)
+    )
 }

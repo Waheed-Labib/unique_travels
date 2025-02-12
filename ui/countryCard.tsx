@@ -4,15 +4,19 @@ import DefaultBtn from "./buttons/defaultBtn";
 import { FaArrowRight } from "react-icons/fa";
 import { cn } from "../lib/utils";
 
-export default function CountryCard({ image, countryName, className, actionBtn, hoverEffect }: {
+export default function CountryCard({ image, countryName, className, actionBtn, hoverEffect, height }: {
     image: string | undefined,
     countryName: string,
     className: string,
     actionBtn: boolean,
-    hoverEffect: boolean
+    hoverEffect: boolean,
+    height: 'min' | 'max'
 }) {
     return (
-        <div className={`group card bg-base-100 image-full w-full shadow-xl  transition overflow-hidden max-h-28 ${className}`}>
+        <div className={cn(`group card bg-base-100 image-full w-full shadow-xl  transition overflow-hidden ${className}`,
+            height === 'min' ? 'max-h-20' : '',
+            height === 'max' ? 'max-h-28' : ''
+        )}>
             <figure>
                 {
                     image && <Image
