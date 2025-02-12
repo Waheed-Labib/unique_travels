@@ -73,7 +73,7 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-sm text-base-100 btn-neutral font-medium">Contact Us</a>
+                <a className="btn btn-sm text-base-100 btn-neutral bg-neutral/95 font-medium">Contact Us</a>
             </div>
         </div>
     )

@@ -11,12 +11,12 @@ export default function WorkAbroad() {
             <Header
                 smallText="Want to"
                 largeText="Work Abroad?"
-                underlineColor="secondary"
+                underlineColor="accent"
             ></Header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
-                    fakeRegions.map(region => <div key={region.id} className="card glass w-full group">
+                    fakeRegions.map(region => <div key={region.id} className="card glass w-full group hover:bg-white hover:shadow-lg">
                         <figure>
                             <Image
                                 src={region.image}
@@ -26,9 +26,9 @@ export default function WorkAbroad() {
                             ></Image>
                         </figure>
                         <div className="card-body">
-                            <h2 className={`card-title text-secondary ${outfit.className}`}>{region.name}</h2>
+                            <h2 className={`card-title text-secondary/95 group-hover:text-secondary ${outfit.className}`}>{region.name}</h2>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-sm btn-ghost text-neutral hover:bg-base-100 border border-base-100 border-dotted group-hover:border-neutral">
+                                <button className="btn btn-xs btn-outline btn-neutral border-dotted group-hover:bg-base-100 group-hover:text-neutral group-hover:border-solid">
                                     <p>Job Circulars</p>
                                     <FaArrowRight></FaArrowRight>
                                 </button>

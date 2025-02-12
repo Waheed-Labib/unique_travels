@@ -15,7 +15,7 @@ export default function ContactUs() {
                 underlineColor="accent"
             ></Header>
 
-            <div className="card bg-primary-content/95 text-base-100 w-full py-4">
+            <div className="card bg-neutral/95 text-base-100 w-full py-4">
                 <div className="card-body w-full">
                     <div className="w-full flex justify-center items-center gap-4 md:gap-8 py-8 flex-col md:flex-row text-center">
                         <div className="flex items-center gap-2 text-accent">

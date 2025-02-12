@@ -45,17 +45,17 @@ export default function Packages() {
                         <div className="card-body">
 
                             <div className="border-b border-secondary border-dotted group-hover:border-solid">
-                                <h2 className={`card-title text-secondary text-xl ${outfit.className} flex-wrap gap-0`}>
+                                <h2 className={`card-title text-secondary/95 group-hover:text-secondary text-xl ${outfit.className} flex-wrap gap-0`}>
                                     {
                                         pkg.countries.map((country, idx) => <span key={country}>{country}&nbsp;{pkg.countries.length === idx + 1 || '+'}&nbsp;</span>)
                                     }
                                 </h2>
                             </div>
 
-                            <p className="text-sm">{pkg.details.slice(0, 100)}...</p>
+                            <p className="text-sm text-neutral/90">{pkg.details.slice(0, 100)}...</p>
                             <div className="card-actions justify-end">
-                                <button className={`btn btn-xs btn-ghost text-accent group-hover:bg-base-100 border-dotted group-hover:border group-hover:border-accent`}>
-                                    <p>View Details</p>
+                                <button className={`btn btn-xs btn-ghost text-neutral/90 group-hover:bg-base-100 border-dotted group-hover:border group-hover:border-neutral`}>
+                                    <p>See More</p>
                                     <FaArrowRight></FaArrowRight>
                                 </button>
                             </div>
@@ -64,9 +64,9 @@ export default function Packages() {
                 }
             </div>
 
-            <Link href={'/packages'} className={`mt-12 text-neutral hover:underline flex items-center gap-2 ${outfit.className}`}>
+            <Link href={'/packages'} className={`group mt-12 text-neutral hover:underline flex items-center gap-2 ${outfit.className}`}>
                 <p>View More Packages</p>
-                <div className="text-3xl text-accent">
+                <div className="text-3xl text-accent group-hover:scale-110 transition">
                     <FaArrowCircleRight></FaArrowCircleRight>
                 </div>
             </Link>
