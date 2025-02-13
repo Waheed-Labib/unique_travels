@@ -1,11 +1,8 @@
-// import Image from "next/image";
-import Link from "next/link";
 import { fakePackages } from "../../../lib/fakeData";
 import Header from "../../header";
-import { FaArrowCircleRight } from "react-icons/fa";
-import { outfit } from "../../../app/layout";
 import Section from "../Section";
 import PackageCard from "./packageCard";
+import ViewMorePackage from "./viewMorePackage";
 
 export default function Packages() {
 
@@ -20,30 +17,26 @@ export default function Packages() {
                 sequence="small, large"
             ></Header>
 
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-[1fr]">
+            <div className="w-full columns-1 sm:columns-2 lg:columns-3 gap-8">
                 {
-                    featuredPackages.map(pkg => <PackageCard
+                    featuredPackages.map((pkg) => <PackageCard
                         key={pkg.id}
                         pkg={pkg}
                     ></PackageCard>)
                 }
-
                 {
-                    firstThreeUnfeaturedPackages.map(pkg =>
+                    firstThreeUnfeaturedPackages.map((pkg) => <div
+                        key={pkg.id}
+                        className="hidden md:block"
+                    >
                         <PackageCard
-                            key={pkg.id}
-                            pkg={pkg}>
-                        </PackageCard>
-                    )
+                            pkg={pkg}
+                        ></PackageCard>
+                    </div>)
                 }
+                <ViewMorePackage></ViewMorePackage>
             </div>
 
-            <Link href={'/packages'} className={`group mt-12 text-neutral hover:underline flex items-center gap-2 ${outfit.className}`}>
-                <p>View More Packages</p>
-                <div className="text-3xl text-accent group-hover:scale-110 transition">
-                    <FaArrowCircleRight></FaArrowCircleRight>
-                </div>
-            </Link>
         </Section>
     )
 }

@@ -14,10 +14,10 @@ export const outfit = Outfit({
   weight: ['400']
 })
 
-export const metadata: Metadata = {
-  title: "Unique Travels",
-  description: "Bangladeshi Travel Agency",
-};
+// export const metadata: Metadata = {
+//   title: "Unique Travels",
+//   description: "Bangladeshi Travel Agency",
+// };
 
 export default function RootLayout({
   children,

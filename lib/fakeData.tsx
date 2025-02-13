@@ -121,13 +121,13 @@ export const fakePackages: pkg[] = [
     },
     {
         id: 9,
-        countries: ['Malaysia', 'Indonesia', 'philippines'],
+        countries: ['Malaysia', 'Indonesia', 'Philippines'],
         details: 'MALDIVES & SRILANKA 6 NIGHTS 7 DAYS STANDARD PACKAGE TOUR @ 45,900 PER PERSON Travel Date: 2nd FEBRUARY 2025 Hotel :- *02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast. *01 night stay in The White Harp Beach Hotel (Hulhumale) including Breakfast. *2 night stay in Kandy at Gangaaddara Hotel including Breakfast. *1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast. 🛻*Mode of transfer: Return Airport Transfers by car + 🚤Speed boat (Combine)',
         isFeatured: false,
     },
     {
         id: 10,
-        countries: ['philippines', 'Indonesia'],
+        countries: ['Philippines', 'Indonesia'],
         details: 'MALDIVES & SRILANKA 6 NIGHTS 7 DAYS STANDARD PACKAGE TOUR @ 45,900 PER PERSON Travel Date: 2nd FEBRUARY 2025 Hotel :- *02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast. *01 night stay in The White Harp Beach Hotel (Hulhumale) including Breakfast. *2 night stay in Kandy at Gangaaddara Hotel including Breakfast. *1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast. 🛻*Mode of transfer: Return Airport Transfers by car + 🚤Speed boat (Combine)',
         isFeatured: false,
     },
@@ -145,19 +145,19 @@ export const fakePackages: pkg[] = [
     },
     {
         id: 13,
-        countries: ['philippines'],
+        countries: ['Philippines'],
         details: 'MALDIVES & SRILANKA 6 NIGHTS 7 DAYS STANDARD PACKAGE TOUR @ 45,900 PER PERSON Travel Date: 2nd FEBRUARY 2025 Hotel :- *02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast. *01 night stay in The White Harp Beach Hotel (Hulhumale) including Breakfast. *2 night stay in Kandy at Gangaaddara Hotel including Breakfast. *1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast. 🛻*Mode of transfer: Return Airport Transfers by car + 🚤Speed boat (Combine)',
         isFeatured: false,
     },
     {
         id: 14,
-        countries: ['Malaysia', 'Indonesia', 'philippines'],
+        countries: ['Malaysia', 'Indonesia', 'Philippines'],
         details: 'MALDIVES & SRILANKA 6 NIGHTS 7 DAYS STANDARD PACKAGE TOUR @ 45,900 PER PERSON Travel Date: 2nd FEBRUARY 2025 Hotel :- *02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast. *01 night stay in The White Harp Beach Hotel (Hulhumale) including Breakfast. *2 night stay in Kandy at Gangaaddara Hotel including Breakfast. *1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast. 🛻*Mode of transfer: Return Airport Transfers by car + 🚤Speed boat (Combine)',
         isFeatured: false,
     },
     {
         id: 15,
-        countries: ['philippines', 'Indonesia'],
+        countries: ['Philippines', 'Indonesia'],
         details: 'MALDIVES & SRILANKA 6 NIGHTS 7 DAYS STANDARD PACKAGE TOUR @ 45,900 PER PERSON Travel Date: 2nd FEBRUARY 2025 Hotel :- *02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast. *01 night stay in The White Harp Beach Hotel (Hulhumale) including Breakfast. *2 night stay in Kandy at Gangaaddara Hotel including Breakfast. *1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast. 🛻*Mode of transfer: Return Airport Transfers by car + 🚤Speed boat (Combine)',
         isFeatured: false,
     },
