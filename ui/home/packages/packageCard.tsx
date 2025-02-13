@@ -1,7 +1,7 @@
-import { CgDetailsMore } from "react-icons/cg";
 import { pkg } from "../../../lib/definitions"
 import { fakeCountries } from "../../../lib/fakeData"
 import CountryCard from "../../countryCard";
+import { FaArrowRight } from "react-icons/fa";
 
 export default function PackageCard({ pkg, className }: {
     pkg: pkg,
@@ -21,6 +21,7 @@ export default function PackageCard({ pkg, className }: {
 
     return (
         <div className={`w-full h-72 ${className} flex flex-col`}>
+
             {
                 pkg.countries.map((countryName, idx) => <CountryCard
                     key={countryName}
@@ -34,14 +35,11 @@ export default function PackageCard({ pkg, className }: {
             }
 
 
-            <button className="btn btn-accent flex justify-between items-center w-full h-12">
-                <div className="flex items-center gap-2">
-                    <div className="text-lg">
-                        <CgDetailsMore />
-                    </div>
-                    <p>View Package</p>
+            <button className="btn btn-primary glass bg-primary text-primary-content flex justify-between items-center w-full">
+                <p className="text-xs">View Details</p>
+                <div className="text-lg">
+                    <FaArrowRight></FaArrowRight>
                 </div>
-                <p className="font-normal text-xs">package id<span className="text-sm font-medium">&nbsp;&nbsp;0{pkg.id}</span></p>
             </button>
         </div>
     )

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
-import Navbar from "../ui/navbar/navbar";
+import Navbar from "../ui/navbar";
 import WhatsAppBtn from "../ui/whatsAppBtn";
+import Footer from "../ui/footer";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,12 +30,10 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased bg-base-200 relative max-w-screen-2xl mx-auto mb-24`}
       >
-
-        <Navbar></Navbar>
-
-        {children}
-
         <WhatsAppBtn></WhatsAppBtn>
+        <Navbar></Navbar>
+        {children}
+        <Footer></Footer>
       </body>
     </html >
   );

@@ -30,7 +30,7 @@ export default function Subscribe() {
                             {/* <span className="label-text-alt">Bottom Right label</span> */}
                         </div>
                     </label>
-                    <button className="btn btn-accent">Subscribe</button>
+                    <button className="btn btn-primary glass bg-primary">Subscribe</button>
                 </div>
             </div>
         </Section>

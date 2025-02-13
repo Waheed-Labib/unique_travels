@@ -1,8 +1,8 @@
 import Link from "next/link";
-import circleLogo from '../../app/favicon.ico'
+import circleLogo from '../app/favicon.ico'
 import Image from "next/image";
-import { fakeCountries } from "../../lib/fakeData";
-import { outfit } from "../../app/layout";
+import { fakeCountries } from "../lib/fakeData";
+import { outfit } from "../app/layout";
 
 const packagesLink = <Link href={'/packages'}>
     Packages

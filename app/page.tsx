@@ -13,8 +13,8 @@ export default function Home() {
       <Packages></Packages>
       <Destinations></Destinations>
       <WorkAbroad></WorkAbroad>
-      <ContactUs></ContactUs>
       <Subscribe></Subscribe>
+      <ContactUs></ContactUs>
     </div>
   );
 }
