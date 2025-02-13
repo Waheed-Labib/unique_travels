@@ -7,7 +7,7 @@ export default function Footer() {
 
     return (
         <>
-            <footer className="mt-24 footer footer-center bg-primary text-primary-content p-10">
+            <footer className="mt-24 footer footer-center glass bg-primary text-primary-content p-10">
                 <aside>
                     <Image
                         src={circleLogo}
@@ -21,11 +21,11 @@ export default function Footer() {
                         <p className="font-semibold">Time for an Adventure</p>
                     </div>
 
-                    <p className="text-sm">Copyright © {new Date().getFullYear()} - All right reserved</p>
+                    <p className="text-sm">Copyright © {new Date().getFullYear()} - All rights reserved</p>
                 </aside>
 
                 <nav>
-                    <div className="flex items-center gap-1 text-neutral">
+                    <div className="flex flex-col md:flex-row justify-center items-center gap-1 text-neutral">
                         <p>Website designed and developed by</p>
                         <a href="https://www.linkedin.com/in/waheed-labib-45b1b625a/" className="underline underline-offset-2">Waheed Labib</a>
                     </div>

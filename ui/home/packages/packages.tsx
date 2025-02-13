@@ -13,9 +13,9 @@ export default function Packages() {
     return (
         <Section>
             <Header
-                smallText="We Offer"
-                largeText="Suitable Packages"
-                sequence="small, large"
+                largeText="Suitable Package"
+                smallText="for You"
+                sequence="large, small"
             ></Header>
 
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -8,7 +8,7 @@ export default function Destinations() {
         <Section>
             <Header
                 smallText="Choose Your"
-                largeText="Destination"
+                largeText="Next Destination"
                 sequence="small, large"
             ></Header>
 

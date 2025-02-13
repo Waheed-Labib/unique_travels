@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased bg-base-200 relative max-w-screen-2xl mx-auto mb-24`}
+        className={`${inter.className} antialiased bg-base-200 relative max-w-screen-2xl mx-auto`}
       >
         <WhatsAppBtn></WhatsAppBtn>
         <Navbar></Navbar>
