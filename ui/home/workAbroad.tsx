@@ -2,7 +2,7 @@ import Image from "next/image";
 import { fakeRegions } from "../../lib/fakeData";
 import Header from "../header";
 import { outfit } from "../../app/layout";
-import Section from "./Section";
+import Section from "../Section";
 import { FaArrowRight } from "react-icons/fa";
 import DefaultBtn from "../buttons/defaultBtn";
 

@@ -1,6 +1,6 @@
 import { fakeCountries } from "../../lib/fakeData";
 import Header from "../header";
-import Section from "./Section";
+import Section from "../Section";
 import CountryCard from "../countryCard";
 
 export default function Destinations() {
@@ -18,10 +18,9 @@ export default function Destinations() {
                         key={country.id}
                         countryName={country.name}
                         image={country.image}
-                        className=""
+                        className="max-h-28"
                         actionBtn={true}
                         hoverEffect={true}
-                        height='max'
                     ></CountryCard>
                     )
                 }

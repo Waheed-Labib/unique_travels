@@ -14,10 +14,10 @@ export const outfit = Outfit({
   weight: ['400']
 })
 
-// export const metadata: Metadata = {
-//   title: "Unique Travels",
-//   description: "Bangladeshi Travel Agency",
-// };
+export const metadata: Metadata = {
+  title: "Unique Travels",
+  description: "Bangladeshi Travel Agency",
+};
 
 export default function RootLayout({
   children,
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased bg-base-100 relative max-w-screen-2xl mx-auto mb-24`}
+        className={`${inter.className} antialiased bg-base-200 relative max-w-screen-2xl mx-auto mb-24`}
       >
 
         <Navbar></Navbar>

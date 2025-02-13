@@ -2,7 +2,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import Header from "../../header";
 import { address, hotline } from "../../../lib/fakeData";
 import { ImOffice } from "react-icons/im";
-import Section from "../Section";
+import Section from "../../Section";
 
 export default function ContactUs() {
 

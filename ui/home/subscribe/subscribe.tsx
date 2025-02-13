@@ -1,6 +1,6 @@
 import { FaRegCheckSquare } from "react-icons/fa";
 import Header from "../../header";
-import Section from "../Section";
+import Section from "../../Section";
 
 export default function Subscribe() {
     return (
