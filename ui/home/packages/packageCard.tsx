@@ -20,7 +20,7 @@ export default function PackageCard({ pkg, className }: {
     const images = pkg.countries.map(countryName => getCountryImage(countryName))
 
     return (
-        <div className={`w-full h-full ${className} flex flex-col`}>
+        <div className={`w-full h-72 ${className} flex flex-col`}>
             {
                 pkg.countries.map((countryName, idx) => <CountryCard
                     key={countryName}
