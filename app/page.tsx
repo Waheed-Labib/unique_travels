@@ -9,7 +9,12 @@ import Subscribe from "../ui/home/subscribe/subscribe";
 export default function Home() {
   return (
     <div className="">
-      <Image src={logo} alt="logo" className="w-full rounded-sm"></Image>
+      <Image
+        src={logo}
+        alt="logo"
+        className="w-full rounded-sm"
+      ></Image>
+
       <Packages></Packages>
       <Destinations></Destinations>
       <WorkAbroad></WorkAbroad>

@@ -6,7 +6,7 @@ export default function Section({ children, className }: {
     className?: string
 }) {
     return (
-        <div className={`mt-12 lg:mt-24 flex flex-col items-center px-12 ${className}`}>
+        <div className={`mt-12 lg:mt-24 flex flex-col items-center px-8 md:px-12 ${className}`}>
             {children}
         </div>
     )
