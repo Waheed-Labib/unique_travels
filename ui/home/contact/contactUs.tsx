@@ -14,7 +14,9 @@ export default function ContactUs() {
                 sequence="small, large"
             ></Header>
 
-            <div className="card glass bg-neutral text-base-100 w-full py-4">
+            <div
+                className="card glass bg-neutral text-base-100 w-full py-4"
+            >
                 <div className="card-body w-full">
                     <div className="w-full flex justify-center items-center gap-4 md:gap-8 py-8 flex-col md:flex-row text-center">
                         <div className="flex items-center gap-2 text-primary">
@@ -50,8 +52,6 @@ export default function ContactUs() {
                     </div>
                 </div>
             </div>
-
-
-        </Section>
+        </Section >
     )
 }

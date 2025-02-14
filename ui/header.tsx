@@ -1,4 +1,5 @@
 import { outfit } from "../app/layout"
+import * as motion from "motion/react-client"
 
 export default function Header({ smallText, largeText, sequence }: {
     smallText: string,
@@ -12,7 +13,9 @@ export default function Header({ smallText, largeText, sequence }: {
     </span>
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}>
             <h1 className={`text-neutral text-center font-medium md:text-lg lg:text-xl mb-12 lg:mb-16 ${outfit.className}`}>
                 {
                     sequence === 'large, small' && <>
@@ -30,6 +33,6 @@ export default function Header({ smallText, largeText, sequence }: {
                     </>
                 }
             </h1>
-        </div >
+        </motion.div >
     )
 }

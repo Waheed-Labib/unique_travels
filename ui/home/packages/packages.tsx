@@ -39,13 +39,14 @@ export default function Packages() {
                 }
             </div>
 
-            <Link href={'/packages'} className={`group hover:underline text-neutral mt-12 flex items-center gap-4`}>
+            <Link href={'/packages'} className={`text-neutral mt-12 flex items-center gap-4`}>
                 <motion.div
+                    whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center gap-4"
                 >
                     <p>View More Package</p>
-                    <div className="rounded-full bg-neutral p-2 text-base-100 group-hover:scale-110 transition-transform">
+                    <div className="rounded-full bg-neutral p-2 text-base-100">
                         <FaArrowRight></FaArrowRight>
                     </div>
                 </motion.div>
