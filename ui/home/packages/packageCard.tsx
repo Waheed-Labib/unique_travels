@@ -3,12 +3,14 @@ import { fakeCountries } from "../../../lib/fakeData"
 import PrimaryBtn from "../../buttons/primaryBtn";
 import CountryCard from "../../countryCard";
 import { FaArrowRight } from "react-icons/fa";
+import * as motion from "motion/react-client"
 
 export default function PackageCard({ pkg, className }: {
     pkg: pkg,
     className: string
 }) {
 
+    // temporary
     const getCountryImage = (countryName: string) => {
         const country = fakeCountries.find(country => country.name === countryName);
 
@@ -21,14 +23,16 @@ export default function PackageCard({ pkg, className }: {
     const images = pkg.countries.map(countryName => getCountryImage(countryName))
 
     return (
-        <div className={`w-full h-72 ${className} flex flex-col`}>
-
+        <motion.div
+            whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
+            whileTap={{ scale: 0.96 }}
+            className={`w-full h-72 rounded-xl ${className} flex flex-col`}>
             {
                 pkg.countries.map((countryName, idx) => <CountryCard
                     key={countryName}
                     image={images[idx]}
                     countryName={countryName}
-                    className={`rounded-sm border border-base-200 h-full`}
+                    className={`rounded-sm border-b border-base-200 h-full`}
                     actionBtn={false}
                     hoverEffect={false}
                 ></CountryCard>
@@ -42,6 +46,6 @@ export default function PackageCard({ pkg, className }: {
                     <FaArrowRight></FaArrowRight>
                 </div>
             </PrimaryBtn>
-        </div>
+        </motion.div>
     )
 }

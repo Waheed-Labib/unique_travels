@@ -5,6 +5,7 @@ import { outfit } from "../../app/layout";
 import Section from "../Section";
 import { FaArrowRight } from "react-icons/fa";
 import SimpleBtn from "../buttons/simpleBtn";
+import * as motion from "motion/react-client"
 
 export default function WorkAbroad() {
     return (
@@ -17,7 +18,10 @@ export default function WorkAbroad() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
-                    fakeRegions.map(region => <div key={region.id} className="card glass w-full group hover:shadow-lg max-h-64 bg-neutral text-base-200">
+                    fakeRegions.map(region => <motion.div
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.97 }}
+                        key={region.id} className="card glass w-full group hover:shadow-lg max-h-64 bg-neutral text-base-200">
                         <figure>
                             <Image
                                 src={region.image}
@@ -31,13 +35,14 @@ export default function WorkAbroad() {
                             <div className="card-actions justify-end">
                                 <SimpleBtn
                                     addOutline={true}
+                                    className="hover:border-base-200"
                                 >
                                     <p>Job Circulars</p>
                                     <FaArrowRight></FaArrowRight>
                                 </SimpleBtn>
                             </div>
                         </div>
-                    </div>)
+                    </motion.div>)
                 }
             </div>
         </Section>

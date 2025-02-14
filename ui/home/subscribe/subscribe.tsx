@@ -12,7 +12,7 @@ export default function Subscribe() {
                 sequence="large, small"
             ></Header>
 
-            <div className="card items-center glass bg-neutral text-neutral w-full py-8">
+            <div className="card items-center glass bg-neutral text-neutral w-full py-8 cursor-pointer">
                 <div className="card-body w-full max-w-md">
                     <label className="form-control w-full">
                         <div className="label">

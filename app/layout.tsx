@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "../ui/navbar";
@@ -15,10 +15,10 @@ export const outfit = Outfit({
   weight: ['400']
 })
 
-export const metadata: Metadata = {
-  title: "Unique Travels",
-  description: "Bangladeshi Travel Agency",
-};
+// export const metadata: Metadata = {
+//   title: "Unique Travels",
+//   description: "Bangladeshi Travel Agency",
+// };
 
 export default function RootLayout({
   children,

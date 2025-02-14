@@ -31,7 +31,7 @@ export default function Footer() {
                         <a href="https://www.linkedin.com/in/waheed-labib-45b1b625a/" className="underline underline-offset-2">Waheed Labib</a>
                     </div>
 
-                    <div className="flex items-center gap-1 cursor-pointer">
+                    <div className="flex items-center gap-2 cursor-pointer">
                         <BsFillTelephoneFill></BsFillTelephoneFill>
                         <p>01766404828</p>
                         <CopyBtn

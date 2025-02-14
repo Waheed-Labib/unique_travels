@@ -1,12 +1,16 @@
 import { ReactNode } from "react"
+import * as motion from "motion/react-client"
 
 export default function PrimaryBtn({ children, className }: {
     children: ReactNode,
     className?: string
 }) {
     return (
-        <button className={`btn btn-primary glass bg-primary ${className}`}>
+        <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className={`btn btn-primary glass bg-primary ${className}`}>
             {children}
-        </button>
+        </motion.button>
     )
 }

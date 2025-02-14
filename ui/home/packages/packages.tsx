@@ -4,6 +4,7 @@ import Header from "../../header";
 import Section from "../../Section";
 import PackageCard from "./packageCard";
 import { FaArrowRight } from "react-icons/fa";
+import * as motion from "motion/react-client"
 
 export default function Packages() {
 
@@ -39,12 +40,17 @@ export default function Packages() {
             </div>
 
             <Link href={'/packages'} className={`group hover:underline text-neutral mt-12 flex items-center gap-4`}>
-                <p>View More Package</p>
-                <div className="rounded-full bg-neutral p-2 text-base-100 group-hover:scale-110 transition-transform">
-                    <FaArrowRight></FaArrowRight>
-                </div>
+                <motion.div
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-4"
+                >
+                    <p>View More Package</p>
+                    <div className="rounded-full bg-neutral p-2 text-base-100 group-hover:scale-110 transition-transform">
+                        <FaArrowRight></FaArrowRight>
+                    </div>
+                </motion.div>
             </Link>
 
-        </Section>
+        </Section >
     )
 }

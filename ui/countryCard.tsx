@@ -12,7 +12,7 @@ export default function CountryCard({ image, countryName, className, actionBtn, 
     hoverEffect: boolean
 }) {
     return (
-        <div className={cn(`group card bg-base-100 image-full w-full shadow-xl  transition overflow-hidden ${className}`
+        <div className={cn(`group card bg-base-200 image-full w-full shadow-xl  transition overflow-hidden cursor-pointer ${className}`
         )}>
             <figure>
                 {
@@ -20,7 +20,7 @@ export default function CountryCard({ image, countryName, className, actionBtn, 
                         src={image}
                         alt="country landscape image"
                         fill={true}
-                        className={cn(hoverEffect ? "object-cover transition-transform duration-300 ease-in-out group-hover:scale-110" : "")} />
+                        className={cn("rounded-t-lg", hoverEffect ? "object-cover transition-transform duration-300 ease-in-out group-hover:scale-110" : "")} />
 
                 }
 
