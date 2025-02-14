@@ -1,6 +1,7 @@
 import { FaRegCheckSquare } from "react-icons/fa";
 import Header from "../../header";
 import Section from "../../Section";
+import PrimaryBtn from "../../buttons/primaryBtn";
 
 export default function Subscribe() {
     return (
@@ -11,7 +12,7 @@ export default function Subscribe() {
                 sequence="large, small"
             ></Header>
 
-            <div className="card items-center glass bg-neutral text-base-100 w-full py-8">
+            <div className="card items-center glass bg-neutral text-neutral w-full py-8">
                 <div className="card-body w-full max-w-md">
                     <label className="form-control w-full">
                         <div className="label">
@@ -30,7 +31,9 @@ export default function Subscribe() {
                             {/* <span className="label-text-alt">Bottom Right label</span> */}
                         </div>
                     </label>
-                    <button className="btn btn-primary glass bg-primary">Subscribe</button>
+                    <PrimaryBtn>
+                        Subscribe
+                    </PrimaryBtn>
                 </div>
             </div>
         </Section>

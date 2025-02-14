@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { outfit } from "../app/layout";
-import DefaultBtn from "./buttons/defaultBtn";
+import SimpleBtn from "./buttons/simpleBtn";
 import { FaArrowRight } from "react-icons/fa";
 import { cn } from "../lib/utils";
 
@@ -30,11 +30,11 @@ export default function CountryCard({ image, countryName, className, actionBtn, 
 
                 {
                     actionBtn && <div className="card-actions justify-end">
-                        <DefaultBtn
+                        <SimpleBtn
                             addOutline={true}
                         >
                             <FaArrowRight></FaArrowRight>
-                        </DefaultBtn>
+                        </SimpleBtn>
                     </div>
                 }
 

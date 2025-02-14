@@ -4,7 +4,7 @@ import Header from "../header";
 import { outfit } from "../../app/layout";
 import Section from "../Section";
 import { FaArrowRight } from "react-icons/fa";
-import DefaultBtn from "../buttons/defaultBtn";
+import SimpleBtn from "../buttons/simpleBtn";
 
 export default function WorkAbroad() {
     return (
@@ -29,12 +29,12 @@ export default function WorkAbroad() {
                         <div className="card-body">
                             <h2 className={`card-title text-2xl ${outfit.className} text-base-100`}>{region.name}</h2>
                             <div className="card-actions justify-end">
-                                <DefaultBtn
+                                <SimpleBtn
                                     addOutline={true}
                                 >
                                     <p>Job Circulars</p>
                                     <FaArrowRight></FaArrowRight>
-                                </DefaultBtn>
+                                </SimpleBtn>
                             </div>
                         </div>
                     </div>)

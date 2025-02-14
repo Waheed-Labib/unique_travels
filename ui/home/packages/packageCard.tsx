@@ -1,5 +1,6 @@
 import { pkg } from "../../../lib/definitions"
 import { fakeCountries } from "../../../lib/fakeData"
+import PrimaryBtn from "../../buttons/primaryBtn";
 import CountryCard from "../../countryCard";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -35,12 +36,12 @@ export default function PackageCard({ pkg, className }: {
             }
 
 
-            <button className="btn btn-primary glass bg-primary text-primary-content flex justify-between items-center w-full">
+            <PrimaryBtn className="text-primary-content flex justify-between items-center w-full">
                 <p className="text-xs">View Details</p>
                 <div className="text-lg">
                     <FaArrowRight></FaArrowRight>
                 </div>
-            </button>
+            </PrimaryBtn>
         </div>
     )
 }
