@@ -16,7 +16,7 @@ export default function Header({ smallText, largeText, sequence }: {
         <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 100, damping: 10 }}
+            transition={{ type: "spring", stiffness: 50, damping: 15 }}
             viewport={{ once: true }}>
             <h1 className={`text-neutral text-center font-medium md:text-lg lg:text-xl mb-12 lg:mb-16 ${outfit.className}`}>
                 {

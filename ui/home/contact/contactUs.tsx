@@ -18,7 +18,7 @@ export default function ContactUs() {
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                transition={{ type: "spring", stiffness: 50, damping: 15 }}
                 viewport={{ once: true }}
                 className="card glass bg-neutral text-base-100 w-full py-4"
             >

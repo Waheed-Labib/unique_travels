@@ -16,7 +16,7 @@ export default function Subscribe() {
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                transition={{ type: "spring", stiffness: 50, damping: 15 }}
                 viewport={{ once: true }}
                 className="card items-center glass bg-neutral text-neutral w-full py-8 cursor-pointer">
                 <div className="card-body w-full max-w-md">

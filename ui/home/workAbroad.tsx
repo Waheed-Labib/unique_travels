@@ -19,7 +19,7 @@ export default function WorkAbroad() {
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                transition={{ type: "spring", stiffness: 50, damping: 15 }}
                 viewport={{ once: true }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
