@@ -3,6 +3,7 @@ import Header from "../../header";
 import { address, hotline } from "../../../lib/fakeData";
 import Section from "../../Section";
 import { FaLocationDot } from "react-icons/fa6";
+import * as motion from "motion/react-client"
 
 export default function ContactUs() {
 
@@ -14,7 +15,11 @@ export default function ContactUs() {
                 sequence="small, large"
             ></Header>
 
-            <div
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                viewport={{ once: true }}
                 className="card glass bg-neutral text-base-100 w-full py-4"
             >
                 <div className="card-body w-full">
@@ -51,7 +56,7 @@ export default function ContactUs() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </Section >
     )
 }

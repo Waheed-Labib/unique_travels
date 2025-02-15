@@ -2,10 +2,10 @@ import Image from "next/image";
 import { fakeRegions } from "../../lib/fakeData";
 import Header from "../header";
 import { outfit } from "../../app/layout";
-import Section from "../Section";
 import { FaArrowRight } from "react-icons/fa";
 import SimpleBtn from "../buttons/simpleBtn";
 import * as motion from "motion/react-client"
+import Section from "../Section";
 
 export default function WorkAbroad() {
     return (
@@ -16,7 +16,12 @@ export default function WorkAbroad() {
                 sequence="small, large"
             ></Header>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     fakeRegions.map(region => <motion.div
                         whileHover={{ scale: 1.04 }}
@@ -44,7 +49,7 @@ export default function WorkAbroad() {
                         </div>
                     </motion.div>)
                 }
-            </div>
+            </motion.div>
         </Section>
     )
 }

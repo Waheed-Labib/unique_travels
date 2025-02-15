@@ -24,6 +24,10 @@ export default function PackageCard({ pkg, className }: {
 
     return (
         <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 100, damping: 10 }}
+            viewport={{ once: true }}
             whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
             whileTap={{ scale: 0.96 }}
             className={`w-full h-72 rounded-xl ${className} flex flex-col`}>

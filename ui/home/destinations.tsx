@@ -18,7 +18,12 @@ export default function Destinations() {
                     fakeCountries.map(country =>
                         <motion.div
                             key={country.id}
-                            whileTap={{ scale: 0.96 }}
+                            whileHover={{ scale: 1.04, transition: { duration: 0.2, ease: "easeOut" } }}
+                            whileTap={{ scale: 0.95 }}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                            viewport={{ once: true }}
                         >
                             <CountryCard
                                 countryName={country.name}

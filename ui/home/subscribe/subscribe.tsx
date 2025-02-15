@@ -2,6 +2,7 @@ import { FaRegCheckSquare } from "react-icons/fa";
 import Header from "../../header";
 import Section from "../../Section";
 import PrimaryBtn from "../../buttons/primaryBtn";
+import * as motion from "motion/react-client"
 
 export default function Subscribe() {
     return (
@@ -12,7 +13,12 @@ export default function Subscribe() {
                 sequence="large, small"
             ></Header>
 
-            <div className="card items-center glass bg-neutral text-neutral w-full py-8 cursor-pointer">
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                viewport={{ once: true }}
+                className="card items-center glass bg-neutral text-neutral w-full py-8 cursor-pointer">
                 <div className="card-body w-full max-w-md">
                     <label className="form-control w-full">
                         <div className="label">
@@ -35,7 +41,7 @@ export default function Subscribe() {
                         Subscribe
                     </PrimaryBtn>
                 </div>
-            </div>
+            </motion.div>
         </Section>
     )
 }

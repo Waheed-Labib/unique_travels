@@ -20,7 +20,7 @@ export default function CountryCard({ image, countryName, className, actionBtn, 
                         src={image}
                         alt="country landscape image"
                         fill={true}
-                        className={cn("rounded-t-lg", hoverEffect ? "object-cover transition-transform duration-300 ease-in-out group-hover:scale-110" : "")} />
+                        className={cn("rounded-t-lg", hoverEffect ? "object-cover transition-transform duration-400 ease-in-out group-hover:scale-110" : "")} />
 
                 }
 
