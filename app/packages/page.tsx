@@ -1,7 +1,9 @@
+import Packages from "../../ui/packages";
+
 export default function Page() {
     return (
-        <div>
-            Tourism Page
+        <div className="">
+            <Packages></Packages>
         </div>
     )
 }

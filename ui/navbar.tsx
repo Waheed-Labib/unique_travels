@@ -4,7 +4,7 @@ import Image from "next/image";
 import { fakeCountries } from "../lib/fakeData";
 import { outfit } from "../app/layout";
 
-const packagesLink = <Link href={'/packages'}>
+const packagesLink = <Link href='/packages'>
     Packages
 </Link>
 

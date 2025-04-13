@@ -1,6 +1,6 @@
 import Image from "next/image";
 import logo from "../public/assets/logo.jpeg"
-import Packages from "../ui/home/packages/packages";
+import Packages from "../ui/packages";
 import Destinations from "../ui/home/destinations";
 import WorkAbroad from "../ui/home/workAbroad";
 import ContactUs from "../ui/home/contact/contactUs";
@@ -15,7 +15,10 @@ export default function Home() {
         className="w-full rounded-sm"
       ></Image>
 
-      <Packages></Packages>
+      <Packages
+        isHome={true}
+      ></Packages>
+
       <Destinations></Destinations>
       <WorkAbroad></WorkAbroad>
       <Subscribe></Subscribe>
