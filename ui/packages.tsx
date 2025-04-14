@@ -6,8 +6,9 @@ import PackageCard from "./home/packages/packageCard";
 import { FaArrowRight, FaHome } from "react-icons/fa";
 import * as motion from "motion/react-client"
 
-export default function Packages({ isHome }: {
-    isHome?: boolean
+export default function Packages({ isHome, isMarginShort }: {
+    isHome?: boolean,
+    isMarginShort?: boolean
 }) {
 
     const packages = fakePackages;
@@ -15,7 +16,7 @@ export default function Packages({ isHome }: {
     const firstThreeUnfeaturedPackages = fakePackages.filter(pkg => pkg.isFeatured === false).slice(0, 3)
 
     return (
-        <Section>
+        <Section isMarginShort={isMarginShort}>
             <Header
                 largeText="Suitable Package"
                 smallText="for You"
