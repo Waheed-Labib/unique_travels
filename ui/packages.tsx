@@ -50,7 +50,7 @@ export default function Packages({ isHome }: {
                                 packages.map((pkg) =>
                                     <PackageCard
                                         key={pkg.id}
-                                        className="hidden md:flex"
+                                        className=""
                                         pkg={pkg}
                                     ></PackageCard>
                                 )
