@@ -5,7 +5,7 @@ import { fakeCountries } from "../lib/fakeData";
 import { outfit } from "../app/layout";
 
 const packagesLink = <Link href='/packages'>
-    Packages
+    Package
 </Link>
 
 const countriesLinks = <ul className="p-2">

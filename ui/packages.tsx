@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { fakePackages } from "../lib/fakeData";
-import Header from "./header";
-import Section from "./Section";
-import PackageCard from "./home/packages/packageCard";
 import { FaArrowRight, FaHome } from "react-icons/fa";
 import * as motion from "motion/react-client"
+import { fakePackages } from "../lib/fakeData";
+import Section from "./Section";
+import Header from "./header";
+import PackageCard from "./home/packages/packageCard";
 
 export default function Packages({ isHome, isMarginShort }: {
     isHome?: boolean,

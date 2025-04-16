@@ -1,10 +1,10 @@
 import Image from "next/image";
 import logo from "../public/assets/logo.jpeg"
-import Packages from "../ui/packages";
 import Destinations from "../ui/home/destinations";
 import WorkAbroad from "../ui/home/workAbroad";
 import ContactUs from "../ui/home/contact/contactUs";
 import Subscribe from "../ui/home/subscribe/subscribe";
+import Packages from "../ui/packages";
 
 export default function Home() {
   return (
