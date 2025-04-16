@@ -1,3 +1,4 @@
+'use client'
 
 import { FaArrowRight } from "react-icons/fa";
 import * as motion from "motion/react-client"
@@ -5,6 +6,8 @@ import { fakeCountries } from "../../lib/fakeData";
 import { pkg } from "../../lib/definitions";
 import CountryCard from "../countryCard";
 import PrimaryBtn from "../buttons/primaryBtn";
+import { useState } from "react";
+import PackageModal from "./packageModal";
 
 export default function PackageCard({ pkg, className, isHome }: {
     pkg: pkg,
@@ -49,35 +52,52 @@ export default function PackageCard({ pkg, className, isHome }: {
         </PrimaryBtn>
     </>
 
-    if (isHome) return (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 50, damping: 15 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
-            whileTap={{ scale: 0.96 }}
-            className={`w-full h-72 rounded-xl ${className} flex flex-col`}>
-            {elements}
-        </motion.div>
-    )
+    const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
 
-    if (!isHome) return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-                duration: 0.6,
-                scale: {
-                    type: "spring",
-                    stiffness: 40,
-                    damping: 12,
-                    bounce: 0.2,
-                },
-                opacity: { duration: 0.4 },
-            }}
-            className={`w-full h-72 rounded-xl ${className} flex flex-col`}>
-            {elements}
-        </motion.div>
+    return (
+        <>
+            {
+                isHome ?
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ type: "spring", stiffness: 50, damping: 15 }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
+                        whileTap={{ scale: 0.96 }}
+                        onClick={() => setIsDetailsModalOpen(true)}
+                        className={`w-full h-72 rounded-xl ${className} flex flex-col`}>
+                        {elements}
+                    </motion.div>
+                    :
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                            duration: 0.6,
+                            scale: {
+                                type: "spring",
+                                stiffness: 40,
+                                damping: 12,
+                                bounce: 0.2,
+                            },
+                            opacity: { duration: 0.4 },
+                        }}
+                        whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
+                        whileTap={{ scale: 0.96 }}
+                        onClick={() => setIsDetailsModalOpen(true)}
+                        className={`w-full h-72 rounded-xl ${className} flex flex-col`}>
+                        {elements}
+                    </motion.div>
+            }
+            {
+                isDetailsModalOpen && <PackageModal
+                    isOpen={isDetailsModalOpen}
+                    setIsOpen={setIsDetailsModalOpen}
+                    pkg={pkg}
+                ></PackageModal>
+            }
+
+        </>
     )
 }
