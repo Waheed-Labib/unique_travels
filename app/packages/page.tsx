@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Packages from "../../ui/packages";
+import Packages from "../../ui/packages/packages";
 
 export default function Page() {
     return (
@@ -15,7 +15,7 @@ export default function Page() {
                 </div>
             </div>
             <div>
-                <Packages isMarginShort={true}></Packages>
+                <Packages isMarginShort={true} isHome={false}></Packages>
             </div>
         </div >
     )

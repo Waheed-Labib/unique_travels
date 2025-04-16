@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { FaArrowRight, FaHome } from "react-icons/fa";
 import * as motion from "motion/react-client"
-import { fakePackages } from "../lib/fakeData";
-import Section from "./Section";
-import Header from "./header";
-import PackageCard from "./home/packages/packageCard";
+import { fakePackages } from "../../lib/fakeData";
+import Section from "../Section";
+import Header from "../header";
+import PackageCard from "./packageCard";
 
 export default function Packages({ isHome, isMarginShort }: {
     isHome?: boolean,
@@ -21,6 +21,7 @@ export default function Packages({ isHome, isMarginShort }: {
                 largeText="Suitable Package"
                 smallText="for You"
                 sequence="large, small"
+                isHome={isHome}
             ></Header>
 
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

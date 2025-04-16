@@ -4,7 +4,7 @@ import Destinations from "../ui/home/destinations";
 import WorkAbroad from "../ui/home/workAbroad";
 import ContactUs from "../ui/home/contact/contactUs";
 import Subscribe from "../ui/home/subscribe/subscribe";
-import Packages from "../ui/packages";
+import Packages from "../ui/packages/packages";
 
 export default function Home() {
   return (
