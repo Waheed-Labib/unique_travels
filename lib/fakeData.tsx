@@ -18,7 +18,7 @@ export const fakeCountries = [
     {
         id: 3,
         name: 'Nepal',
-        href: '/destinations/nepal',
+        href: '/destinationsepal',
         image: 'https://images.unsplash.com/photo-1462290625486-c142817fb94d?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA1NDB8&ixlib=rb-4.0.3',
         // portraitImage: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE1NTN8&ixlib=rb-4.0.3'
     },
@@ -78,7 +78,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Expenditure': '45900 tk per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -90,8 +90,23 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
-            'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)',
+            'Duration4': '6 nights 7 days',
+            'Price4': '45900 per person',
+            'Travel Date4': '2nd FEBRUARY 2025',
+            'Hotel4': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Transportation4': 'Return Airport Transfers by car + 🚤Speed boat (Combine)',
+            'Duration2': '6 nights 7 days',
+            'Price2': '45900 per person',
+            'Travel Date2': '2nd FEBRUARY 2025',
+            'Hotel2': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Transportation2': 'Return Airport Transfers by car + 🚤Speed boat (Combine)',
+            'Duration3': '6 nights 7 days',
+            'Price3': '45900 per person',
+            'Travel Date3': '2nd FEBRUARY 2025',
+            'Hotel3': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Transportation3': 'Return Airport Transfers by car + 🚤Speed boat (Combine)',
         },
         isFeatured: false,
     },
@@ -102,7 +117,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: true,
@@ -114,7 +129,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: true,
@@ -126,7 +141,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -138,7 +153,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -150,7 +165,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -162,7 +177,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: true,
@@ -174,7 +189,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -186,7 +201,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -198,7 +213,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -210,7 +225,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -222,7 +237,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -234,7 +249,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -246,7 +261,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -258,7 +273,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
@@ -270,7 +285,7 @@ export const fakePackages: pkg[] = [
             'Duration': '6 nights 7 days',
             'Price': '45900 per person',
             'Travel Date': '2nd FEBRUARY 2025',
-            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast./n*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast./n*2 night stay in Kandy at Gangaaddara Hotel including Breakfast./n*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
+            'Hotel': '*02 nights stay in Kaani Grand Hotel –  Maafushi island Sea view room including Breakfast.*01 night stay in The White Harp Beach Hotel(Hulhumale) including Breakfast.*2 night stay in Kandy at Gangaaddara Hotel including Breakfast.*1 night stay in Colombo at Berjaya Hotel Colombo including Breakfast.',
             'Transportation': 'Return Airport Transfers by car + 🚤Speed boat (Combine)'
         },
         isFeatured: false,
