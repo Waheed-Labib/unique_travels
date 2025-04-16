@@ -5,9 +5,10 @@ import CountryCard from "../../countryCard";
 import { FaArrowRight } from "react-icons/fa";
 import * as motion from "motion/react-client"
 
-export default function PackageCard({ pkg, className }: {
+export default function PackageCard({ pkg, className, isHome }: {
     pkg: pkg,
-    className: string
+    className: string,
+    isHome: boolean
 }) {
 
     // temporary
@@ -27,10 +28,13 @@ export default function PackageCard({ pkg, className }: {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 50, damping: 15 }}
-            viewport={{ once: true }}
+            viewport={{ once: isHome }}
             whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
             whileTap={{ scale: 0.96 }}
             className={`w-full h-72 rounded-xl ${className} flex flex-col`}>
+            <button className="btn hover:bg-transparent hover:border-transparent btn-sm">
+                Package id <div className="badge badge-sm badge-primary text-white">00{pkg.id}</div>
+            </button>
             {
                 pkg.countries.map((countryName, idx) => <CountryCard
                     key={countryName}

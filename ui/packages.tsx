@@ -32,6 +32,7 @@ export default function Packages({ isHome, isMarginShort }: {
                                     key={pkg.id}
                                     pkg={pkg}
                                     className=""
+                                    isHome={true}
                                 ></PackageCard>
                                 )
                             }
@@ -41,6 +42,7 @@ export default function Packages({ isHome, isMarginShort }: {
                                         key={pkg.id}
                                         className="hidden md:flex"
                                         pkg={pkg}
+                                        isHome={true}
                                     ></PackageCard>
                                 )
                             }
@@ -53,6 +55,7 @@ export default function Packages({ isHome, isMarginShort }: {
                                         key={pkg.id}
                                         className=""
                                         pkg={pkg}
+                                        isHome={false}
                                     ></PackageCard>
                                 )
                             }
