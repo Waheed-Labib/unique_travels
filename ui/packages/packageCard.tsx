@@ -4,10 +4,10 @@ import { FaArrowRight } from "react-icons/fa";
 import * as motion from "motion/react-client"
 import { fakeCountries } from "../../lib/fakeData";
 import { pkg } from "../../lib/definitions";
-import CountryCard from "../countryCard";
 import PrimaryBtn from "../buttons/primaryBtn";
 import { useState } from "react";
 import PackageModal from "./packageModal";
+import CountryCard from "../destinations/countryCard";
 
 export default function PackageCard({ pkg, className, isHome }: {
     pkg: pkg,

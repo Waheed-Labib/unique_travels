@@ -4,13 +4,15 @@ import Image from "next/image";
 import { fakeCountries } from "../lib/fakeData";
 import { outfit } from "../app/layout";
 
+const sortedCountries = [...fakeCountries].sort((a, b) => a.name.localeCompare(b.name));
+
 const packagesLink = <Link href='/packages'>
     Package
 </Link>
 
 const countriesLinks = <ul className="p-2">
     {
-        fakeCountries.map(country => <li key={country.name}><Link href={country.href}>{country.name}</Link></li>)
+        sortedCountries.map(country => <li key={country.name}><Link href={country.href}>{country.name}</Link></li>)
     }
 </ul>
 
@@ -63,7 +65,7 @@ export default function Navbar() {
                     </li>
                     <li>
                         <details>
-                            <summary>Destinations</summary>
+                            <summary>Requirements</summary>
                             {countriesLinks}
                         </details>
                     </li>

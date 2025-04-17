@@ -4,3 +4,11 @@ export type pkg = {
     details: object,
     isFeatured: boolean
 }
+
+export type country = {
+    id: number,
+    href: string,
+    image: string,
+    visaRequirements: string[]
+}
+
