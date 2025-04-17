@@ -5,6 +5,9 @@ import CountryCard from "../countryCard";
 import * as motion from "motion/react-client";
 
 export default function Destinations() {
+
+    const sortedCountries = [...fakeCountries].sort((a, b) => a.name.localeCompare(b.name))
+
     return (
         <Section>
             <Header
@@ -15,7 +18,7 @@ export default function Destinations() {
 
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
-                    fakeCountries.map(country =>
+                    sortedCountries.map(country =>
                         <motion.div
                             key={country.id}
                             whileHover={{ scale: 1.04, transition: { duration: 0.2, ease: "easeOut" } }}
