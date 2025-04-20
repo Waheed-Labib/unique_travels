@@ -46,14 +46,14 @@ export default function Header({ smallText, largeText, sequence, isHome = true }
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
-                duration: 0.6,
+                duration: 0.2,
                 scale: {
                     type: "spring",
                     stiffness: 40,
                     damping: 12,
                     bounce: 0.2,
                 },
-                opacity: { duration: 0.4 },
+                opacity: { duration: 0.2 },
             }}>
             {element}
         </motion.div>

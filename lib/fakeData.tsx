@@ -32,7 +32,7 @@ export const fakeCountries = [
     {
         id: 3,
         name: 'Nepal',
-        href: '/destinationsepal',
+        href: '/destinations/nepal',
         image: 'https://images.unsplash.com/photo-1462290625486-c142817fb94d?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNjA1NDB8&ixlib=rb-4.0.3',
         // portraitImage: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkxNzE1NTN8&ixlib=rb-4.0.3',
         visaRequirements: [
