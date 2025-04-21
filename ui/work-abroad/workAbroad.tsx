@@ -11,7 +11,7 @@ import GoToHomeBtn from "../buttons/goToHomeBtn";
 
 export default function WorkAbroad({ isMarginShort, isHome = true }: {
     isMarginShort: boolean,
-    isHome: boolean
+    isHome?: boolean
 }) {
 
     const element = <>
@@ -57,6 +57,7 @@ export default function WorkAbroad({ isMarginShort, isHome = true }: {
                 smallText="Want to"
                 largeText="Work Abroad?"
                 sequence="small, large"
+                isHome={isHome}
             ></Header>
 
             {
