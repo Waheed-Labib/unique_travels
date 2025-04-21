@@ -1,7 +1,7 @@
 import { FaRegCheckSquare } from "react-icons/fa";
-import Header from "../../header";
-import Section from "../../Section";
-import PrimaryBtn from "../../buttons/primaryBtn";
+import Header from "../header";
+import Section from "../Section";
+import PrimaryBtn from "../buttons/primaryBtn";
 import * as motion from "motion/react-client"
 
 export default function Subscribe() {

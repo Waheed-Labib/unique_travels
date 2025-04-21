@@ -14,9 +14,9 @@ export default function Page() {
                     </ul>
                 </div>
             </div>
-            <div>
-                <Destinations isMarginShort={true} isHome={false}></Destinations>
-            </div>
+
+            <Destinations isMarginShort={true} isHome={false}></Destinations>
+
         </div >
     )
 }

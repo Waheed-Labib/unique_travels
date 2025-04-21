@@ -2,9 +2,9 @@ import { fakeCountries } from "../../lib/fakeData";
 import Header from "../header";
 import Section from "../Section";
 import * as motion from "motion/react-client";
-import { FaHome } from "react-icons/fa";
 import Link from "next/link";
 import CountryCard from "./countryCard";
+import GoToHomeBtn from "../buttons/goToHomeBtn";
 
 export default function Destinations({ isMarginShort, isHome = true }: {
     isMarginShort?: boolean,
@@ -53,16 +53,7 @@ export default function Destinations({ isMarginShort, isHome = true }: {
                     <></>
                     :
                     <Link href={'/'} className={`text-neutral mt-12 flex items-center gap-4`}>
-                        <motion.div
-                            whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
-                            whileTap={{ scale: 0.95 }}
-                            className="flex items-center gap-4"
-                        >
-                            <p>Go to Home</p>
-                            <div className="rounded-full bg-neutral p-2 text-base-100 text-xl">
-                                <FaHome></FaHome>
-                            </div>
-                        </motion.div>
+                        <GoToHomeBtn></GoToHomeBtn>
                     </Link>
             }
         </Section>

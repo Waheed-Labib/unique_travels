@@ -12,3 +12,9 @@ export type country = {
     visaRequirements: string[]
 }
 
+export type circular = {
+    id: number,
+    region: string,
+    image: string
+}
+

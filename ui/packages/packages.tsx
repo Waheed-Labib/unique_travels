@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { FaArrowRight, FaHome } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import * as motion from "motion/react-client"
 import { fakePackages } from "../../lib/fakeData";
 import Section from "../Section";
 import Header from "../header";
 import PackageCard from "./packageCard";
+import GoToHomeBtn from "../buttons/goToHomeBtn";
 
 export default function Packages({ countryName, isHome, isMarginShort }: {
     countryName?: string,
@@ -106,16 +107,7 @@ export default function Packages({ countryName, isHome, isMarginShort }: {
                                 </Link>
                                 :
                                 <Link href={'/'} className={`text-neutral mt-12 flex items-center gap-4`}>
-                                    <motion.div
-                                        whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="flex items-center gap-4"
-                                    >
-                                        <p>Go to Home</p>
-                                        <div className="rounded-full bg-neutral p-2 text-base-100 text-xl">
-                                            <FaHome></FaHome>
-                                        </div>
-                                    </motion.div>
+                                    <GoToHomeBtn></GoToHomeBtn>
                                 </Link>
                         }
                     </>
@@ -123,16 +115,7 @@ export default function Packages({ countryName, isHome, isMarginShort }: {
                     <>
                         {
                             isHome || <Link href={'/'} className={`text-neutral mt-12 flex items-center gap-4`}>
-                                <motion.div
-                                    whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="flex items-center gap-4"
-                                >
-                                    <p>Go to Home</p>
-                                    <div className="rounded-full bg-neutral p-2 text-base-100 text-xl">
-                                        <FaHome></FaHome>
-                                    </div>
-                                </motion.div>
+                                <GoToHomeBtn></GoToHomeBtn>
                             </Link>
                         }
                     </>

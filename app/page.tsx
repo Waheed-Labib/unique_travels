@@ -1,10 +1,8 @@
 import Image from "next/image";
 import logo from "../public/assets/logo.jpeg"
-import WorkAbroad from "../ui/home/workAbroad";
-import ContactUs from "../ui/home/contact/contactUs";
-import Subscribe from "../ui/home/subscribe/subscribe";
 import Packages from "../ui/packages/packages";
 import Destinations from "../ui/destinations/destinations";
+import WorkAbroad from "../ui/work-abroad/workAbroad";
 
 export default function Home() {
   return (
@@ -21,8 +19,6 @@ export default function Home() {
 
       <Destinations></Destinations>
       <WorkAbroad></WorkAbroad>
-      <Subscribe></Subscribe>
-      <ContactUs></ContactUs>
     </div>
   );
 }

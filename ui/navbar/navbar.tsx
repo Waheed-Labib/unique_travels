@@ -1,8 +1,9 @@
 import Link from "next/link";
-import circleLogo from '../app/favicon.ico'
+import circleLogo from "../../app/favicon.ico"
 import Image from "next/image";
-import { fakeCountries } from "../lib/fakeData";
-import { outfit } from "../app/layout";
+import { fakeCountries } from "../../lib/fakeData";
+import { outfit } from "../../app/layout";
+import ContactBtn from "./contactBtn";
 
 const sortedCountries = [...fakeCountries].sort((a, b) => a.name.localeCompare(b.name));
 
@@ -75,7 +76,7 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-sm text-base-100 btn-neutral bg-neutral/90 font-medium">Contact Us</a>
+                <ContactBtn></ContactBtn>
             </div>
         </div>
     )

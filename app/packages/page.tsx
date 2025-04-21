@@ -14,9 +14,8 @@ export default function Page() {
                     </ul>
                 </div>
             </div>
-            <div>
-                <Packages isMarginShort={true} isHome={false}></Packages>
-            </div>
+
+            <Packages isMarginShort={true} isHome={false}></Packages>
         </div >
     )
 }

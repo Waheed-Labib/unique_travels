@@ -358,7 +358,7 @@ export const fakePackages: pkg[] = [
 export const fakeRegions = [
     {
         id: 1,
-        name: 'Middle East',
+        name: 'Middle-East',
         href: '/work-abroad/middle-east',
         image: 'https://images.unsplash.com/photo-1553195028-eef77bb016cd?ixid=M3w3MDc2Nzd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzkyNDA4Mjd8&ixlib=rb-4.0.3'
     },
@@ -374,3 +374,45 @@ export const hotline = '+8801788458189'
 export const whatsAppNumber = '8801788458189'
 export const address = '4th floor, House No. 20, Central Road, Maijdee Court, Noakhali'
 
+export const fakeCirculars = [
+    {
+        id: 1,
+        region: 'Europe',
+        image: 'https://i.ibb.co.com/gbHLdTq2/circular1.jpg'
+    },
+    {
+        id: 2,
+        region: 'Middle East',
+        image: 'https://i.ibb.co.com/gbHLdTq2/circular1.jpg'
+    },
+    {
+        id: 3,
+        region: 'Europe',
+        image: 'https://i.ibb.co.com/zhH6zTkT/circular2.jpg'
+    },
+    {
+        id: 4,
+        region: 'Middle East',
+        image: 'https://i.ibb.co.com/zhH6zTkT/circular2.jpg'
+    },
+    {
+        id: 5,
+        region: 'Europe',
+        image: 'https://i.ibb.co.com/h1JvybBQ/circular3.jpg'
+    },
+    {
+        id: 6,
+        region: 'Middle East',
+        image: 'https://i.ibb.co.com/h1JvybBQ/circular3.jpg'
+    },
+    {
+        id: 7,
+        region: 'Europe',
+        image: 'https://i.ibb.co.com/kVdjjQHX/circular4.jpg'
+    },
+    {
+        id: 8,
+        region: 'Middle East',
+        image: 'https://i.ibb.co.com/kVdjjQHX/circular4.jpg'
+    },
+]

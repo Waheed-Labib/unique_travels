@@ -1,9 +1,10 @@
-// import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
-import Navbar from "../ui/navbar";
+import Navbar from "../ui/navbar/navbar";
 import WhatsAppBtn from "../ui/whatsAppBtn";
 import Footer from "../ui/footer";
+import Subscribe from "../ui/subscribe/subscribe";
+import ContactUs from "../ui/contact/contactUs";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,6 +34,8 @@ export default function RootLayout({
         <WhatsAppBtn></WhatsAppBtn>
         <Navbar></Navbar>
         {children}
+        <Subscribe></Subscribe>
+        <ContactUs></ContactUs>
         <Footer></Footer>
       </body>
     </html >
