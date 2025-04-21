@@ -18,7 +18,7 @@ export default function Home() {
       ></Packages>
 
       <Destinations></Destinations>
-      <WorkAbroad></WorkAbroad>
+      <WorkAbroad isMarginShort={false} isHome={true}></WorkAbroad>
     </div>
   );
 }
