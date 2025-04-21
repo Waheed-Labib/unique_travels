@@ -42,3 +42,9 @@ export default function Page({ params }: PageProps) {
         </div >
     )
 }
+
+export async function generateStaticParams() {
+    return fakeCountries.map((country) => ({
+        countryName: country.name.toLowerCase(),
+    }));
+}
