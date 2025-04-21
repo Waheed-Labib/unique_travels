@@ -4,13 +4,13 @@ import { fakeCountries } from "../../../lib/fakeData";
 import { outfit } from "../../layout";
 import Requirements from "./requirements";
 
-export default function Page({ params }: {
-    params: { countryName: string }
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ countryName: string }>;
 }) {
 
-    console.log(params)
-
-    const countryName = params.countryName;
+    const { countryName } = await params;
 
     const country = fakeCountries.find(country => country.name.toLowerCase() === countryName);
 
