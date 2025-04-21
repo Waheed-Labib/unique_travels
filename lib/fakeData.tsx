@@ -382,7 +382,7 @@ export const fakeCirculars = [
     },
     {
         id: 2,
-        region: 'Middle East',
+        region: 'Middle-East',
         image: 'https://i.ibb.co.com/gbHLdTq2/circular1.jpg'
     },
     {
@@ -392,7 +392,7 @@ export const fakeCirculars = [
     },
     {
         id: 4,
-        region: 'Middle East',
+        region: 'Middle-East',
         image: 'https://i.ibb.co.com/zhH6zTkT/circular2.jpg'
     },
     {
@@ -402,7 +402,7 @@ export const fakeCirculars = [
     },
     {
         id: 6,
-        region: 'Middle East',
+        region: 'Middle-East',
         image: 'https://i.ibb.co.com/h1JvybBQ/circular3.jpg'
     },
     {
@@ -412,7 +412,7 @@ export const fakeCirculars = [
     },
     {
         id: 8,
-        region: 'Middle East',
+        region: 'Middle-East',
         image: 'https://i.ibb.co.com/kVdjjQHX/circular4.jpg'
     },
 ]
