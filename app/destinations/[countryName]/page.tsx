@@ -8,9 +8,12 @@ type Params = {
     countryName: string;
 };
 
-export default function Page({ params }: {
-    params: Params
-}) {
+type PageProps = {
+    params: Params;
+    searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export default function Page({ params }: PageProps) {
 
     const countryName = params.countryName;
 
