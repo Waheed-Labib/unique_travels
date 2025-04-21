@@ -4,16 +4,11 @@ import { fakeCountries } from "../../../lib/fakeData";
 import { outfit } from "../../layout";
 import Requirements from "./requirements";
 
-type Params = {
-    countryName: string;
-};
-
-type PageProps = {
-    params: Params;
-    searchParams?: { [key: string]: string | string[] | undefined };
-};
-
-export default function Page({ params }: PageProps) {
+export default function Page({
+    params,
+}: {
+    params: { countryName: string };
+}) {
 
     const countryName = params.countryName;
 
