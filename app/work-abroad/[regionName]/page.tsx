@@ -3,15 +3,13 @@ import { fakeCirculars, fakeRegions } from "../../../lib/fakeData";
 import { outfit } from "../../layout";
 import Circulars from "./circulars";
 
-type Params = {
-    regionName: string;
-};
-
-export default function Page({ params }: {
-    params: Params
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ regionName: string }>;
 }) {
 
-    const regionName = params.regionName;
+    const { regionName } = await params;
     const region = fakeRegions.find(region => region.name === regionName);
     const circulars = fakeCirculars.filter(circular => circular.region === regionName);
 
