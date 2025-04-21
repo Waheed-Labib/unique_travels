@@ -4,12 +4,9 @@ import { fakeCountries } from "../../../lib/fakeData";
 import { outfit } from "../../layout";
 import Requirements from "./requirements";
 
-type CountryPageProps = {
-    params: { countryName: string };
-    searchParams?: { [key: string]: string | string[] | undefined };
-};
-
-export default function Page({ params }: CountryPageProps) {
+export default function Page({ params }: {
+    params: { countryName: string }
+}) {
 
     const countryName = params.countryName;
 
@@ -43,8 +40,3 @@ export default function Page({ params }: CountryPageProps) {
     )
 }
 
-export async function generateStaticParams() {
-    return fakeCountries.map((country) => ({
-        countryName: country.name.toLowerCase(),
-    }));
-}
