@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../public/assets/logo.jpeg"
+import logo from "../public/assets/logo.png"
 import Packages from "../ui/packages/packages";
 import Destinations from "../ui/destinations/destinations";
 import WorkAbroad from "../ui/work-abroad/workAbroad";

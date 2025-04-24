@@ -56,7 +56,7 @@ export default function Navbar() {
                 </div>
                 <Link href={'/'} className="btn btn-ghost">
                     <Image src={circleLogo} alt='logo' className="w-6 h-6 lg:w-8 lg:h-8"></Image>
-                    <p className={`${outfit.className} text-sm lg:text-base`}>UNIQUE TRAVELS</p>
+                    <p className={`${outfit.className} text-sm lg:text-base`}>RH Tours & Travels</p>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
