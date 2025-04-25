@@ -6,5 +6,5 @@ https://unique-travels-eight.vercel.app/
 <ul>
 <li>NextJS</li>
 <li>TypeScript</li>
-<li>Tailwind</li>
+<li>Tailwind, daisyUI</li>
 </ul>
