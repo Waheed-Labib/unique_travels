@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "mongoose": "^8.14.2",
     "motion": "^12.4.2",
-    "next": "15.1.6",
+    "next": "^15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
