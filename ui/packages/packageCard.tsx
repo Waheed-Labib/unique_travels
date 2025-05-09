@@ -3,7 +3,7 @@
 import { FaArrowRight } from "react-icons/fa";
 import * as motion from "motion/react-client"
 import { fakeCountries } from "../../lib/fakeData";
-import { pkg } from "../../lib/definitions";
+import { pkg } from "../../lib/types";
 import PrimaryBtn from "../buttons/primaryBtn";
 import { useState } from "react";
 import PackageModal from "./packageModal";

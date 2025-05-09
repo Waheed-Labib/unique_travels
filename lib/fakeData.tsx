@@ -1,4 +1,4 @@
-import { pkg } from "./definitions"
+import { pkg } from "./types"
 
 export const fakeCountries = [
     {

@@ -1,4 +1,4 @@
-import { pkg } from "../../lib/definitions";
+import { pkg } from "../../lib/types";
 
 export default function PackageModal({ isOpen, setIsOpen, pkg }: {
     isOpen: boolean,

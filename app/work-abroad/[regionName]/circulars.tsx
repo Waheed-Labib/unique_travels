@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { circular } from "../../../lib/definitions";
+import { circular } from "../../../lib/types";
 import Header from "../../../ui/header";
 import Section from "../../../ui/Section";
 
