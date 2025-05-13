@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { fakeRegions } from "../../../lib/fakeData";
 import { outfit } from "../../layout";
 import Circulars from "./circulars";
 
@@ -10,11 +9,16 @@ export default async function Page({
 }) {
 
     const { regionName } = await params;
-    const region = fakeRegions.find(region => region.name === regionName);
 
-    const res = await fetch(`http://localhost:3000/api/circulars?region=${regionName}`);
-    const data = await res.json();
-    const circulars = data.data;
+    // fetch region data
+    const regionResponse = await fetch(`http://localhost:3000/api/regions?name=${regionName}`);
+    const regionData = await regionResponse.json();
+    const region = regionData.data[0];
+
+    // fetch circulars
+    const circularResponse = await fetch(`http://localhost:3000/api/circulars?region=${regionName}`);
+    const circularData = await circularResponse.json();
+    const circulars = circularData.data;
 
     return (
         <div className="">

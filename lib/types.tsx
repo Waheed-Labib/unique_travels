@@ -18,4 +18,11 @@ export type circular = {
     image: string
 }
 
+export type Region = {
+    _id: string,
+    name: string,
+    href: string,
+    image: string
+}
+
 export type statusCode = 100 | 200 | 300 | 400 | 500

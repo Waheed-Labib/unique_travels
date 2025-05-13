@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { fakeRegions } from "../../lib/fakeData";
 import Header from "../header";
 import { outfit } from "../../app/layout";
 import { FaArrowRight } from "react-icons/fa";
@@ -8,17 +7,23 @@ import * as motion from "motion/react-client";
 import Section from "../Section";
 import Link from "next/link";
 import GoToHomeBtn from "../buttons/goToHomeBtn";
+import { Region } from "../../lib/types";
 
-export default function WorkAbroad({ isMarginShort, isHome = true }: {
+export default async function WorkAbroad({ isMarginShort, isHome = true }: {
     isMarginShort: boolean,
     isHome?: boolean
 }) {
 
+    // fetch region data
+    const regionResponse = await fetch(`http://localhost:3000/api/regions`);
+    const regionData = await regionResponse.json();
+    const regions = regionData.data;
+
     const element = <>
         {
-            fakeRegions.map(region =>
+            regions.map((region: Region) =>
                 <Link
-                    key={region.id}
+                    key={region._id}
                     href={`/work-abroad/${region.name}`}
                 >
                     <motion.div
