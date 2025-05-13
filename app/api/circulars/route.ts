@@ -3,12 +3,21 @@ import { ApiSuccess } from "../../../lib/apiSuccess";
 import dbConnect from "../../../lib/dbConnect";
 import CircularModel from "../../../models/circular";
 
-export async function GET() {
+export async function GET(request: Request) {
     await dbConnect();
 
     try {
 
-        const circulars = await CircularModel.find({});
+        const { searchParams } = new URL(request.url);
+        const region = searchParams.get('region');
+
+        let circulars;
+
+        if (region) {
+            circulars = await CircularModel.find({ region })
+        } else {
+            circulars = await CircularModel.find();
+        }
 
         if (circulars) {
             return ApiSuccess("Getting Circulars Successful", circulars, 200)

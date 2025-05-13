@@ -16,6 +16,6 @@ export const CircularSchema: Schema<Circular> = new Schema({
     }
 })
 
-const CircularModel = (mongoose.models.Circular as mongoose.Model<Circular>) || mongoose.model<Circular>("Circular", CircularSchema);
+const CircularModel = (mongoose.models.Circular as mongoose.Model<Circular>) || mongoose.model<Circular>("Circular", CircularSchema, "circulars");
 
 export default CircularModel;

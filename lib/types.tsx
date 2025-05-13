@@ -13,7 +13,7 @@ export type country = {
 }
 
 export type circular = {
-    id: number,
+    _id: string,
     region: string,
     image: string
 }

@@ -21,7 +21,7 @@ const Circulars = ({ regionName, circulars }: {
                 {
                     circulars.map(circular =>
                         <div
-                            key={circular.id}
+                            key={circular._id}
                             className="mb-12 shadow-xl shadow-primary/25 border-8 border-primary rounded-xl"
                         >
                             <Image
