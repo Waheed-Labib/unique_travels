@@ -6,8 +6,9 @@ import Section from "../Section";
 import Header from "../header";
 import PackageCard from "./packageCard";
 import GoToHomeBtn from "../buttons/goToHomeBtn";
+import { pkg } from "../../lib/types";
 
-export default function Packages({ countryName, isHome, isMarginShort }: {
+export default async function Packages({ countryName, isHome, isMarginShort }: {
     countryName?: string,
     isHome?: boolean,
     isMarginShort?: boolean
@@ -18,13 +19,31 @@ export default function Packages({ countryName, isHome, isMarginShort }: {
     let firstThreeUnfeaturedPackages;
 
     if (countryName) {
-        packages = fakePackages.filter(pkg => pkg.countries.includes(countryName));
+        // get specific country package
+        const res = await fetch(`http://localhost:3000/api/packages?country=${countryName}`);
+        const data = await res.json();
+        packages = data.data;
     }
 
     else {
-        packages = fakePackages;
-        featuredPackages = fakePackages.filter(pkg => pkg.isFeatured === true)
-        firstThreeUnfeaturedPackages = fakePackages.filter(pkg => pkg.isFeatured === false).slice(0, 3);
+        if (isHome) {
+            // get featured packages
+            const featuredResponse = await fetch('http://localhost:3000/api/packages?type=featured');
+            const featuredData = await featuredResponse.json();
+            featuredPackages = featuredData.data;
+
+            // get first three unfeatured packages
+            const unfeaturedResponse = await fetch('http://localhost:3000/api/packages?type=unfeatured&limit=3');
+            const unfeaturedData = await unfeaturedResponse.json();
+            firstThreeUnfeaturedPackages = unfeaturedData.data;
+
+        } else {
+            //get all package
+            const res = await fetch(`http://localhost:3000/api/packages`);
+            const data = await res.json();
+            packages = data.data;
+        }
+
     }
 
     return (
@@ -54,8 +73,8 @@ export default function Packages({ countryName, isHome, isMarginShort }: {
                                 isHome ?
                                     <>
                                         {
-                                            featuredPackages?.map((pkg) => <PackageCard
-                                                key={pkg.id}
+                                            featuredPackages?.map((pkg: pkg) => <PackageCard
+                                                key={pkg._id}
                                                 pkg={pkg}
                                                 className=""
                                                 isHome={true}
@@ -65,7 +84,7 @@ export default function Packages({ countryName, isHome, isMarginShort }: {
                                         {
                                             firstThreeUnfeaturedPackages?.map((pkg) =>
                                                 <PackageCard
-                                                    key={pkg.id}
+                                                    key={pkg._id}
                                                     className="hidden md:flex"
                                                     pkg={pkg}
                                                     isHome={true}
@@ -77,9 +96,9 @@ export default function Packages({ countryName, isHome, isMarginShort }: {
                                     <>
 
                                         {
-                                            packages.map((pkg) =>
+                                            packages.map((pkg: pkg) =>
                                                 <PackageCard
-                                                    key={pkg.id}
+                                                    key={pkg._id}
                                                     className=""
                                                     pkg={pkg}
                                                     isHome={false}

@@ -1,12 +1,12 @@
 export type pkg = {
-    id: number,
+    _id: string,
     countries: string[],
     details: object,
     isFeatured: boolean
 }
 
 export type country = {
-    id: number,
+    _id: number,
     href: string,
     image: string,
     visaRequirements: string[]
