@@ -13,7 +13,7 @@ export const PackageSchema: Schema<Package> = new Schema({
     }
     ,
     details: {
-        type: String,
+        type: Object,
         required: [true, "Details is required"]
     },
     isFeatured: {

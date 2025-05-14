@@ -47,6 +47,8 @@ export default async function Packages({ countryName, isHome, isMarginShort }: {
 
     }
 
+    console.log('packages', packages)
+
     return (
         <Section isMarginShort={isMarginShort}>
             {
@@ -70,43 +72,16 @@ export default async function Packages({ countryName, isHome, isMarginShort }: {
                         }
 
                         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {
-                                isHome ?
-                                    <>
-                                        {
-                                            featuredPackages?.map((pkg: pkg) => <PackageCard
-                                                key={pkg._id}
-                                                pkg={pkg}
-                                                className=""
-                                                isHome={true}
-                                            ></PackageCard>
-                                            )
-                                        }
-                                        {
-                                            firstThreeUnfeaturedPackages?.map((pkg: pkg) =>
-                                                <PackageCard
-                                                    key={pkg._id}
-                                                    className="hidden md:flex"
-                                                    pkg={pkg}
-                                                    isHome={true}
-                                                ></PackageCard>
-                                            )
-                                        }
-                                    </>
-                                    :
-                                    <>
 
-                                        {
-                                            packages.map((pkg: pkg) =>
-                                                <PackageCard
-                                                    key={pkg._id}
-                                                    className=""
-                                                    pkg={pkg}
-                                                    isHome={false}
-                                                ></PackageCard>
-                                            )
-                                        }
-                                    </>
+                            {
+                                packages.map((pkg: pkg) =>
+                                    <PackageCard
+                                        key={pkg._id}
+                                        className=""
+                                        pkg={pkg}
+                                        isHome={false}
+                                    ></PackageCard>
+                                )
                             }
 
                         </div>
