@@ -13,7 +13,7 @@ export default async function Page({
     // fetch region data
     const regionResponse = await fetch(`http://localhost:3000/api/regions?name=${regionName}`);
     const regionData = await regionResponse.json();
-    const region = regionData.data[0];
+    const region = regionData.data;
 
     // fetch circulars
     const circularResponse = await fetch(`http://localhost:3000/api/circulars?region=${regionName}`);

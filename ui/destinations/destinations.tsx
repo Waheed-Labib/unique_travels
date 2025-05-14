@@ -1,4 +1,3 @@
-import { fakeCountries } from "../../lib/fakeData";
 import Header from "../header";
 import Section from "../Section";
 import * as motion from "motion/react-client";
@@ -6,12 +5,16 @@ import Link from "next/link";
 import CountryCard from "./countryCard";
 import GoToHomeBtn from "../buttons/goToHomeBtn";
 
-export default function Destinations({ isMarginShort, isHome = true }: {
+export default async function Destinations({ isMarginShort, isHome = true }: {
     isMarginShort?: boolean,
     isHome?: boolean
 }) {
 
-    const sortedCountries = [...fakeCountries].sort((a, b) => a.name.localeCompare(b.name))
+    const res = await fetch('http://localhost:3000/api/countries');
+    const data = await res.json();
+    const countries = data.data;
+
+    const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name))
 
     return (
         <Section isMarginShort={isMarginShort}>
@@ -26,7 +29,7 @@ export default function Destinations({ isMarginShort, isHome = true }: {
                 {
                     sortedCountries.map(country =>
                         <motion.div
-                            key={country.id}
+                            key={country._id}
                             whileHover={{ scale: 1.04, transition: { duration: 0.2, ease: "easeOut" } }}
                             whileTap={{ scale: 0.95 }}
                             initial={{ opacity: 0, y: 50 }}

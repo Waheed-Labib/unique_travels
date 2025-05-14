@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Packages from "../../../ui/packages/packages";
-import { fakeCountries } from "../../../lib/fakeData";
 import { outfit } from "../../layout";
 import Requirements from "./requirements";
 
@@ -12,7 +11,9 @@ export default async function Page({
 
     const { countryName } = await params;
 
-    const country = fakeCountries.find(country => country.name.toLowerCase() === countryName);
+    const res = await fetch(`http://localhost:3000/api/countries?country=${countryName}`);
+    const data = await res.json();
+    const country = data.data;
 
     return (
         <div className="">

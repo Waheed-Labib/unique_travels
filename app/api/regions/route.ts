@@ -11,16 +11,16 @@ export async function GET(request: Request) {
         const { searchParams } = new URL(request.url);
         const name = searchParams.get('name');
 
-        let regions;
+        let result;
 
         if (name) {
-            regions = await RegionModel.find({ name })
+            result = await RegionModel.findOne({ name })
         } else {
-            regions = await RegionModel.find();
+            result = await RegionModel.find();
         }
 
-        if (regions) {
-            return ApiSuccess("Getting Regions Successful", regions, 200)
+        if (result) {
+            return ApiSuccess("Getting Regions Successful", result, 200)
         } else {
             return ApiError("Getting Regions Failed", 500)
         }
