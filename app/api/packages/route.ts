@@ -11,21 +11,37 @@ export async function GET(request: Request) {
         const { searchParams } = new URL(request.url);
         const country = searchParams.get('country');
         const type = searchParams.get('type');
-        // const limit = searchParams.get('limit');
 
-        console.log(country)
+        const limitParam = searchParams.get('limit');
+        const limit = limitParam ? parseInt(limitParam, 10) : undefined;
 
         let packages;
 
         if (country) {
-            packages = await PackageModel.find({ countries: country });
+            if (limit) {
+                packages = await PackageModel.find({ countries: country }).limit(limit);
+            } else {
+                packages = await PackageModel.find({ countries: country })
+            }
         } else {
             if (type === 'featured') {
-                packages = await PackageModel.find({ isFeatured: true });
+                if (limit) {
+                    packages = await PackageModel.find({ isFeatured: true }).limit(limit);
+                } else {
+                    packages = await PackageModel.find({ isFeatured: true })
+                }
             } else if (type === 'unfeatured') {
-                packages = await PackageModel.find({ isFeatured: false });
+                if (limit) {
+                    packages = await PackageModel.find({ isFeatured: false }).limit(limit);
+                } else {
+                    packages = await PackageModel.find({ isFeatured: false })
+                }
             } else {
-                packages = await PackageModel.find();
+                if (limit) {
+                    packages = await PackageModel.find().limit(limit);
+                } else {
+                    packages = await PackageModel.find();
+                }
             }
         }
 

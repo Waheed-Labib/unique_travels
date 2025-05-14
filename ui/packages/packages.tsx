@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
-import * as motion from "motion/react-client"
-import { fakePackages } from "../../lib/fakeData";
+import * as motion from "motion/react-client";
 import Section from "../Section";
 import Header from "../header";
 import PackageCard from "./packageCard";
@@ -36,6 +35,8 @@ export default async function Packages({ countryName, isHome, isMarginShort }: {
             const unfeaturedResponse = await fetch('http://localhost:3000/api/packages?type=unfeatured&limit=3');
             const unfeaturedData = await unfeaturedResponse.json();
             firstThreeUnfeaturedPackages = unfeaturedData.data;
+
+            packages = [...featuredPackages, ...firstThreeUnfeaturedPackages];
 
         } else {
             //get all package
@@ -82,7 +83,7 @@ export default async function Packages({ countryName, isHome, isMarginShort }: {
                                             )
                                         }
                                         {
-                                            firstThreeUnfeaturedPackages?.map((pkg) =>
+                                            firstThreeUnfeaturedPackages?.map((pkg: pkg) =>
                                                 <PackageCard
                                                     key={pkg._id}
                                                     className="hidden md:flex"

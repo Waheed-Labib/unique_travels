@@ -2,7 +2,8 @@ export type pkg = {
     _id: string,
     countries: string[],
     details: object,
-    isFeatured: boolean
+    isFeatured: boolean,
+    code: number
 }
 
 export type country = {
