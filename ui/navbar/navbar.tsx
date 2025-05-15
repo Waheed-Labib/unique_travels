@@ -1,25 +1,28 @@
 import Link from "next/link";
 import circleLogo from "../../app/favicon.ico"
 import Image from "next/image";
-import { fakeCountries } from "../../lib/fakeData";
 import { outfit } from "../../app/layout";
 import ContactBtn from "./contactBtn";
 
-const sortedCountries = [...fakeCountries].sort((a, b) => a.name.localeCompare(b.name));
+export default async function Navbar() {
 
-const packagesLink = <Link href='/packages'>
-    Package
-</Link>
+    const res = await fetch('http://localhost:3000/api/countries');
+    const data = await res.json();
+    const countries = data.data;
 
-const countriesLinks = <ul className="p-2">
-    {
-        sortedCountries.map(country => <li key={country.name}><Link href={country.href}>{country.name}</Link></li>)
-    }
-</ul>
+    const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
 
-const workAbroadLink = <Link href={'/work-abroad'}>Work Abroad</Link>
+    const packagesLink = <Link href='/packages'>
+        Package
+    </Link>
 
-export default function Navbar() {
+    const countriesLinks = <ul className="p-2">
+        {
+            sortedCountries.map(country => <li key={country.name}><Link href={country.href}>{country.name}</Link></li>)
+        }
+    </ul>
+
+    const workAbroadLink = <Link href={'/work-abroad'}>Work Abroad</Link>
 
     return (
         <div className="navbar py-0 min-h-12 bg-base-100/95 text-neutral shadow-lg sticky top-0 left-0 z-50">

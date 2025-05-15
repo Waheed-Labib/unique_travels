@@ -1,8 +1,12 @@
 import Image from "next/image";
 import whatsAppLogo from "../public/assets/whatsApp-logo.webp";
-import { whatsAppNumber } from "../lib/fakeData";
 
-export default function WhatsAppBtn() {
+export default async function WhatsAppBtn() {
+
+    const res = await fetch('http://localhost:3000/api/contacts');
+    const data = await res.json();
+    const { whatsAppNumber } = data.data;
+
     return (
         <>
             <a href={`https://wa.me/${whatsAppNumber}`}

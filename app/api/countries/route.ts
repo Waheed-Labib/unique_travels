@@ -10,15 +10,32 @@ export async function GET(request: Request) {
 
         const { searchParams } = new URL(request.url);
         const country = searchParams.get('country');
+        const countries = searchParams.get('countries')?.split(',');
 
         let result;
 
         if (country) {
+
             result = await CountryModel.findOne({
                 name: new RegExp(`^${country}$`, 'i') // 'i' flag makes it case-insensitive
             })
+
+        } else if (countries) {
+
+            result = [];
+
+            for (let i = 0; i < countries.length; i++) {
+                const country = await CountryModel.findOne({
+                    name: new RegExp(`^${countries[i]}$`, 'i') // 'i' flag makes it case-insensitive
+                })
+
+                result.push(country);
+            }
+
         } else {
+
             result = await CountryModel.find();
+
         }
 
         if (result) {

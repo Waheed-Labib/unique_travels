@@ -1,11 +1,14 @@
 import { BsFillTelephoneFill } from "react-icons/bs";
 import Header from "../header";
-import { address, hotline } from "../../lib/fakeData";
 import Section from "../Section";
 import { FaLocationDot } from "react-icons/fa6";
 import * as motion from "motion/react-client"
 
-export default function ContactUs() {
+export default async function ContactUs() {
+
+    const res = await fetch('http://localhost:3000/api/contacts');
+    const data = await res.json();
+    const { hotline, address } = data.data;
 
     return (
         <div id='contact-us'>
