@@ -47,7 +47,7 @@ export default async function Packages({ countryName, isHome, isMarginShort }: {
 
     }
 
-    console.log('packages', packages)
+    // console.log('packages', packages)
 
     return (
         <Section isMarginShort={isMarginShort}>
