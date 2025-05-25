@@ -43,16 +43,12 @@ export async function GET(request: Request) {
                 ApiSuccess("Getting countries Successful", result, 200)
             )
         } else {
-            return Response.json(
-                ApiError("Getting countries Failed", 500)
-            )
+            throw new ApiError(500, "Getting countries Failed")
         }
 
     } catch (error) {
         console.error('Error getting countries: ', error);
 
-        return Response.json(
-            ApiError("Failed to get countries", 500)
-        )
+        throw new ApiError(500, "Failed to get countries");
     }
 }

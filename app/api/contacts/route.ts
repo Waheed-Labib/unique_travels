@@ -15,16 +15,13 @@ export async function GET() {
                 ApiSuccess("Getting contacts Successful", contacts[0], 200)
             )
         } else {
-            return Response.json(
-                ApiError("Getting contacts Failed", 500)
-            )
+            throw new ApiError(500, "Getting contacts Failed")
         }
 
     } catch (error) {
         console.error('Error getting contacts: ', error);
 
-        return Response.json(
-            ApiError("Failed to get contacts", 500)
-        )
+        throw new ApiError(500, "Failed to get contacts")
+
     }
 }

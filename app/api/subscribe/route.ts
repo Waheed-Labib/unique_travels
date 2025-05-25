@@ -14,13 +14,13 @@ export async function POST(request: Request) {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
         if (!email || !regex.test(email)) {
-            return ApiError('Invalid Email Address', 400);
+            throw new ApiError(400, 'Invalid Email Address');
         }
 
         const alreadyExists = await SubscriberModel.findOne({ email });
 
         if (alreadyExists) {
-            return ApiError('Subscriber already exists', 400);
+            throw new ApiError(400, 'Subscriber already exists');
         }
 
         const subscriber = await SubscriberModel.create({ email });
@@ -30,16 +30,12 @@ export async function POST(request: Request) {
                 ApiSuccess('Subscriber Added Successfully', subscriber, 200)
             )
         } else {
-            return Response.json(
-                ApiError('Subscription Failed', 500)
-            )
+            throw new ApiError(500, 'Subscription Failed')
         }
 
     } catch (error) {
         console.error('Subscription Failed: ', error);
 
-        return Response.json(
-            ApiError("Subscription Failed", 500)
-        )
+        throw new ApiError(500, "Subscription Failed");
     }
 }

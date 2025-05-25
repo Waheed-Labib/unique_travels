@@ -25,17 +25,14 @@ export async function GET(request: Request) {
             )
 
         } else {
-            return Response.json(
-                ApiError("Getting Circulars Failed", 500)
-            )
+
+            throw new ApiError(500, "Getting Circulars Failed")
 
         }
 
     } catch (error) {
         console.error('Error getting circulars: ', error);
 
-        return Response.json(
-            ApiError("Failed to get circulars", 500)
-        )
+        throw new ApiError(500, "Failed to get circulars")
     }
 }

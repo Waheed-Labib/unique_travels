@@ -2,7 +2,8 @@ import mongoose, { Document, Schema } from "mongoose";
 
 export interface Admin extends Document {
     email: string,
-    password: string
+    password: string,
+    token: string
 }
 
 export const AdminSchema: Schema<Admin> = new Schema({
@@ -13,6 +14,9 @@ export const AdminSchema: Schema<Admin> = new Schema({
     password: {
         type: String,
         required: [true, "password is required"]
+    },
+    token: {
+        type: String
     }
 })
 
