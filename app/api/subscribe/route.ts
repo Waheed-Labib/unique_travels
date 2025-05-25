@@ -26,7 +26,7 @@ export async function POST(request: Request) {
         const subscriber = await SubscriberModel.create({ email });
 
         if (subscriber) {
-            return ApiSuccess('Subscriber Added Successfully', subscriber, 200)
+            return Response.json(ApiSuccess('Subscriber Added Successfully', subscriber, 200))
         } else {
             return ApiError('Subscription Failed', 500)
         }

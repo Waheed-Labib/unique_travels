@@ -20,7 +20,7 @@ export async function GET(request: Request) {
         }
 
         if (circulars) {
-            return ApiSuccess("Getting Circulars Successful", circulars, 200)
+            return Response.json(ApiSuccess("Getting Circulars Successful", circulars, 200))
 
         } else {
 

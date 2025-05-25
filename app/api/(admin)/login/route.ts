@@ -47,13 +47,8 @@ export async function POST(request: Request) {
             return ApiError('Something went wrong while genarating password', 400)
         }
 
-        return ApiSuccess(
-            "Login Successful",
-            {
-                _id: admin._id,
-                email: admin.email
-            },
-            200
+        return Response.json(
+            ApiSuccess("Login Successful", { _id: admin._id, email: admin.email }, 200)
         )
     } catch (error) {
         console.error('Login Failed: ', error);

@@ -39,7 +39,7 @@ export async function GET(request: Request) {
         }
 
         if (result) {
-            return ApiSuccess("Getting countries Successful", result, 200)
+            return Response.json(ApiSuccess("Getting countries Successful", result, 200))
         } else {
             return ApiError('Getting countries failed', 500)
         }
