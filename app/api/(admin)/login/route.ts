@@ -4,25 +4,25 @@ import dbConnect from "../../../../lib/dbConnect";
 import AdminModel from "../../../../models/admin";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { Request, Response } from "express";
 
-export async function POST(req: Request, res: Response) {
+export async function POST(request: Request) {
     await dbConnect();
 
     try {
 
-        const { email, password } = req.body;
+        const body = await request.json();
+        const { email, password } = body;
 
         const admin = await AdminModel.findOne({ email });
 
         if (!admin) {
-            throw new ApiError(400, "Wrong Email")
+            return ApiError('Wrong Email', 400)
         }
 
         const isPasswordCorrect = await bcrypt.compare(password, admin.password);
 
         if (!isPasswordCorrect) {
-            throw new ApiError(400, "Wrong Password")
+            return ApiError('Wrong Password', 400)
         }
 
         let token;
@@ -44,29 +44,20 @@ export async function POST(req: Request, res: Response) {
 
         } catch (error) {
             console.error('Genarate Token Failed: ', error);
-            throw new ApiError(500, "Something went wrong while generating token");
+            return ApiError('Something went wrong while genarating password', 400)
         }
 
-        const options = {
-            httpOnly: true,
-            secure: true
-        }
-
-        return res
-            .cookie('token', token, options)
-            .json(
-                ApiSuccess(
-                    "Login Successful",
-                    {
-                        _id: admin._id,
-                        email: admin.email
-                    },
-                    200),
-            )
-
+        return ApiSuccess(
+            "Login Successful",
+            {
+                _id: admin._id,
+                email: admin.email
+            },
+            200
+        )
     } catch (error) {
         console.error('Login Failed: ', error);
 
-        throw new ApiError(500, "Login failed");
+        return ApiError('Login Failed', 500)
     }
 }

@@ -39,16 +39,14 @@ export async function GET(request: Request) {
         }
 
         if (result) {
-            return Response.json(
-                ApiSuccess("Getting countries Successful", result, 200)
-            )
+            return ApiSuccess("Getting countries Successful", result, 200)
         } else {
-            throw new ApiError(500, "Getting countries Failed")
+            return ApiError('Getting countries failed', 500)
         }
 
     } catch (error) {
         console.error('Error getting countries: ', error);
 
-        throw new ApiError(500, "Failed to get countries");
+        return ApiError('Failed to get countries', 500)
     }
 }
