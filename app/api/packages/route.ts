@@ -48,15 +48,21 @@ export async function GET(request: Request) {
         // console.log('packages', packages);
 
         if (packages) {
-            return ApiSuccess("Getting Packages Successful", packages, 200)
+            return Response.json(
+                ApiSuccess("Getting Packages Successful", packages, 200)
+            )
         } else {
-            return ApiError("Getting Packages Failed", 500)
+            return Response.json(
+                ApiError("Getting Packages Failed", 500)
+            )
         }
 
 
     } catch (error) {
         console.error('Error getting packages: ', error);
 
-        return ApiError("Failed to get packages", 500)
+        return Response.json(
+            ApiError("Failed to get packages", 500)
+        )
     }
 }

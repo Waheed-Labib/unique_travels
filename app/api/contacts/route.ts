@@ -11,14 +11,20 @@ export async function GET() {
         const contacts = await ContactModel.find();
 
         if (contacts) {
-            return ApiSuccess("Getting contacts Successful", contacts[0], 200)
+            return Response.json(
+                ApiSuccess("Getting contacts Successful", contacts[0], 200)
+            )
         } else {
-            return ApiError("Getting contacts Failed", 500)
+            return Response.json(
+                ApiError("Getting contacts Failed", 500)
+            )
         }
 
     } catch (error) {
         console.error('Error getting contacts: ', error);
 
-        return ApiError("Failed to get contacts", 500)
+        return Response.json(
+            ApiError("Failed to get contacts", 500)
+        )
     }
 }

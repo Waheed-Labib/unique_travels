@@ -20,14 +20,22 @@ export async function GET(request: Request) {
         }
 
         if (circulars) {
-            return ApiSuccess("Getting Circulars Successful", circulars, 200)
+            return Response.json(
+                ApiSuccess("Getting Circulars Successful", circulars, 200)
+            )
+
         } else {
-            return ApiError("Getting Circulars Failed", 500)
+            return Response.json(
+                ApiError("Getting Circulars Failed", 500)
+            )
+
         }
 
     } catch (error) {
         console.error('Error getting circulars: ', error);
 
-        return ApiError("Failed to get circulars", 500)
+        return Response.json(
+            ApiError("Failed to get circulars", 500)
+        )
     }
 }

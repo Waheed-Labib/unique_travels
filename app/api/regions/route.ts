@@ -20,14 +20,20 @@ export async function GET(request: Request) {
         }
 
         if (result) {
-            return ApiSuccess("Getting Regions Successful", result, 200)
+            return Response.json(
+                ApiSuccess("Getting Regions Successful", result, 200)
+            )
         } else {
-            return ApiError("Getting Regions Failed", 500)
+            return Response.json(
+                ApiError("Getting Regions Failed", 500)
+            )
         }
 
     } catch (error) {
         console.error('Error getting regions: ', error);
 
-        return ApiError("Failed to get regions", 500)
+        return Response.json(
+            ApiError("Failed to get regions", 500)
+        )
     }
 }
