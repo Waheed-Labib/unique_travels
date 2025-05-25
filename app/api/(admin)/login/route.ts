@@ -1,9 +1,9 @@
 import { ApiError } from "../../../../lib/apiError";
-import { ApiSuccess } from "../../../../lib/apiSuccess";
 import dbConnect from "../../../../lib/dbConnect";
 import AdminModel from "../../../../models/admin";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { serialize } from 'cookie';
 
 export async function POST(request: Request) {
     await dbConnect();
@@ -47,8 +47,29 @@ export async function POST(request: Request) {
             return ApiError('Something went wrong while genarating password', 400)
         }
 
-        return Response.json(
-            ApiSuccess("Login Successful", { _id: admin._id, email: admin.email }, 200)
+        const cookie = serialize('token', token, {
+            httpOnly: true,
+            secure: true,
+            path: '/',
+            maxAge: Number(process.env.JWT_EXPIRY),
+        });
+
+        return new Response(
+            JSON.stringify({
+                success: true,
+                message: "Login Successful",
+                data: {
+                    _id: admin._id,
+                    email: admin.email
+                }
+            }),
+            {
+                status: 200,
+                headers: {
+                    'Set-Cookie': cookie,
+                    'Content-Type': 'application/json',
+                },
+            }
         )
     } catch (error) {
         console.error('Login Failed: ', error);
