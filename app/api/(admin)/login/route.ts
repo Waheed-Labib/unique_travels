@@ -5,6 +5,8 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
 
+const SECRET = process.env.JWT_SECRET!;
+
 export async function POST(request: Request) {
     await dbConnect();
 
@@ -33,7 +35,7 @@ export async function POST(request: Request) {
                     _id: admin._id,
                     email: admin.email
                 },
-                process.env.JWT_SECRET!,
+                SECRET,
                 {
                     expiresIn: Number(process.env.JWT_EXPIRY)
                 }
