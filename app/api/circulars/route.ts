@@ -56,3 +56,26 @@ export async function POST(request: Request) {
         return Response.json(ApiError('Failed to add circular', 500));
     }
 }
+
+export async function DELETE(request: Request) {
+    await dbConnect();
+
+    try {
+
+        const body = await request.json();
+        const { _id } = body;
+
+        const deletedCircular = await CircularModel.deleteOne({ _id })
+
+        if (deletedCircular) {
+            return Response.json(ApiSuccess('Circular Deleted Successfully', {}, 200));
+        } else {
+            return Response.json(ApiError('Circular was not deleted', 400));
+        }
+
+    } catch (error) {
+        console.error('Deleting circular failed: ', error);
+
+        return Response.json(ApiError('Failed to delete circular', 500));
+    }
+}
