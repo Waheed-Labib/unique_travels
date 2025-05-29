@@ -47,12 +47,12 @@ export async function POST(request: Request) {
         if (newCircular) {
             return Response.json(ApiSuccess('New Circular Added', newCircular, 200));
         } else {
-            return ApiError('New Circular not added', 400);
+            return Response.json(ApiError('New Circular not added', 400));
         }
 
     } catch (error) {
         console.error('Adding circular failed: ', error);
 
-        return ApiError('Failed to add circular', 500)
+        return Response.json(ApiError('Failed to add circular', 500));
     }
 }

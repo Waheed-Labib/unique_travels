@@ -18,13 +18,13 @@ export async function POST(request: Request) {
         const admin = await AdminModel.findOne({ email });
 
         if (!admin) {
-            return ApiError('Wrong Email', 400)
+            return Response.json(ApiError('Wrong Email', 400))
         }
 
         const isPasswordCorrect = await bcrypt.compare(password, admin.password);
 
         if (!isPasswordCorrect) {
-            return ApiError('Wrong Password', 400)
+            return Response.json(ApiError('Wrong Password', 400))
         }
 
         let token;
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
 
         } catch (error) {
             console.error('Genarate Token Failed: ', error);
-            return ApiError('Something went wrong while genarating password', 400)
+            return Response.json(ApiError('Something went wrong while genarating password', 400))
         }
 
         const cookie = serialize('token', token, {
@@ -76,6 +76,6 @@ export async function POST(request: Request) {
     } catch (error) {
         console.error('Login Failed: ', error);
 
-        return ApiError('Login Failed', 500)
+        return Response.json(ApiError('Login Failed', 500))
     }
 }
