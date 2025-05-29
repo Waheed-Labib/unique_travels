@@ -33,3 +33,26 @@ export async function GET(request: Request) {
         return ApiError('Failed to get circulars', 500)
     }
 }
+
+export async function POST(request: Request) {
+    await dbConnect();
+
+    try {
+
+        const body = await request.json();
+        const { region, image } = body;
+
+        const newCircular = await CircularModel.create({ region, image })
+
+        if (newCircular) {
+            return Response.json(ApiSuccess('New Circular Added', newCircular, 200));
+        } else {
+            return ApiError('New Circular not added', 400);
+        }
+
+    } catch (error) {
+        console.error('Adding circular failed: ', error);
+
+        return ApiError('Failed to add circular', 500)
+    }
+}
