@@ -17,7 +17,9 @@ export type country = {
 export type circular = {
     _id: string,
     region: string,
-    image: string
+    image: string,
+    createdAt: string,
+    updatedAt: string
 }
 
 export type Region = {

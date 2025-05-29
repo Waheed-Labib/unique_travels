@@ -22,14 +22,18 @@ const Circulars = ({ regionName, circulars }: {
                     circulars.map(circular =>
                         <div
                             key={circular._id}
-                            className="mb-12 shadow-xl shadow-primary/25 border-8 border-primary rounded-xl"
+                            className="mb-12"
                         >
-                            <Image
-                                src={circular.image}
-                                alt=''
-                                width={800}
-                                height={1600}
-                            ></Image>
+                            <div className="mb-2 shadow-xl shadow-primary/25 border-8 border-primary rounded-xl">
+                                <Image
+                                    src={circular.image}
+                                    alt=''
+                                    width={600}
+                                    height={1200}
+                                ></Image>
+                            </div>
+
+                            <p className="text-neutral text-xs text-end mr-2">Added On: <span className="font-semibold text-sm">{circular.createdAt.split('T')[0]}</span></p>
                         </div>)
                 }
             </div>

@@ -14,9 +14,9 @@ export async function GET(request: Request) {
         let circulars;
 
         if (region) {
-            circulars = await CircularModel.find({ region })
+            circulars = await CircularModel.find({ region }).sort({ createdAt: -1 });
         } else {
-            circulars = await CircularModel.find();
+            circulars = await CircularModel.find().sort({ createdAt: -1 });
         }
 
         if (circulars) {
