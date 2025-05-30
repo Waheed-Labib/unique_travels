@@ -116,6 +116,28 @@ export async function PATCH(req: Request) {
 }
 
 export async function DELETE(request: Request) {
+    await dbConnect();
 
+    try {
+        const body = await request.json();
+        const { _id } = body;
+
+        if (!_id) {
+            return Response.json(ApiError('_id not found', 400));
+        }
+
+        const deletedCountry = await CountryModel.deleteOne({ _id });
+
+        if (deletedCountry) {
+            return Response.json(ApiSuccess('Country Deleted Successfully', {}, 200));
+        } else {
+            return Response.json(ApiError('Country was not deleted', 400));
+        }
+
+    } catch (error) {
+
+        console.error('Error deleting country', error);
+        return Response.json(ApiError('Failed to delete country', 500));
+
+    }
 }
-
