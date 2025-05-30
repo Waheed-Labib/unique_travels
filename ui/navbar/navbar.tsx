@@ -18,7 +18,7 @@ export default async function Navbar() {
 
     const countriesLinks = <ul className="p-2">
         {
-            sortedCountries.map(country => <li key={country.name}><Link href={country.href}>{country.name}</Link></li>)
+            sortedCountries.map(country => <li key={country.name}><Link href={`/destinations/${country.name.toLowerCase()}`}>{country.name}</Link></li>)
         }
     </ul>
 

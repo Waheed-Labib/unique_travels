@@ -50,3 +50,17 @@ export async function GET(request: Request) {
         return Response.json(ApiError('Failed to get countries', 500))
     }
 }
+
+export async function POST(request: Request) {
+    const body = await request.json();
+    const { } = body;
+}
+
+export async function PATCH(request: Request) {
+
+}
+
+export async function DELETE(request: Request) {
+
+}
+

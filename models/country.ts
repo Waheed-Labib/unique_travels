@@ -1,15 +1,17 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface Country extends Document {
+    name: string,
     href: string,
     image: string,
     visaRequirements: string[]
 }
 
 export const CountrySchema: Schema<Country> = new Schema({
-    href: {
+    name: {
         type: String,
-        required: [true, "href is required"]
+        required: [true, 'Name is required'],
+        unique: true
     },
     image: {
         type: String,

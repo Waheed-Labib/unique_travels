@@ -22,3 +22,46 @@ export async function GET() {
         return Response.json(ApiError('Failed to get contacts', 500));
     }
 }
+
+export async function PATCH(req: Request) {
+
+    await dbConnect();
+
+    try {
+
+        const body = await req.json();
+        const { _id, hotline, whatsAppNumber, address } = body;
+
+        if (!_id) {
+            return Response.json(ApiError('_id not found', 400));
+        }
+
+        const contact = await ContactModel.findById(_id);
+
+        if (!contact) {
+            return Response.json(ApiError('Contact Not Found', 400))
+        }
+
+        if (hotline) {
+            contact.hotline = hotline
+        }
+
+        if (whatsAppNumber) {
+            contact.whatsAppNumber = whatsAppNumber
+        }
+
+        if (address) {
+            contact.address = address
+        }
+
+        await contact.save();
+
+        return Response.json(ApiSuccess('Contacts updated successfully', contact, 200));
+
+    } catch (error) {
+
+        console.error('Error updating contact', error);
+        return Response.json(ApiError('Failed to update contact', 500));
+
+    }
+}

@@ -9,7 +9,6 @@ export type pkg = {
 export type country = {
     _id: string,
     name: string,
-    href: string,
     image: string,
     visaRequirements: string[]
 }
