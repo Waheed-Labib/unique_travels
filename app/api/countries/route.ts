@@ -72,8 +72,47 @@ export async function POST(request: Request) {
     }
 }
 
-export async function PATCH(request: Request) {
+export async function PATCH(req: Request) {
 
+    await dbConnect();
+
+    try {
+
+        const body = await req.json();
+        const { _id, name, image, visaRequirements } = body;
+
+        if (!_id) {
+            return Response.json(ApiError('_id not found', 400));
+        }
+
+        const country = await CountryModel.findById(_id);
+
+        if (!country) {
+            return Response.json(ApiError('Country Not Found', 400))
+        }
+
+        if (name) {
+            country.name = name
+        }
+
+        if (image) {
+            country.image = image
+        }
+
+        if (visaRequirements) {
+            country.visaRequirements = visaRequirements
+        }
+
+        await country.save();
+
+        return Response.json(ApiSuccess('Country updated successfully', country, 200));
+
+    } catch (error) {
+
+        console.error('Error updating country', error);
+        return Response.json(ApiError('Failed to update country', 500));
+
+    }
 }
 
 export async function DELETE(request: Request) {
