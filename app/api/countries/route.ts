@@ -52,8 +52,24 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-    const body = await request.json();
-    const { } = body;
+    await dbConnect();
+
+    try {
+
+        const body = await request.json();
+        const { name, image, visaRequirements } = body;
+
+        const newCountry = await CountryModel.create({ name, image, visaRequirements });
+
+        if (newCountry) {
+            return Response.json(ApiSuccess('Country added successfully', newCountry, 200))
+        } else {
+            return Response.json(ApiError('Country was not added', 400))
+        }
+    } catch (error) {
+        console.error('Adding Country Failed', error);
+        return Response.json(ApiError('Failed to add country', 500))
+    }
 }
 
 export async function PATCH(request: Request) {
