@@ -24,7 +24,6 @@ export type circular = {
 export type Region = {
     _id: string,
     name: string,
-    href: string,
     image: string
 }
 

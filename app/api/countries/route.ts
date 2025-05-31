@@ -59,6 +59,18 @@ export async function POST(request: Request) {
         const body = await request.json();
         const { name, image, visaRequirements } = body;
 
+        if (!name) {
+            return Response.json(ApiError('Name is required', 400))
+        }
+
+        if (!image) {
+            return Response.json(ApiError('Image is required', 400))
+        }
+
+        if (!visaRequirements || !visaRequirements.length) {
+            return Response.json(ApiError('Visa Requirements are required', 400))
+        }
+
         const newCountry = await CountryModel.create({ name, image, visaRequirements });
 
         if (newCountry) {

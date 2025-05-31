@@ -24,7 +24,7 @@ export default async function WorkAbroad({ isMarginShort, isHome = true }: {
             regions.map((region: Region) =>
                 <Link
                     key={region._id}
-                    href={`/work-abroad/${region.name}`}
+                    href={`/work-abroad/${region.name.toLowerCase()}`}
                 >
                     <motion.div
                         whileHover={{ scale: 1.04 }}
