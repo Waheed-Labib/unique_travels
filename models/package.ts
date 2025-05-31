@@ -3,7 +3,8 @@ import mongoose, { Document, Schema } from "mongoose";
 export interface Package extends Document {
     countries: string[],
     details: object,
-    isFeatured: boolean
+    isFeatured: boolean,
+    code: number
 }
 
 export const PackageSchema: Schema<Package> = new Schema({
@@ -19,6 +20,9 @@ export const PackageSchema: Schema<Package> = new Schema({
     isFeatured: {
         type: Boolean,
         default: false
+    },
+    code: {
+        type: Number
     }
 })
 

@@ -60,3 +60,106 @@ export async function GET(request: Request) {
         return Response.json(ApiError('Failed to get packages', 500))
     }
 }
+
+export async function POST(request: Request) {
+    await dbConnect();
+
+    try {
+
+        const body = await request.json();
+        const { countries, details, code } = body;
+
+        if (!countries) {
+            return Response.json(ApiError('Countries is required', 400))
+        }
+
+        if (!details) {
+            return Response.json(ApiError('Details is required', 400))
+        }
+
+        if (!code) {
+            return Response.json(ApiError('Code is required', 400))
+        }
+
+        const newPackage = await PackageModel.create({ countries, details, isFeatured: false, code });
+
+        if (newPackage) {
+            return Response.json(ApiSuccess('Package added successfully', newPackage, 200))
+        } else {
+            return Response.json(ApiError('Package was not added', 400))
+        }
+    } catch (error) {
+        console.error('Adding Package Failed', error);
+        return Response.json(ApiError('Failed to add Package', 500))
+    }
+}
+
+export async function PATCH(req: Request) {
+
+    await dbConnect();
+
+    try {
+
+        const body = await req.json();
+        const { _id, countries, details, isFeatured } = body;
+
+        if (!_id) {
+            return Response.json(ApiError('_id not found', 400));
+        }
+
+        const pkg = await PackageModel.findById(_id);
+
+        if (!pkg) {
+            return Response.json(ApiError('Package Not Found', 400))
+        }
+
+        if (countries) {
+            pkg.countries = countries
+        }
+
+        if (details) {
+            pkg.details = details
+        }
+
+        if (isFeatured) {
+            pkg.isFeatured = isFeatured
+        }
+
+        await pkg.save();
+
+        return Response.json(ApiSuccess('Package updated successfully', pkg, 200));
+
+    } catch (error) {
+
+        console.error('Error updating package', error);
+        return Response.json(ApiError('Failed to update package', 500));
+
+    }
+}
+
+export async function DELETE(request: Request) {
+    await dbConnect();
+
+    try {
+        const body = await request.json();
+        const { _id } = body;
+
+        if (!_id) {
+            return Response.json(ApiError('_id not found', 400));
+        }
+
+        const deletedPackage = await PackageModel.deleteOne({ _id });
+
+        if (deletedPackage) {
+            return Response.json(ApiSuccess('Package Deleted Successfully', {}, 200));
+        } else {
+            return Response.json(ApiError('Package was not deleted', 400));
+        }
+
+    } catch (error) {
+
+        console.error('Error deleting package', error);
+        return Response.json(ApiError('Failed to delete package', 500));
+
+    }
+}
