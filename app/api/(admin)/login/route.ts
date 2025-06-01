@@ -1,13 +1,13 @@
-import { ApiError } from "../../../../lib/apiError";
 import dbConnect from "../../../../lib/dbConnect";
 import AdminModel from "../../../../models/admin";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
+import { NextRequest, NextResponse } from "next/server";
 
 const SECRET = process.env.JWT_SECRET!;
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     await dbConnect();
 
     try {
@@ -18,13 +18,25 @@ export async function POST(request: Request) {
         const admin = await AdminModel.findOne({ email });
 
         if (!admin) {
-            return Response.json(ApiError('Wrong Email', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Wrong Email",
+                },
+                { status: 400 }
+            );
         }
 
         const isPasswordCorrect = await bcrypt.compare(password, admin.password);
 
         if (!isPasswordCorrect) {
-            return Response.json(ApiError('Wrong Password', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Wrong Password",
+                },
+                { status: 400 }
+            );
         }
 
         let token;
@@ -46,7 +58,13 @@ export async function POST(request: Request) {
 
         } catch (error) {
             console.error('Genarate Token Failed: ', error);
-            return Response.json(ApiError('Something went wrong while genarating password', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Something went wrong while generating the token",
+                },
+                { status: 400 }
+            )
         }
 
         const cookie = serialize('token', token, {
@@ -56,26 +74,30 @@ export async function POST(request: Request) {
             maxAge: Number(process.env.JWT_EXPIRY),
         });
 
-        return new Response(
-            JSON.stringify({
+        const response = NextResponse.json(
+            {
                 success: true,
                 message: "Login Successful",
                 data: {
                     _id: admin._id,
-                    email: admin.email
-                }
-            }),
-            {
-                status: 200,
-                headers: {
-                    'Set-Cookie': cookie,
-                    'Content-Type': 'application/json',
+                    email: admin.email,
                 },
-            }
-        )
+            },
+            { status: 200 }
+        );
+
+        response.headers.set("Set-Cookie", cookie);
+        return response;
+
     } catch (error) {
         console.error('Login Failed: ', error);
 
-        return Response.json(ApiError('Login Failed', 500))
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Login Failed",
+            },
+            { status: 500 }
+        );
     }
 }

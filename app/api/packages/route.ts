@@ -1,11 +1,10 @@
-import { ApiError } from "../../../lib/apiError";
-import { ApiSuccess } from "../../../lib/apiSuccess";
+import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "../../../lib/dbConnect";
 import { resend } from "../../../lib/resend";
 import PackageModel from "../../../models/package";
 import SubscriberModel from "../../../models/subscriber";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
     await dbConnect();
 
     try {
@@ -50,20 +49,41 @@ export async function GET(request: Request) {
         // console.log('packages', packages);
 
         if (packages) {
-            return Response.json(ApiSuccess("Getting Packages Successful", packages, 200))
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: 'Getting packages successful'
+                },
+                {
+                    status: 200
+                })
         } else {
-            return Response.json(ApiError('Getting Packages failed', 500))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: 'Getting packages failed'
+                },
+                {
+                    status: 400
+                })
         }
 
 
     } catch (error) {
         console.error('Error getting packages: ', error);
 
-        return Response.json(ApiError('Failed to get packages', 500))
+        return NextResponse.json(
+            {
+                success: false,
+                message: 'Failed to get packages'
+            },
+            {
+                status: 500
+            })
     }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     await dbConnect();
 
     try {
@@ -72,27 +92,53 @@ export async function POST(request: Request) {
         const { countries, details, code } = body;
 
         if (!countries) {
-            return Response.json(ApiError('Countries is required', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: 'Countries is required'
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         if (!details) {
-            return Response.json(ApiError('Details is required', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: 'Details is required'
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         if (!code) {
-            return Response.json(ApiError('Code is required', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: 'Code is required'
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         const newPackage = await PackageModel.create({ countries, details, isFeatured: false, code });
 
         if (newPackage) {
             const subscribers = await SubscriberModel.find({});
-            const emails = subscribers.map(sub => sub.email);
+            const verifiedEmails = subscribers
+                .filter(sub => sub.isVerified)
+                .map(sub => sub.email);;
 
             const countriesInString = countries.join(', ');
 
             await Promise.all(
-                emails.map(email => {
+                verifiedEmails.map(email => {
                     resend.emails.send({
                         from: 'RH Travels <onboarding@resend.dev>',
                         to: email,
@@ -112,17 +158,41 @@ export async function POST(request: Request) {
                 })
             )
 
-            return Response.json(ApiSuccess('Package added successfully and Emails sent', newPackage, 200))
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: 'Package added successfully and emails sent to the subscribers'
+                },
+                {
+                    status: 200
+                }
+            )
         } else {
-            return Response.json(ApiError('Package was not added', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: 'Package was not added'
+                },
+                {
+                    status: 400
+                }
+            )
         }
     } catch (error) {
         console.error('Adding Package Failed', error);
-        return Response.json(ApiError('Failed to add Package', 500))
+        return NextResponse.json(
+            {
+                success: false,
+                message: 'Failed to add package'
+            },
+            {
+                status: 500
+            }
+        )
     }
 }
 
-export async function PATCH(req: Request) {
+export async function PATCH(req: NextRequest) {
 
     await dbConnect();
 
@@ -132,13 +202,29 @@ export async function PATCH(req: Request) {
         const { _id, countries, details, isFeatured } = body;
 
         if (!_id) {
-            return Response.json(ApiError('_id not found', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: '_id is not provided in the request'
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         const pkg = await PackageModel.findById(_id);
 
         if (!pkg) {
-            return Response.json(ApiError('Package Not Found', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: 'Package not found'
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         if (countries) {
@@ -155,12 +241,29 @@ export async function PATCH(req: Request) {
 
         await pkg.save();
 
-        return Response.json(ApiSuccess('Package updated successfully', pkg, 200));
+        return NextResponse.json(
+            {
+                success: true,
+                message: 'Package updated successfully',
+                data: pkg
+            },
+            {
+                status: 400
+            }
+        )
 
     } catch (error) {
 
         console.error('Error updating package', error);
-        return Response.json(ApiError('Failed to update package', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: 'Failed to update package'
+            },
+            {
+                status: 500
+            }
+        )
 
     }
 }
@@ -173,21 +276,53 @@ export async function DELETE(request: Request) {
         const { _id } = body;
 
         if (!_id) {
-            return Response.json(ApiError('_id not found', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: '_id not found'
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         const deletedPackage = await PackageModel.deleteOne({ _id });
 
         if (deletedPackage) {
-            return Response.json(ApiSuccess('Package Deleted Successfully', {}, 200));
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: 'Package deleted successfully'
+                },
+                {
+                    status: 200
+                }
+            )
         } else {
-            return Response.json(ApiError('Package was not deleted', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: 'Package was not deleted'
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
     } catch (error) {
 
         console.error('Error deleting package', error);
-        return Response.json(ApiError('Failed to delete package', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: 'Failed to delete package'
+            },
+            {
+                status: 500
+            }
+        );
 
     }
 }

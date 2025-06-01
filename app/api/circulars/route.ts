@@ -1,5 +1,4 @@
-import { ApiError } from "../../../lib/apiError";
-import { ApiSuccess } from "../../../lib/apiSuccess";
+import { NextResponse } from "next/server";
 import dbConnect from "../../../lib/dbConnect";
 import { resend } from "../../../lib/resend";
 import CircularModel from "../../../models/circular";
@@ -22,17 +21,35 @@ export async function GET(request: Request) {
         }
 
         if (circulars) {
-            return Response.json(ApiSuccess("Getting Circulars Successful", circulars, 200))
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: "Getting Circulars Successful",
+                    data: circulars
+                },
+                { status: 200 }
+            );
 
         } else {
-
-            return ApiError('Getting Circulars Failed', 500)
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Getting Circulars Failed"
+                },
+                { status: 400 }
+            );
         }
 
     } catch (error) {
         console.error('Error getting circulars: ', error);
 
-        return ApiError('Failed to get circulars', 500)
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to get circulars"
+            },
+            { status: 500 }
+        );
     }
 }
 
@@ -49,10 +66,12 @@ export async function POST(request: Request) {
         if (newCircular) {
 
             const subscribers = await SubscriberModel.find({});
-            const emails = subscribers.map(sub => sub.email);
+            const verifiedEmails = subscribers
+                .filter(sub => sub.isVerified)
+                .map(sub => sub.email);
 
             await Promise.all(
-                emails.map(email => {
+                verifiedEmails.map(email => {
                     resend.emails.send({
                         from: 'RH Travels <onboarding@resend.dev>',
                         to: email,
@@ -64,14 +83,6 @@ export async function POST(request: Request) {
                                 <p>For more, visit : </p>
                         
                                 <a href="https://rh-travels.org/work-abroad/${region}" style="
-                                    display: inline-block;
-                                    background-color: #1d4ed8;
-                                    color: white;
-                                    padding: 10px 20px;
-                                    border-radius: 6px;
-                                    text-decoration: none;
-                                    font-weight: bold;
-                                    margin-top: 10px;
                                ">🌍 https://rh-travels.org/work-abroad/${region}</a>
 
                                <p style="margin-top: 20px; font-size: 12px; color: gray;">
@@ -82,15 +93,34 @@ export async function POST(request: Request) {
                 })
             )
 
-            return Response.json(ApiSuccess('New Circular Added and Emails sent', newCircular, 200));
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: "New Circular added and Emails sent to the verified subscribers",
+                    data: newCircular
+                },
+                { status: 200 }
+            );
         } else {
-            return Response.json(ApiError('New Circular not added', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "New Circular not added"
+                },
+                { status: 400 }
+            );
         }
 
     } catch (error) {
         console.error('Adding circular failed: ', error);
 
-        return Response.json(ApiError('Failed to add circular', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to add circular"
+            },
+            { status: 500 }
+        );
     }
 }
 
@@ -105,14 +135,32 @@ export async function DELETE(request: Request) {
         const deletedCircular = await CircularModel.deleteOne({ _id })
 
         if (deletedCircular) {
-            return Response.json(ApiSuccess('Circular Deleted Successfully', {}, 200));
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: "Circular Deleted Successfully"
+                },
+                { status: 200 }
+            );
         } else {
-            return Response.json(ApiError('Circular was not deleted', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Circular was not deleted"
+                },
+                { status: 400 }
+            );
         }
 
     } catch (error) {
         console.error('Deleting circular failed: ', error);
 
-        return Response.json(ApiError('Failed to delete circular', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to delete circular"
+            },
+            { status: 500 }
+        );
     }
 }

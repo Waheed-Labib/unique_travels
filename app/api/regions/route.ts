@@ -1,9 +1,8 @@
-import { ApiError } from "../../../lib/apiError";
-import { ApiSuccess } from "../../../lib/apiSuccess";
+import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "../../../lib/dbConnect";
 import RegionModel from "../../../models/region";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
     await dbConnect();
 
     try {
@@ -20,15 +19,40 @@ export async function GET(request: Request) {
         }
 
         if (result) {
-            return Response.json(ApiSuccess("Getting Regions Successful", result, 200))
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: "Getting regions successful",
+                    data: result
+                },
+                {
+                    status: 200
+                }
+            )
         } else {
-            return Response.json(ApiError('Getting Regions Failed', 500))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Getting regions failed"
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
     } catch (error) {
         console.error('Error getting regions: ', error);
 
-        return Response.json(ApiError('Failed to get regions', 500))
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to get regions"
+            },
+            {
+                status: 500
+            }
+        )
     }
 }
 
@@ -41,23 +65,64 @@ export async function POST(request: Request) {
         const { name, image } = body;
 
         if (!name) {
-            return Response.json(ApiError('Name is required', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Name is required"
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         if (!image) {
-            return Response.json(ApiError('Image is required', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Image is required"
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         const newRegion = await RegionModel.create({ name, image });
 
         if (newRegion) {
-            return Response.json(ApiSuccess('Region added successfully', newRegion, 200))
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: "Region added successfully",
+                    data: newRegion
+                },
+                {
+                    status: 200
+                }
+            )
         } else {
-            return Response.json(ApiError('Region was not added', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Region was not added"
+                },
+                {
+                    status: 400
+                }
+            )
         }
     } catch (error) {
         console.error('Adding Region Failed', error);
-        return Response.json(ApiError('Failed to add region', 500))
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to add region"
+            },
+            {
+                status: 500
+            }
+        )
     }
 }
 
@@ -71,13 +136,29 @@ export async function PATCH(req: Request) {
         const { _id, name, image } = body;
 
         if (!_id) {
-            return Response.json(ApiError('_id not found', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "_id not found"
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         const region = await RegionModel.findById(_id);
 
         if (!region) {
-            return Response.json(ApiError('Region Not Found', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Region not found"
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         if (region) {
@@ -90,12 +171,29 @@ export async function PATCH(req: Request) {
 
         await region.save();
 
-        return Response.json(ApiSuccess('Region updated successfully', region, 200));
+        return NextResponse.json(
+            {
+                success: true,
+                message: "Region updated successfully",
+                data: region
+            },
+            {
+                status: 200
+            }
+        )
 
     } catch (error) {
 
         console.error('Error updating region', error);
-        return Response.json(ApiError('Failed to update region', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to update region"
+            },
+            {
+                status: 400
+            }
+        )
 
     }
 }
@@ -108,21 +206,53 @@ export async function DELETE(request: Request) {
         const { _id } = body;
 
         if (!_id) {
-            return Response.json(ApiError('_id not found', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "_id not found"
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
         const deletedRegion = await RegionModel.deleteOne({ _id });
 
         if (deletedRegion) {
-            return Response.json(ApiSuccess('Region Deleted Successfully', {}, 200));
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: "Region deleted successfully"
+                },
+                {
+                    status: 200
+                }
+            )
         } else {
-            return Response.json(ApiError('Region was not deleted', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Region was not deleted"
+                },
+                {
+                    status: 400
+                }
+            )
         }
 
     } catch (error) {
 
         console.error('Error deleting region', error);
-        return Response.json(ApiError('Failed to delete region', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to delete region"
+            },
+            {
+                status: 500
+            }
+        )
 
     }
 }

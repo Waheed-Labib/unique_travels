@@ -1,5 +1,4 @@
-import { ApiError } from "../../../lib/apiError";
-import { ApiSuccess } from "../../../lib/apiSuccess";
+import { NextResponse } from "next/server";
 import dbConnect from "../../../lib/dbConnect";
 import ContactModel from "../../../models/contact";
 
@@ -11,15 +10,40 @@ export async function GET() {
         const contacts = await ContactModel.find();
 
         if (contacts) {
-            return Response.json(ApiSuccess("Getting contacts Successful", contacts[0], 200));
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: 'Getting contact successful',
+                    data: contacts[0]
+                },
+                {
+                    status: 200
+                }
+            );
         } else {
-            return Response.json(ApiError('Getting contacts failed', 500));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: 'Getting contact failed'
+                },
+                {
+                    status: 400
+                }
+            );
         }
 
     } catch (error) {
         console.error('Error getting contacts: ', error);
 
-        return Response.json(ApiError('Failed to get contacts', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: 'Failed to get contacts'
+            },
+            {
+                status: 500
+            }
+        );
     }
 }
 
@@ -33,13 +57,29 @@ export async function PATCH(req: Request) {
         const { _id, hotline, whatsAppNumber, address } = body;
 
         if (!_id) {
-            return Response.json(ApiError('_id not found', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: '_id not found'
+                },
+                {
+                    status: 400
+                }
+            );
         }
 
         const contact = await ContactModel.findById(_id);
 
         if (!contact) {
-            return Response.json(ApiError('Contact Not Found', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: 'Contact not found'
+                },
+                {
+                    status: 400
+                }
+            );
         }
 
         if (hotline) {
@@ -56,12 +96,29 @@ export async function PATCH(req: Request) {
 
         await contact.save();
 
-        return Response.json(ApiSuccess('Contacts updated successfully', contact, 200));
+        return NextResponse.json(
+            {
+                success: true,
+                message: 'Contact updated successfully',
+                data: contact
+            },
+            {
+                status: 200
+            }
+        );
 
     } catch (error) {
 
         console.error('Error updating contact', error);
-        return Response.json(ApiError('Failed to update contact', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: 'Failed to update contact',
+            },
+            {
+                status: 500
+            }
+        );
 
     }
 }

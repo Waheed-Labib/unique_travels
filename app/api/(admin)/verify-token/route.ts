@@ -1,9 +1,7 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "../../../../lib/dbConnect";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import AdminModel from "../../../../models/admin";
-import { ApiError } from "../../../../lib/apiError";
-import { ApiSuccess } from "../../../../lib/apiSuccess";
 
 const SECRET = process.env.JWT_SECRET!;
 
@@ -18,7 +16,13 @@ export async function GET(request: NextRequest) {
 
     const token = request.cookies.get('token')?.value;
     if (!token) {
-        return Response.json(ApiError('Token not found', 400));
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Token not found",
+            },
+            { status: 400 }
+        );
     }
 
     try {
@@ -27,14 +31,33 @@ export async function GET(request: NextRequest) {
         const admin = await AdminModel.findById(decoded._id);
 
         if (!admin || token !== admin.token) {
-            return Response.json(ApiError('Invalid Token', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Invalid Token",
+                },
+                { status: 400 }
+            );
         }
 
-        return Response.json(ApiSuccess('Token Verified', { admin: decoded }, 200));
+        return NextResponse.json(
+            {
+                success: true,
+                message: "Token Verified",
+                data: decoded
+            },
+            { status: 200 }
+        );;
 
     } catch (err) {
         console.error(err);
 
-        return Response.json(ApiError('Token Verification Failed', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Token Verification Failed",
+            },
+            { status: 500 }
+        );
     }
 }

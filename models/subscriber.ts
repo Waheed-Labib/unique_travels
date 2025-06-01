@@ -1,7 +1,8 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface Subscriber extends Document {
-    email: string
+    email: string,
+    isVerified: boolean
 }
 
 export const SubscriberSchema: Schema<Subscriber> = new Schema({
@@ -9,6 +10,10 @@ export const SubscriberSchema: Schema<Subscriber> = new Schema({
         type: String,
         required: [true, "Email is required"],
         unique: true
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
     }
 })
 

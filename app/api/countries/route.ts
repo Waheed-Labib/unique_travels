@@ -1,9 +1,8 @@
-import { ApiError } from "../../../lib/apiError";
-import { ApiSuccess } from "../../../lib/apiSuccess";
+import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "../../../lib/dbConnect";
 import CountryModel from "../../../models/country";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
     await dbConnect();
 
     try {
@@ -39,19 +38,37 @@ export async function GET(request: Request) {
         }
 
         if (result) {
-            return Response.json(ApiSuccess("Getting countries Successful", result, 200))
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: "Getting Countries Successful"
+                },
+                { status: 200 }
+            );
         } else {
-            return Response.json(ApiError('Getting countries failed', 500))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Getting Countries Failed"
+                },
+                { status: 400 }
+            );
         }
 
     } catch (error) {
         console.error('Error getting countries: ', error);
 
-        return Response.json(ApiError('Failed to get countries', 500))
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to get countries"
+            },
+            { status: 500 }
+        );
     }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     await dbConnect();
 
     try {
@@ -60,31 +77,67 @@ export async function POST(request: Request) {
         const { name, image, visaRequirements } = body;
 
         if (!name) {
-            return Response.json(ApiError('Name is required', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Name is required"
+                },
+                { status: 400 }
+            );
         }
 
         if (!image) {
-            return Response.json(ApiError('Image is required', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Name is required"
+                },
+                { status: 400 }
+            );
         }
 
         if (!visaRequirements || !visaRequirements.length) {
-            return Response.json(ApiError('Visa Requirements are required', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Visa Requirements are required"
+                },
+                { status: 400 }
+            );
         }
 
         const newCountry = await CountryModel.create({ name, image, visaRequirements });
 
         if (newCountry) {
-            return Response.json(ApiSuccess('Country added successfully', newCountry, 200))
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: "Country added successfully"
+                },
+                { status: 200 }
+            );
         } else {
-            return Response.json(ApiError('Country was not added', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Country was not added"
+                },
+                { status: 400 }
+            );
         }
     } catch (error) {
         console.error('Adding Country Failed', error);
-        return Response.json(ApiError('Failed to add country', 500))
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to add country"
+            },
+            { status: 500 }
+        );
     }
 }
 
-export async function PATCH(req: Request) {
+export async function PATCH(req: NextRequest) {
 
     await dbConnect();
 
@@ -94,13 +147,25 @@ export async function PATCH(req: Request) {
         const { _id, name, image, visaRequirements } = body;
 
         if (!_id) {
-            return Response.json(ApiError('_id not found', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "_id is not provided in the request"
+                },
+                { status: 400 }
+            );
         }
 
         const country = await CountryModel.findById(_id);
 
         if (!country) {
-            return Response.json(ApiError('Country Not Found', 400))
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Country not found"
+                },
+                { status: 400 }
+            );
         }
 
         if (name) {
@@ -117,12 +182,24 @@ export async function PATCH(req: Request) {
 
         await country.save();
 
-        return Response.json(ApiSuccess('Country updated successfully', country, 200));
+        return NextResponse.json(
+            {
+                success: true,
+                message: "Country updated successfully"
+            },
+            { status: 200 }
+        );
 
     } catch (error) {
 
         console.error('Error updating country', error);
-        return Response.json(ApiError('Failed to update country', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to update country"
+            },
+            { status: 500 }
+        );
 
     }
 }
@@ -135,21 +212,45 @@ export async function DELETE(request: Request) {
         const { _id } = body;
 
         if (!_id) {
-            return Response.json(ApiError('_id not found', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "_id not found"
+                },
+                { status: 400 }
+            );
         }
 
         const deletedCountry = await CountryModel.deleteOne({ _id });
 
         if (deletedCountry) {
-            return Response.json(ApiSuccess('Country Deleted Successfully', {}, 200));
+            return NextResponse.json(
+                {
+                    success: true,
+                    message: "Country deleted successfully"
+                },
+                { status: 200 }
+            );
         } else {
-            return Response.json(ApiError('Country was not deleted', 400));
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Country was not deleted"
+                },
+                { status: 400 }
+            );
         }
 
     } catch (error) {
 
         console.error('Error deleting country', error);
-        return Response.json(ApiError('Failed to delete country', 500));
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Failed to delete country"
+            },
+            { status: 500 }
+        );
 
     }
 }
