@@ -1,7 +1,9 @@
 import { ApiError } from "../../../lib/apiError";
 import { ApiSuccess } from "../../../lib/apiSuccess";
 import dbConnect from "../../../lib/dbConnect";
+import { resend } from "../../../lib/resend";
 import PackageModel from "../../../models/package";
+import SubscriberModel from "../../../models/subscriber";
 
 export async function GET(request: Request) {
     await dbConnect();
@@ -84,7 +86,33 @@ export async function POST(request: Request) {
         const newPackage = await PackageModel.create({ countries, details, isFeatured: false, code });
 
         if (newPackage) {
-            return Response.json(ApiSuccess('Package added successfully', newPackage, 200))
+            const subscribers = await SubscriberModel.find({});
+            const emails = subscribers.map(sub => sub.email);
+
+            const countriesInString = countries.join(', ');
+
+            await Promise.all(
+                emails.map(email => {
+                    resend.emails.send({
+                        from: 'RH Travels <onboarding@resend.dev>',
+                        to: email,
+                        subject: `New Tour Package for ${countriesInString}`,
+                        html: `<h2>New Tour Package is Available !</h2>
+                                    
+                                <p>A new tour package is available for these countries: ${countriesInString}. For details, visit : </p>
+                                    
+                                <a href="https://rh-travels.org/packages" style="
+                                ">🌍 https://rh-travels.org/packages</a>
+            
+                                           <p style="margin-top: 20px; font-size: 12px; color: gray;">
+                                                You're receiving this email because you subscribed to RH Travels.
+                                            </p>
+                                           `
+                    })
+                })
+            )
+
+            return Response.json(ApiSuccess('Package added successfully and Emails sent', newPackage, 200))
         } else {
             return Response.json(ApiError('Package was not added', 400))
         }
@@ -163,3 +191,5 @@ export async function DELETE(request: Request) {
 
     }
 }
+
+
