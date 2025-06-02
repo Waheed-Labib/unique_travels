@@ -19,12 +19,18 @@ export async function GET(req: NextRequest) {
             return NextResponse.redirect(new URL('/verification-error', req.url));
         }
 
+        const redirectWithEmail = (path: string) => {
+            const url = new URL(path, req.url);
+            url.searchParams.set('email', subscriber.email);
+            return NextResponse.redirect(url);
+        };
+
         if (subscriber.verificationTokenExpiry && subscriber.verificationTokenExpiry < new Date()) {
-            return NextResponse.redirect(new URL('/verification-expired', req.url));
+            return redirectWithEmail('/verification-expired');
         }
 
         if (subscriber.isVerified) {
-            return NextResponse.redirect(new URL('/already-verified', req.url));
+            return redirectWithEmail('/already-verified');
         }
 
         subscriber.isVerified = true;
@@ -32,7 +38,7 @@ export async function GET(req: NextRequest) {
         subscriber.verificationTokenExpiry = undefined;
         await subscriber.save();
 
-        return NextResponse.redirect(new URL('/verified', req.url));
+        return redirectWithEmail('/verified');
 
     } catch (error) {
         console.error('Verification Error:', error);
