@@ -6,71 +6,36 @@ export async function GET(req: NextRequest) {
     await dbConnect();
 
     const { searchParams } = new URL(req.url);
-    const email = searchParams.get('email');
+    const token = searchParams.get('token');
 
-    if (!email) {
-        return NextResponse.json(
-            {
-                success: false,
-                message: "Email was not sent via request"
-            },
-            {
-                status: 400
-            }
-        )
+    if (!token) {
+        return NextResponse.redirect(new URL('/verification-error', req.url)); // Redirect on missing token
     }
 
     try {
-        const subscriber = await SubscriberModel.findOne({ email });
+        const subscriber = await SubscriberModel.findOne({ verificationToken: token });
 
         if (!subscriber) {
-            return NextResponse.json(
-                {
-                    success: false,
-                    message: "Subscriber not found"
-                },
-                {
-                    status: 400
-                }
-            )
+            return NextResponse.redirect(new URL('/verification-error', req.url));
+        }
+
+        if (subscriber.verificationTokenExpiry && subscriber.verificationTokenExpiry < new Date()) {
+            return NextResponse.redirect(new URL('/verification-expired', req.url));
         }
 
         if (subscriber.isVerified) {
-            return NextResponse.json(
-                {
-                    success: false,
-                    message: "Subscriber already verified"
-                },
-                {
-                    status: 400
-                }
-            )
+            return NextResponse.redirect(new URL('/already-verified', req.url));
         }
 
         subscriber.isVerified = true;
+        subscriber.verificationToken = undefined;
+        subscriber.verificationTokenExpiry = undefined;
         await subscriber.save();
 
-        return NextResponse.json(
-            {
-                success: true,
-                message: "Verification successful",
-                data: subscriber
-            },
-            {
-                status: 200
-            }
-        )
+        return NextResponse.redirect(new URL('/verified', req.url));
 
     } catch (error) {
         console.error('Verification Error:', error);
-        return NextResponse.json(
-            {
-                success: false,
-                message: "Verification failed"
-            },
-            {
-                status: 400
-            }
-        )
+        return NextResponse.redirect(new URL('/verification-error', req.url));
     }
 }

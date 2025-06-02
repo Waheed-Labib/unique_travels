@@ -41,7 +41,8 @@ export async function GET(request: NextRequest) {
             return NextResponse.json(
                 {
                     success: true,
-                    message: "Getting Countries Successful"
+                    message: "Getting Countries Successful",
+                    data: result
                 },
                 { status: 200 }
             );
@@ -112,7 +113,8 @@ export async function POST(request: NextRequest) {
             return NextResponse.json(
                 {
                     success: true,
-                    message: "Country added successfully"
+                    message: "Country added successfully",
+                    data: newCountry
                 },
                 { status: 200 }
             );
@@ -185,7 +187,8 @@ export async function PATCH(req: NextRequest) {
         return NextResponse.json(
             {
                 success: true,
-                message: "Country updated successfully"
+                message: "Country updated successfully",
+                data: country
             },
             { status: 200 }
         );

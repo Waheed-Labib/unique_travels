@@ -8,6 +8,9 @@ export default async function Navbar() {
 
     const res = await fetch('http://localhost:3000/api/countries');
     const data = await res.json();
+
+    console.log(data)
+
     const countries = data.data;
 
     const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));

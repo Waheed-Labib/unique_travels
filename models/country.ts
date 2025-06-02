@@ -2,7 +2,6 @@ import mongoose, { Document, Schema } from "mongoose";
 
 export interface Country extends Document {
     name: string,
-    href: string,
     image: string,
     visaRequirements: string[]
 }

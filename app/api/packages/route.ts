@@ -52,7 +52,8 @@ export async function GET(request: NextRequest) {
             return NextResponse.json(
                 {
                     success: true,
-                    message: 'Getting packages successful'
+                    message: 'Getting packages successful',
+                    data: packages
                 },
                 {
                     status: 200

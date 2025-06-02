@@ -2,7 +2,9 @@ import mongoose, { Document, Schema } from "mongoose";
 
 export interface Subscriber extends Document {
     email: string,
-    isVerified: boolean
+    isVerified: boolean,
+    verificationToken: string | undefined,
+    verificationTokenExpiry: Date | undefined
 }
 
 export const SubscriberSchema: Schema<Subscriber> = new Schema({
@@ -14,6 +16,14 @@ export const SubscriberSchema: Schema<Subscriber> = new Schema({
     isVerified: {
         type: Boolean,
         default: false
+    },
+    verificationToken: {
+        type: String,
+        required: false
+    },
+    verificationTokenExpiry: {
+        type: Date,
+        required: false
     }
 })
 

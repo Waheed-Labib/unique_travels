@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "../../../lib/dbConnect";
 import { resend } from "../../../lib/resend";
 import SubscriberModel from "../../../models/subscriber";
+import crypto from "crypto";
+
 
 export async function POST(request: NextRequest) {
     await dbConnect();
@@ -39,39 +41,37 @@ export async function POST(request: NextRequest) {
             )
         }
 
-        const subscriber = await SubscriberModel.create({ email, isVerified: false });
+        const verificationToken = crypto.randomBytes(32).toString("hex");
+        const verificationTokenExpiry = new Date(Date.now() + 1000 * 60 * 60); // 1 hour
 
-        if (subscriber) {
+        const subscriber = await SubscriberModel.create({
+            email,
+            isVerified: false,
+            verificationToken,
+            verificationTokenExpiry
+        });
 
-            await resend.emails.send({
-                from: 'RH Travels <onboarding@resend.dev>',
-                to: email,
-                subject: 'Please verify your email',
-                html: `<p>Thanks for subscribing! Please verify your email by clicking the link below:</p>
-                   <p><a href="http://localhost:3000/api/verify?email=${encodeURIComponent(email)}">Verify Email</a></p>`
-            });
+        const verifyUrl = `http://localhost:3000/api/verify?token=${verificationToken}`;
 
-            return NextResponse.json(
-                {
-                    success: true,
-                    message: 'Subscriber added successfully',
-                    data: subscriber
-                },
-                {
-                    status: 200
-                }
-            )
-        } else {
-            return NextResponse.json(
-                {
-                    success: false,
-                    message: 'Subscription Failed'
-                },
-                {
-                    status: 400
-                }
-            )
-        }
+        await resend.emails.send({
+            from: 'RH Travels <onboarding@resend.dev>',
+            to: email,
+            subject: 'Please verify your email',
+            html: `<p>Thanks for subscribing! Please verify your email by clicking the link below:</p>
+            <p><a href="${verifyUrl}">Verify Email</a></p>`
+        });
+
+        return NextResponse.json(
+            {
+                success: true,
+                message: 'Subscriber added successfully',
+                data: subscriber
+            },
+            {
+                status: 200
+            }
+        )
+
 
     } catch (error) {
         console.error('Subscription Failed: ', error);
