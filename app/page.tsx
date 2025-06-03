@@ -3,6 +3,7 @@ import logo from "../public/assets/logo.png"
 import Packages from "../ui/packages/packages";
 import Destinations from "../ui/destinations/destinations";
 import WorkAbroad from "../ui/work-abroad/workAbroad";
+import Accessories from "../ui/accessories";
 
 export default function Home() {
   return (
@@ -19,6 +20,8 @@ export default function Home() {
 
       <Destinations></Destinations>
       <WorkAbroad isMarginShort={false} isHome={true}></WorkAbroad>
+
+      <Accessories></Accessories>
     </div>
   );
 }
