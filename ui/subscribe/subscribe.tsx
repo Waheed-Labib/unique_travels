@@ -6,17 +6,18 @@ import Section from "../Section";
 import PrimaryBtn from "../buttons/primaryBtn";
 import * as motion from "motion/react-client"
 import { useState } from "react";
-import ErrorAlert from "../error-alert/ErrorAlert";
-import SuccessAlert from "../success-alert/SuccessAlert";
+import ErrorAlert from "../modals/error-alert/ErrorAlert";
+import TaskAlert from "../modals/task-alert/TaskAlert";
+import SubscriberAlreadyExists from "../modals/subscriberAlreadyExists/SubscriberAlredyExists";
 
 export default function Subscribe() {
 
-    const [success, setSuccess] = useState('');
+    const [task, setTask] = useState('');
     const [error, setError] = useState('');
+    const [subscriberExists, setSubscriberExists] = useState(false);
+    const [subscriberVerified, setSubscriberVerified] = useState(false);
     const [loading, setLoading] = useState(false);
-
-    console.log('success', success);
-    console.log('error', error);
+    const [email, setEmail] = useState('');
 
     const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -24,7 +25,7 @@ export default function Subscribe() {
 
         setLoading(true);
         setError('');
-        setSuccess('');
+        setTask('');
 
         const form = e.target as HTMLFormElement;
         const emailInput = form.email as HTMLInputElement;
@@ -51,11 +52,20 @@ export default function Subscribe() {
             const data = await res.json();
 
             if (!res.ok) {
+                if (data.message === 'Subscriber already exists, but not Verified') {
+                    setSubscriberExists(true)
+                    return
+                }
+                if (data.message === 'Subscriber already exists and Verified') {
+                    setSubscriberExists(true)
+                    setSubscriberVerified(true)
+                    return
+                }
                 setError(data.message || "Subscription failed");
                 return
             }
 
-            setSuccess("Subscribed successfully!");
+            setTask("Please check your email for verification");
             emailInput.value = "";
 
         } catch (error: unknown) {
@@ -68,6 +78,7 @@ export default function Subscribe() {
             }
         } finally {
             setLoading(false);
+            emailInput.value = "";
         }
     };
 
@@ -91,7 +102,7 @@ export default function Subscribe() {
                             <span className="label-text text-lg text-base-200">Your Email</span>
                             {/* <span className="label-text-alt">Top Right label</span> */}
                         </div>
-                        <input name='email' type="email" placeholder="Email" className="input input-bordered w-full" />
+                        <input onChange={(e) => setEmail(e.target.value)} name='email' type="email" placeholder="Email" className="input input-bordered w-full" />
                         <div className="label">
                             <div className="label-text-alt mt-1 text-sm w-full text-base-200 flex items-start gap-2">
                                 <div className="text-lg pt-1">
@@ -130,10 +141,21 @@ export default function Subscribe() {
                     <></>
             }
             {
-                success ?
-                    <SuccessAlert
-                        success={success}
-                        setSuccess={setSuccess}></SuccessAlert>
+                task ?
+                    <TaskAlert
+                        task={task}
+                        setTask={setTask}></TaskAlert>
+                    :
+                    <></>
+            }
+            {
+                subscriberExists ?
+                    <SubscriberAlreadyExists
+                        email={email}
+                        subscriberExistsModalOpen={subscriberExists}
+                        setSubscriberExistsModalOpen={setSubscriberExists}
+                        subscriberVerified={subscriberVerified}
+                    ></SubscriberAlreadyExists>
                     :
                     <></>
             }

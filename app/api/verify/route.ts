@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
         const subscriber = await SubscriberModel.findOne({ verificationToken: token });
 
         if (!subscriber) {
-            return NextResponse.redirect(new URL('/verification-error', req.url));
+            return NextResponse.redirect(new URL('/verification/verification-error', req.url));
         }
 
         const redirectWithEmail = (path: string) => {
@@ -26,22 +26,22 @@ export async function GET(req: NextRequest) {
         };
 
         if (subscriber.verificationTokenExpiry && subscriber.verificationTokenExpiry < new Date()) {
-            return redirectWithEmail('/verification-expired');
+            return redirectWithEmail('/verification/verification-expired');
         }
 
         if (subscriber.isVerified) {
-            return redirectWithEmail('/already-verified');
+            return redirectWithEmail('/verification/already-verified');
         }
 
         subscriber.isVerified = true;
-        subscriber.verificationToken = undefined;
-        subscriber.verificationTokenExpiry = undefined;
+        // subscriber.verificationToken = undefined;
+        // subscriber.verificationTokenExpiry = undefined;
         await subscriber.save();
 
-        return redirectWithEmail('/verified');
+        return redirectWithEmail('/verification/verified');
 
     } catch (error) {
         console.error('Verification Error:', error);
-        return NextResponse.redirect(new URL('/verification-error', req.url));
+        return NextResponse.redirect(new URL('/verification/verification-error', req.url));
     }
 }

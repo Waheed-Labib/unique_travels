@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
         };
 
         if (subscriber.isVerified) {
-            return redirectWithEmail('/already-verified');
+            return redirectWithEmail('/verification/already-verified');
         }
 
         const verificationToken = crypto.randomBytes(32).toString("hex");
@@ -56,6 +56,8 @@ export async function POST(request: NextRequest) {
 
         subscriber.verificationToken = verificationToken;
         subscriber.verificationTokenExpiry = verificationTokenExpiry;
+
+        await subscriber.save();
 
         const verifyUrl = `http://localhost:3000/api/verify?token=${verificationToken}`;
 

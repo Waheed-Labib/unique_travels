@@ -1,18 +1,14 @@
-'use client'
-
-import { MouseEventHandler, ReactNode } from "react"
 import * as motion from "motion/react-client"
+import { ReactNode } from "react"
 
-export default function PrimaryBtn({ type, children, className, handler }: {
+export default function PrimaryBtn({ type, children, className }: {
     type?: "button" | "submit" | "reset" | undefined
     children: ReactNode,
-    className?: string,
-    handler?: MouseEventHandler<HTMLButtonElement>;
+    className?: string
 }) {
     return (
         <motion.button
             type={type}
-            onClick={handler}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className={`btn btn-primary glass bg-primary ${className}`}>

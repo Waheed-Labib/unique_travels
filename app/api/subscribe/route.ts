@@ -29,11 +29,21 @@ export async function POST(request: NextRequest) {
 
         const alreadyExists = await SubscriberModel.findOne({ email });
 
-        if (alreadyExists) {
+        if (alreadyExists && alreadyExists.isVerified) {
             return NextResponse.json(
                 {
                     success: false,
-                    message: 'Subscriber already exists'
+                    message: 'Subscriber already exists and Verified'
+                },
+                {
+                    status: 400
+                }
+            )
+        } else if (alreadyExists) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: 'Subscriber already exists, but not Verified'
                 },
                 {
                     status: 400

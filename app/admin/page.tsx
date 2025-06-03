@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from "react";
-import SuccessAlert from "../../ui/success-alert/SuccessAlert";
-import ErrorAlert from "../../ui/error-alert/ErrorAlert";
+import SuccessAlert from "../../ui/modals/success-alert/SuccessAlert";
+import ErrorAlert from "../../ui/modals/error-alert/ErrorAlert";
 
 export default function Page() {
 
