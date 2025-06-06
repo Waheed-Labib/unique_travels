@@ -1,7 +1,6 @@
-import Link from "next/link";
 import Packages from "../../../ui/packages/packages";
-import { outfit } from "../../layout";
 import Requirements from "./requirements";
+import Breadcrumbs from "../../../ui/breadcrumbs";
 
 export default async function Page({
     params,
@@ -17,22 +16,12 @@ export default async function Page({
 
     return (
         <div className="">
-            <div
-                className="h-48 p-0 bg-neutral bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${country?.image})` }}
-            >
-                <div
-                    className="breadcrumbs flex flex-col gap-8 justify-center items-center w-full h-full bg-neutral/75 text-slate-50"
-
-                >
-                    <p className={`${outfit.className} text-2xl font-semibold`}>{country?.name}</p>
-                    <ul className="text-sm py-2 px-4 italic rounded-sm">
-                        <li><Link href="/" className="">home</Link></li>
-                        <li><Link href="/destinations" className="">destinations</Link></li>
-                        <li>{countryName}</li>
-                    </ul>
-                </div>
-            </div>
+            <Breadcrumbs
+                image={country?.image}
+                name={country?.name}
+                part2='destinations'
+                part3={countryName}
+            ></Breadcrumbs>
             <div>
                 <Requirements countryName={country?.name} requirements={country?.visaRequirements}></Requirements>
             </div>

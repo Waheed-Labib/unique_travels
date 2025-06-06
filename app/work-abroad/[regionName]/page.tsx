@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { outfit } from "../../layout";
 import Circulars from "./circulars";
+import Breadcrumbs from "../../../ui/breadcrumbs";
 
 export default async function Page({
     params,
@@ -22,22 +21,13 @@ export default async function Page({
 
     return (
         <div className="">
-            <div
-                className="h-48 p-0 bg-neutral bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${region?.image})` }}
-            >
-                <div
-                    className="breadcrumbs flex flex-col gap-8 justify-center items-center w-full h-full bg-neutral/75 text-slate-50"
 
-                >
-                    <p className={`${outfit.className} text-2xl font-semibold`}>{region?.name}</p>
-                    <ul className="text-sm py-2 px-4 italic rounded-sm">
-                        <li><Link href="/" className="">home</Link></li>
-                        <li><Link href="/work-abroad" className="">work-abroad</Link></li>
-                        <li>{regionName}</li>
-                    </ul>
-                </div>
-            </div>
+            <Breadcrumbs
+                image={region?.image}
+                name={region?.name}
+                part2='work-abroad'
+                part3={regionName}
+            ></Breadcrumbs>
 
             <Circulars regionName={regionName} circulars={circulars}></Circulars>
         </div >
