@@ -3,26 +3,26 @@
 import { createContext, ReactNode, useState } from "react";
 
 type AdminContextType = {
-    isLoggedIn: boolean
+    admin: null | object
 }
 
-const AdminContext = createContext<AdminContextType>({ isLoggedIn: false });
+export const AdminContext = createContext<AdminContextType>({ admin: null });
 
 export const AdminProvider = ({ children }: { children: ReactNode }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [admin, setAdmin] = useState(null);
 
     const checkToken = async () => {
         const res = await fetch('/api/verify-token', { credentials: "include" });
         const data = await res.json();
 
         if (data.admin) {
-            setIsLoggedIn(true)
+            setAdmin(data.admin)
         }
     }
 
     checkToken();
 
-    return <AdminContext.Provider value={{ isLoggedIn }}>
+    return <AdminContext.Provider value={{ admin }}>
         {children}
     </AdminContext.Provider>
 }

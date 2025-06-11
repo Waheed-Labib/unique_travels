@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import SuccessAlert from "../../ui/modals/success-alert/SuccessAlert";
 import ErrorAlert from "../../ui/modals/error-alert/ErrorAlert";
+import { AdminContext } from "../../contexts/AdminContext";
 
 export default function Page() {
 
@@ -47,6 +48,12 @@ export default function Page() {
                 setError(`Login Failed: ${error.message}`);
             });
 
+    }
+
+    const admin = useContext(AdminContext);
+
+    if (admin) {
+        return <p>Admin logged in</p>
     }
 
     return (

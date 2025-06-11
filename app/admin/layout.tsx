@@ -1,3 +1,4 @@
+import { AdminProvider } from "../../contexts/AdminContext";
 import GoToHomeBtn from "../../ui/buttons/goToHomeBtn";
 
 export default function Layout({
@@ -7,7 +8,10 @@ export default function Layout({
 }>) {
     return (
         <div className="bg-base-100 min-h-[100vh] text-neutral flex flex-col items-center gap-32 pb-12">
-            {children}
+            <AdminProvider>
+                {children}
+            </AdminProvider>
+
             <GoToHomeBtn></GoToHomeBtn>
         </div>
     );
