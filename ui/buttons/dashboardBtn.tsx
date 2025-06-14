@@ -1,13 +1,11 @@
 import { ReactNode } from "react";
 
-const DashboardBtn = ({ borderColor, bgColor, hoverBgColor, children }: {
-    borderColor: 'neutral' | ''
-    bgColor: 'base-100' | 'red-700',
-    hoverBgColor: 'base-200' | 'red-800'
+const DashboardBtn = ({ type, children }: {
+    type: 'logout' | 'option'
     children: ReactNode
 }) => {
     return (
-        <button className={`btn btn-sm text-base-100 bg-${bgColor} border-${borderColor} font-medium w-32 hover:bg-${hoverBgColor}`}>
+        <button className={`btn btn-sm font-medium w-32 ${type === 'logout' ? 'bg-red-700 hover:bg-red-800 text-base-100' : ''} ${type === 'option' ? 'bg-base-100 border-base-300 hover:bg-base-200 text-neutral' : ''}`}>
             {children}
         </button>
     );

@@ -7,7 +7,7 @@ const AdminDashboard = () => {
 
         <p>Dashboard</p>
 
-        <DashboardBtn borderColor='' bgColor='red-700' hoverBgColor='red-800'>Log Out</DashboardBtn>
+        <DashboardBtn type='logout'>Log Out</DashboardBtn>
 
     </div >
 
