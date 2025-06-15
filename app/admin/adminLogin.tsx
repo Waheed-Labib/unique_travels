@@ -1,17 +1,23 @@
 'use client'
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ErrorAlert from "../../ui/modals/error-alert/ErrorAlert";
 import SuccessAlert from "../../ui/modals/success-alert/SuccessAlert";
+import { AdminContext } from "../../contexts/AdminContext";
 
 const AdminLogin = () => {
 
+    const { setAdmin } = useContext(AdminContext);
+
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
 
         e.preventDefault();
+
+        setLoading(true);
 
         const form = e.currentTarget;
 
@@ -34,12 +40,17 @@ const AdminLogin = () => {
             .then(async (res) => {
                 if (!res.ok) {
                     const error = await res.json();
-                    throw new Error(error.message || 'Login Request failed');
+                    console.error(error);
+
+                    setError('Login Request failed');
                 }
+
+                setLoading(false);
                 return res.json();
             })
-            .then(() => {
+            .then((data) => {
                 setSuccess('Login Successful');
+                setAdmin(data.data);
                 emailField.value = '';
                 passwordField.value = '';
             })
@@ -61,7 +72,13 @@ const AdminLogin = () => {
                     <label className="label text-sm">Password</label>
                     <input name='password' type="password" className="input w-64 border-base-200" placeholder="Password" />
 
-                    <button type="submit" className="btn bg-neutral/90 text-white hover:bg-neutral/95 mt-4 block w-64">Login</button>
+                    {
+                        loading ?
+                            <button disabled className="btn bg-neutral/80 text-white mt-4 block w-64">Loading ...</button>
+                            :
+                            <button type="submit" className="btn bg-neutral/90 text-white hover:bg-neutral/95 mt-4 block w-64">Login</button>
+                    }
+
 
                     <p className="text-neutral text-sm mt-4 cursor-pointer underline hover:font-semibold transition-all text-center">Forgot Password?</p>
                 </form>

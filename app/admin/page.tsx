@@ -7,10 +7,14 @@ import { AdminContext } from "../../contexts/AdminContext";
 
 export default function Page() {
 
-    const admin = useContext(AdminContext);
+    const { admin } = useContext(AdminContext);
 
     if (!admin) {
-        return <AdminLogin></AdminLogin>
+        return (
+            <div>
+                <AdminLogin></AdminLogin>
+            </div>
+        )
     }
 
     else {

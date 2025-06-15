@@ -10,23 +10,28 @@ const AdminDashboard = () => {
 
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleLogout = async () => {
         try {
+            setLoading(true);
             const res = await fetch('/api/logout', {
                 method: 'POST',
                 credentials: 'include',
             })
 
             if (res.ok) {
-                setSuccess('Logout Successful')
-                setAdmin(null)
+                setSuccess('Logout Successful');
+                setAdmin(null);
+                setLoading(false);
             } else {
-                setError('Logout Failed')
+                setError('Logout Failed');
+                setLoading(false);
             }
         } catch (err) {
-            console.error('Logout error:', err)
-            setError('Logout Failed')
+            console.error('Logout error:', err);
+            setError('Logout Failed');
+            setLoading(false);
         }
     }
 
@@ -41,7 +46,12 @@ const AdminDashboard = () => {
             <DashboardBtn onClick={handleLogout} type='option'>Update Contact</DashboardBtn>
         </div>
 
-        <DashboardBtn onClick={handleLogout} type='logout'>Log Out</DashboardBtn>
+        {
+            loading ?
+                <DashboardBtn type='loading'></DashboardBtn>
+                :
+                <DashboardBtn type='logout' onClick={handleLogout}>Log Out</DashboardBtn>
+        }
 
         {
             success && <SuccessAlert
