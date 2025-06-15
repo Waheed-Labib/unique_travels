@@ -5,7 +5,7 @@ const DashboardBtn = ({ type, children }: {
     children: ReactNode
 }) => {
     return (
-        <button className={`btn btn-sm font-medium w-32 ${type === 'logout' ? 'bg-red-700 hover:bg-red-800 text-base-100' : ''} ${type === 'option' ? 'bg-base-100 border-base-300 hover:bg-base-200 text-neutral' : ''}`}>
+        <button className={`btn btn-sm font-semibold w-56 ${type === 'logout' ? 'bg-red-700/90 hover:bg-red-700 text-base-100 rounded-sm' : ''} ${type === 'option' ? 'bg-base-100 border-base-300 hover:bg-base-200 text-neutral shadow-sm shadow-neutral' : ''}`}>
             {children}
         </button>
     );

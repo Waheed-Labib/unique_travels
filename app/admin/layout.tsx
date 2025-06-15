@@ -7,7 +7,7 @@ export default function Layout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="bg-base-100 min-h-[100vh] text-neutral flex flex-col items-center gap-32 pb-12">
+        <div className="bg-base-100 min-h-[100vh] text-neutral flex flex-col items-center gap-12">
             <AdminProvider>
                 {children}
             </AdminProvider>
