@@ -3,6 +3,7 @@ import DashboardBtn from '../../../ui/buttons/dashboardBtn';
 import SuccessAlert from '../../../ui/modals/success-alert/SuccessAlert';
 import ErrorAlert from '../../../ui/modals/error-alert/ErrorAlert';
 import { AdminContext } from '../../../contexts/AdminContext';
+import Link from 'next/link';
 
 const AdminDashboard = () => {
 
@@ -13,8 +14,9 @@ const AdminDashboard = () => {
     const [loading, setLoading] = useState(false);
 
     const handleLogout = async () => {
+        setLoading(true);
+
         try {
-            setLoading(true);
             const res = await fetch('/api/logout', {
                 method: 'POST',
                 credentials: 'include',
@@ -23,15 +25,16 @@ const AdminDashboard = () => {
             if (res.ok) {
                 setSuccess('Logout Successful');
                 setAdmin(null);
-                setLoading(false);
+
             } else {
                 setError('Logout Failed');
-                setLoading(false);
+
             }
         } catch (err) {
             console.error('Logout error:', err);
             setError('Logout Failed');
-            setLoading(false);
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -40,10 +43,23 @@ const AdminDashboard = () => {
         <p className='text-xl text-neutral/80 font-bold'>Admin Dashboard</p>
 
         <div className='border-y flex flex-col gap-4'>
-            <DashboardBtn onClick={handleLogout} type='option'>Update Countries</DashboardBtn>
-            <DashboardBtn onClick={handleLogout} type='option'>Update Packages</DashboardBtn>
-            <DashboardBtn onClick={handleLogout} type='option'>Update Work-Abroad</DashboardBtn>
-            <DashboardBtn onClick={handleLogout} type='option'>Update Contact</DashboardBtn>
+
+            <Link href='/admin/update/countries'>
+                <DashboardBtn type='option'>Update Countries</DashboardBtn>
+            </Link>
+
+            <Link href='/admin/update/packages'>
+                <DashboardBtn type='option'>Update Packages</DashboardBtn>
+            </Link>
+
+            <Link href='/admin/update/work-abroad'>
+                <DashboardBtn type='option'>Update Work-Abroad</DashboardBtn>
+            </Link>
+
+            <Link href='/admin/update/contact'>
+                <DashboardBtn type='option'>Update Contact</DashboardBtn>
+            </Link>
+
         </div>
 
         {
