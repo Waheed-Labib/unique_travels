@@ -7,7 +7,7 @@ const DashboardBtn = ({ type, onClick, children }: {
 }) => {
     if (type === 'loading') {
         return (
-            <button disabled className="btn bg-neutral/80 text-white mt-4 block w-56">
+            <button disabled className="btn btn-sm bg-neutral/80 text-white mt-4 block w-56">
                 Loading ...
             </button>
         );
@@ -17,7 +17,7 @@ const DashboardBtn = ({ type, onClick, children }: {
         <button
             {...(onClick ? { onClick } : {})}
             className={`btn btn-sm font-semibold w-56 
-                ${type === 'logout' ? 'bg-red-700/90 hover:bg-red-700 text-base-100 rounded-sm' : ''} 
+                ${type === 'logout' ? 'bg-red-700/90 hover:bg-red-700 text-base-100' : ''} 
                 ${type === 'option' ? 'bg-base-100 border-base-300 hover:bg-base-200 text-neutral shadow-sm shadow-neutral' : ''}`}
         >
             {children}

@@ -28,3 +28,10 @@ export type Region = {
 }
 
 export type statusCode = 100 | 200 | 300 | 400 | 500
+
+export type Admin = {
+    _id: string,
+    email: string,
+    exp: Date,
+    iat: Date
+}

@@ -1,34 +1,50 @@
 'use client'
 
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
+import { Admin } from '../lib/types'
 
 type AdminContextType = {
-    admin: null | object
-    setAdmin: React.Dispatch<React.SetStateAction<null | object>>
+    admin: null | Admin
+    setAdmin: React.Dispatch<React.SetStateAction<null | Admin>>
+    loading: boolean
 }
 
 export const AdminContext = createContext<AdminContextType>({
     admin: null,
     setAdmin: () => { },
+    loading: true
 })
 
 export const AdminProvider = ({ children }: { children: ReactNode }) => {
-    const [admin, setAdmin] = useState<null | object>(null)
+    const [admin, setAdmin] = useState<null | Admin>(null)
+    const [loading, setLoading] = useState(true);
 
-    const checkToken = async () => {
-        const res = await fetch('/api/(admin)/check-auth', {
-            credentials: 'include',
-        })
-        const data = await res.json()
-        if (data.admin) {
-            setAdmin(data.admin)
+    useEffect(() => {
+
+        const checkToken = async () => {
+            try {
+                const res = await fetch('/api/verify-token', {
+                    credentials: 'include',
+                })
+
+                const data = await res.json();
+
+                if (data.data) {
+                    setAdmin(data.data)
+                }
+            } catch (err) {
+                console.error('checking token failed', err)
+            }
+            finally {
+                setLoading(false)
+            }
         }
-    }
 
-    checkToken()
+        checkToken()
+    }, [])
 
     return (
-        <AdminContext.Provider value={{ admin, setAdmin }}>
+        <AdminContext.Provider value={{ admin, setAdmin, loading }}>
             {children}
         </AdminContext.Provider>
     )

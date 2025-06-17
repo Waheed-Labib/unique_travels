@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const AdminDashboard = () => {
 
-    const { setAdmin } = useContext(AdminContext);
+    const { admin, setAdmin } = useContext(AdminContext);
 
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
@@ -40,7 +40,10 @@ const AdminDashboard = () => {
 
     return <div className="text-neutral p-12 flex flex-col items-center gap-8">
 
-        <p className='text-xl text-neutral/80 font-bold'>Admin Dashboard</p>
+        <div className='flex flex-col items-center gap-1'>
+            <p className='text-xl text-neutral/80 font-bold'>Admin Dashboard</p>
+            <p className='text-xs'>{admin?.email}</p>
+        </div>
 
         <div className='border-y flex flex-col gap-4'>
 
@@ -56,9 +59,11 @@ const AdminDashboard = () => {
                 <DashboardBtn type='option'>Update Work-Abroad</DashboardBtn>
             </Link>
 
-            <Link href='/admin/update/contact'>
-                <DashboardBtn type='option'>Update Contact</DashboardBtn>
-            </Link>
+            <div>
+                <Link href='/admin/update/contact'>
+                    <DashboardBtn type='option'>Update Contact</DashboardBtn>
+                </Link>
+            </div>
 
         </div>
 
