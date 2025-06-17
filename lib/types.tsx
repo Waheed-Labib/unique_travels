@@ -35,3 +35,10 @@ export type Admin = {
     exp: Date,
     iat: Date
 }
+
+export type Contact = {
+    _id: string,
+    hotline: string,
+    whatsAppNumber: string,
+    address: string
+}
