@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { Contact } from '../../../../lib/types';
+import SuccessAlert from '../../../../ui/modals/success-alert/SuccessAlert';
+import ErrorAlert from '../../../../ui/modals/error-alert/ErrorAlert';
 
 const Page = () => {
 
@@ -12,7 +14,11 @@ const Page = () => {
     const [newWhatsapp, setNewWhatsapp] = useState('');
     const [newAddress, setNewAddress] = useState('');
 
-    const [loading, setLoading] = useState(true);
+    const [dataLoading, setDataLoading] = useState(true);
+    const [updating, setUpdating] = useState(false);
+
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
 
     useEffect(() => {
 
@@ -24,7 +30,7 @@ const Page = () => {
             } catch (error) {
                 console.error(error)
             } finally {
-                setLoading(false)
+                setDataLoading(false)
             }
         }
 
@@ -49,6 +55,7 @@ const Page = () => {
     const handleUpdateContact = async (e: React.FormEvent<HTMLFormElement>) => {
 
         e.preventDefault();
+        setUpdating(true);
 
         try {
             const res = await fetch('/api/contacts', {
@@ -64,14 +71,22 @@ const Page = () => {
                 })
             });
 
-            const data = await res.json();
-            console.log(data);
+            if (res.ok) {
+                setSuccess('Update Successful');
+                setChanged(false);
+            } else {
+                setError('Update Failed');
+            }
+
         } catch (error) {
-            console.error(error)
+            console.error(error);
+            setError('Update Failed');
+        } finally {
+            setUpdating(false);
         }
     }
 
-    if (loading) {
+    if (dataLoading) {
         return <div className='text-center'>
             <p>Loading original contact ...</p>
         </div>
@@ -92,13 +107,42 @@ const Page = () => {
                 <input onChange={handleAddressChange} name='address' type="text" defaultValue={originalContact?.address} className="input w-64 border-base-200" />
 
                 {
-                    changed ?
-                        <button type="submit" className="btn bg-neutral/90 text-white hover:bg-neutral/95 mt-4 block w-64">Update</button>
+                    updating ?
+                        <button disabled className="btn bg-neutral/80 text-white mt-4 block w-64">Updating ...</button>
                         :
-                        <button disabled className="btn bg-neutral/80 text-white mt-4 block w-64">Update</button>
+                        <>
+                            {
+                                changed ?
+                                    <button type="submit" className="btn bg-neutral/90 text-white hover:bg-neutral/95 mt-4 block w-64">Update</button>
+                                    :
+                                    <button disabled className="btn bg-neutral/80 text-white mt-4 block w-64">Update</button>
+                            }
+                        </>
+
                 }
 
             </form>
+
+            {
+                success ?
+                    <SuccessAlert
+                        success={success}
+                        setSuccess={setSuccess}
+                    ></SuccessAlert>
+                    :
+                    <></>
+            }
+
+            {
+                error ?
+                    <ErrorAlert
+                        error={error}
+                        setError={setError}
+                    ></ErrorAlert>
+                    :
+                    <></>
+            }
+
         </div>
     );
 };
