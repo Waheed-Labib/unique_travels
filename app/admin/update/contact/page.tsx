@@ -46,8 +46,29 @@ const Page = () => {
         setChanged(true);
     }
 
-    const handleUpdateContact = () => {
+    const handleUpdateContact = async (e: React.FormEvent<HTMLFormElement>) => {
 
+        e.preventDefault();
+
+        try {
+            const res = await fetch('/api/contacts', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    _id: originalContact?._id,
+                    hotline: newHotline,
+                    whatsapp: newWhatsapp,
+                    address: newAddress
+                })
+            });
+
+            const data = await res.json();
+            console.log(data);
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     if (loading) {
