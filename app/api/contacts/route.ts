@@ -54,7 +54,7 @@ export async function PATCH(req: Request) {
     try {
 
         const body = await req.json();
-        const { _id, hotline, whatsAppNumber, address } = body;
+        const { _id, email, hotline, whatsAppNumber, address } = body;
 
         if (!_id) {
             return NextResponse.json(
@@ -80,6 +80,10 @@ export async function PATCH(req: Request) {
                     status: 400
                 }
             );
+        }
+
+        if (email) {
+            contact.email = email
         }
 
         if (hotline) {

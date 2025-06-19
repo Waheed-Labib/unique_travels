@@ -11,6 +11,7 @@ const Page = () => {
 
     const [changed, setChanged] = useState(false);
     const [newHotline, setNewHotline] = useState('');
+    const [newEmail, setNewEmail] = useState('');
     const [newWhatsapp, setNewWhatsapp] = useState('');
     const [newAddress, setNewAddress] = useState('');
 
@@ -42,6 +43,11 @@ const Page = () => {
         setChanged(true);
     }
 
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNewEmail(e.target.value);
+        setChanged(true);
+    }
+
     const handleWhatsappChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNewWhatsapp(e.target.value);
         setChanged(true);
@@ -65,6 +71,7 @@ const Page = () => {
                 },
                 body: JSON.stringify({
                     _id: originalContact?._id,
+                    email: newEmail,
                     hotline: newHotline,
                     whatsapp: newWhatsapp,
                     address: newAddress
@@ -97,13 +104,16 @@ const Page = () => {
             <p className='text-xl font-semibold text-neutral/90'>Update Your Contact</p>
 
             <form onSubmit={handleUpdateContact} className="mt-8 text-neutral">
-                <label className="label text-sm">Hotline</label>
+                <label className="label text-sm font-semibold text-primary">Hotline</label>
                 <input onChange={handleHotlineChange} name='hotline' type="text" defaultValue={originalContact?.hotline} className="input w-64 border-base-200" />
 
-                <label className="label text-sm">Whatsapp</label>
+                <label className="label text-sm font-semibold text-primary">Email</label>
+                <input onChange={handleEmailChange} name='hotline' type="text" defaultValue={originalContact?.email} className="input w-64 border-base-200" />
+
+                <label className="label text-sm font-semibold text-primary">Whatsapp</label>
                 <input onChange={handleWhatsappChange} name='whatsapp' type="text" defaultValue={originalContact?.whatsAppNumber} className="input w-64 border-base-200" />
 
-                <label className="label text-sm">Address</label>
+                <label className="label text-sm font-semibold text-primary">Address</label>
                 <input onChange={handleAddressChange} name='address' type="text" defaultValue={originalContact?.address} className="input w-64 border-base-200" />
 
                 {

@@ -58,7 +58,7 @@ export default async function ContactUs() {
                                 <tbody className="text-base-200">
 
                                     {/* Hotline Row */}
-                                    <tr className="border-b border-base-200">
+                                    <tr className="border-b border-base-300">
                                         <td className="py-4 w-1/3">
                                             <div className="flex items-center gap-2 text-primary">
                                                 <BsFillTelephoneFill className="text-xl text-base-200" />
@@ -76,7 +76,7 @@ export default async function ContactUs() {
                                     </tr>
 
                                     {/* Email Row */}
-                                    <tr className="border-b border-base-200">
+                                    <tr className="border-b border-base-300">
                                         <td className="py-4">
                                             <div className="flex items-center gap-2 text-primary">
                                                 <MdOutlineEmail className="text-lg text-base-200" />
