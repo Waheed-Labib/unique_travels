@@ -28,56 +28,81 @@ export default async function ContactUs() {
                     className="card glass bg-neutral text-base-100 w-full py-2"
                 >
                     <div className="card-body w-full">
-                        <div className="w-full flex flex-col justify-center items-center gap-4 md:gap-8 py-8 md:flex-row text-center">
-
-                            <div className="flex items-center gap-2 text-primary">
-                                <div className="text-2xl text-accent">
-                                    <BsFillTelephoneFill></BsFillTelephoneFill>
-                                </div>
-                                <p className="text-lg text-base-200">Hotline :</p>
-                            </div>
-
-                            <div className="flex items-center gap-2 md:gap-8 flex-col md:flex-row">
-                                <p className="text-lg text-base-200">{hotline}</p>
-                                {/* <CopyNumberBtn></CopyNumberBtn> */}
+                        {/* Small devices: Stacked layout */}
+                        <div className="flex flex-col gap-6 md:hidden text-center items-center">
+                            <div className="flex flex-col items-center gap-2 text-primary">
+                                <BsFillTelephoneFill className="text-2xl text-accent" />
+                                <p className="text-lg text-base-200">Hotline</p>
+                                <p className="text-base-200">{hotline}</p>
                                 <a href={`tel:${hotline}`}>
-                                    <button className={`btn btn-sm btn-primary`}>Call Now</button>
+                                    <button className="btn btn-sm btn-primary">Call Now</button>
                                 </a>
                             </div>
 
+                            <div className="flex flex-col items-center gap-2 text-primary">
+                                <MdOutlineEmail className="text-xl text-accent" />
+                                <p className="text-sm text-base-200">Email</p>
+                                <p className="text-base-200">{email}</p>
+                            </div>
+
+                            <div className="flex flex-col items-center gap-2 text-primary">
+                                <FaLocationDot className="text-xl text-accent" />
+                                <p className="text-sm text-base-200">Address</p>
+                                <p className="text-base-200">{address}</p>
+                            </div>
                         </div>
 
-                        <hr className="border-base-200" />
+                        {/* Medium and larger devices: Table layout */}
+                        <div className="hidden md:flex justify-center">
+                            <table className="table w-full max-w-3xl text-left">
+                                <tbody className="text-base-200">
 
-                        <div className="w-full flex flex-col justify-center items-center gap-4 md:gap-8 py-4 md:flex-row text-center">
+                                    {/* Hotline Row */}
+                                    <tr className="border-b border-base-200">
+                                        <td className="py-4 w-1/3">
+                                            <div className="flex items-center gap-2 text-primary">
+                                                <BsFillTelephoneFill className="text-xl text-base-200" />
+                                                <span className="text-base font-medium">Hotline</span>
+                                            </div>
+                                        </td>
+                                        <td className="py-4">
+                                            <div className="flex items-center gap-4 flex-wrap">
+                                                <p className="text-base-100">{hotline}</p>
+                                                <a href={`tel:${hotline}`}>
+                                                    <button className="btn btn-sm btn-primary">Call Now</button>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-                            <div className="flex items-center gap-2 text-primary">
-                                <div className="text-lg text-accent">
-                                    <MdOutlineEmail></MdOutlineEmail>
-                                </div>
-                                <p className="text-sm text-base-200">Email :</p>
-                            </div>
+                                    {/* Email Row */}
+                                    <tr className="border-b border-base-200">
+                                        <td className="py-4">
+                                            <div className="flex items-center gap-2 text-primary">
+                                                <MdOutlineEmail className="text-lg text-base-200" />
+                                                <span className="text-base font-medium">Email</span>
+                                            </div>
+                                        </td>
+                                        <td className="py-4">
+                                            <p>{email}</p>
+                                        </td>
+                                    </tr>
 
-                            <div className="flex items-center gap-2 md:gap-8 flex-col md:flex-row">
-                                <p className="text-sm text-base-200">{email}</p>
+                                    {/* Address Row */}
+                                    <tr>
+                                        <td className="py-4">
+                                            <div className="flex items-center gap-2 text-primary">
+                                                <FaLocationDot className="text-lg text-base-200" />
+                                                <span className="text-base font-medium">Address</span>
+                                            </div>
+                                        </td>
+                                        <td className="py-4">
+                                            <p>{address}</p>
+                                        </td>
+                                    </tr>
 
-                            </div>
-
-                        </div>
-
-                        <hr className="border-base-200" />
-
-                        <div className="w-full flex justify-center items-center gap-4 md:gap-8 py-4 flex-col md:flex-row text-center">
-                            <div className="flex items-center gap-2 md:gap-4 text-primary">
-                                <div className="text-lg text-accent">
-                                    <FaLocationDot />
-                                </div>
-                                <p className="text-sm text-base-200">Address :</p>
-                            </div>
-
-                            <div>
-                                <p className="text-sm text-base-200">{address}</p>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </motion.div>
