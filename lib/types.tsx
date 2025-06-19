@@ -40,5 +40,6 @@ export type Contact = {
     _id: string,
     hotline: string,
     whatsAppNumber: string,
-    address: string
+    address: string,
+    email: string
 }
