@@ -35,13 +35,13 @@ const Page = () => {
     }
 
     return (
-        <div className='text-neutral flex flex-col items-center gap-12 w-full'>
+        <div className='text-neutral flex flex-col items-center gap-16 w-full'>
             <button className='btn btn-primary glass bg-primary'>
                 <FaPlus></FaPlus>
                 <p className=''>Add New Country</p>
             </button>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 w-full'>
                 {
                     originalCountries.map(country => <EditCountry
                         key={country._id}

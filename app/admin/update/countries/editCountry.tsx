@@ -9,15 +9,16 @@ const EditCountry = ({ country }: { country: country }) => {
         <div className="">
             {
                 <>
-                    <p>{country.name}</p>
+                    <p className="text-neutral/80 text-xl font-bold">{country.name}</p>
 
                     <Image
                         src={country.image}
                         alt="country landscape image"
-                        width={200}
-                        height={80}
-                    >
-                    </Image>
+                        width={1000}
+                        height={600}
+                        className="w-full h-auto object-cover"
+                    />
+
                 </>
             }
         </div>
