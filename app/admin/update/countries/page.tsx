@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { country } from '../../../../lib/types';
-import { FaPlus } from "react-icons/fa";
 import EditCountry from './editCountry';
+import AddCountryBtn from './addCountryBtn';
 
 const Page = () => {
 
@@ -28,32 +28,25 @@ const Page = () => {
         getCountries();
     }, [])
 
-    if (dataLoading) {
-        return <div className='text-center'>
-            <button className='btn btn-primary glass bg-primary'>
-                <FaPlus></FaPlus>
-                <p className=''>Add New Country</p>
-            </button>
-
-            <p>Loading Countries ...</p>
-        </div>
-    }
-
     return (
         <div className='text-neutral flex flex-col items-center gap-16 w-full'>
-            <button className='btn btn-primary glass bg-primary w-full lg:w-1/4'>
-                <FaPlus></FaPlus>
-                <p className=''>Add New Country</p>
-            </button>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 w-full'>
-                {
-                    originalCountries.map(country => <EditCountry
-                        key={country._id}
-                        country={country}
-                    ></EditCountry>)
-                }
-            </div>
+            <AddCountryBtn></AddCountryBtn>
+
+            {
+                dataLoading ?
+                    <p>Loading Countries ...</p>
+                    :
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 w-full'>
+                        {
+                            originalCountries.map(country => <EditCountry
+                                key={country._id}
+                                country={country}
+                            ></EditCountry>)
+                        }
+                    </div>
+            }
+
         </div>
     );
 };
