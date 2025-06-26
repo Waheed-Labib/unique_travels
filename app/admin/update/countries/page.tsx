@@ -30,13 +30,18 @@ const Page = () => {
 
     if (dataLoading) {
         return <div className='text-center'>
+            <button className='btn btn-primary glass bg-primary'>
+                <FaPlus></FaPlus>
+                <p className=''>Add New Country</p>
+            </button>
+
             <p>Loading Countries ...</p>
         </div>
     }
 
     return (
         <div className='text-neutral flex flex-col items-center gap-16 w-full'>
-            <button className='btn btn-primary glass bg-primary'>
+            <button className='btn btn-primary glass bg-primary w-full lg:w-1/4'>
                 <FaPlus></FaPlus>
                 <p className=''>Add New Country</p>
             </button>

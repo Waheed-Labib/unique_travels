@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
 
             result = await CountryModel.findOne({
                 name: new RegExp(`^${country}$`, 'i') // 'i' flag makes it case-insensitive
-            })
+            }).sort({ name: 1 })
 
         } else if (countries) {
 
@@ -26,14 +26,14 @@ export async function GET(request: NextRequest) {
             for (let i = 0; i < countries.length; i++) {
                 const country = await CountryModel.findOne({
                     name: new RegExp(`^${countries[i]}$`, 'i') // 'i' flag makes it case-insensitive
-                })
+                }).sort({ name: 1 })
 
                 result.push(country);
             }
 
         } else {
 
-            result = await CountryModel.find();
+            result = await CountryModel.find().sort({ name: 1 });
 
         }
 

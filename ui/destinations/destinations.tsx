@@ -4,6 +4,7 @@ import * as motion from "motion/react-client";
 import Link from "next/link";
 import CountryCard from "./countryCard";
 import GoToHomeBtn from "../buttons/goToHomeBtn";
+import { country } from "../../lib/types";
 
 export default async function Destinations({ isMarginShort, isHome = true }: {
     isMarginShort?: boolean,
@@ -13,8 +14,6 @@ export default async function Destinations({ isMarginShort, isHome = true }: {
     const res = await fetch('http://localhost:3000/api/countries');
     const data = await res.json();
     const countries = data.data;
-
-    const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name))
 
     return (
         <Section isMarginShort={isMarginShort}>
@@ -27,7 +26,7 @@ export default async function Destinations({ isMarginShort, isHome = true }: {
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 {
-                    sortedCountries.map(country =>
+                    countries.map((country: country) =>
                         <motion.div
                             key={country._id}
                             whileHover={{ scale: 1.04, transition: { duration: 0.2, ease: "easeOut" } }}

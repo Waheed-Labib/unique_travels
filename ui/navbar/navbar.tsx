@@ -3,6 +3,7 @@ import circleLogo from "../../app/favicon.ico"
 import Image from "next/image";
 import { outfit } from "../../app/layout";
 import ContactBtn from "./contactBtn";
+import { country } from "../../lib/types";
 
 export default async function Navbar() {
 
@@ -13,15 +14,13 @@ export default async function Navbar() {
 
     const countries = data.data;
 
-    const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
-
     const packagesLink = <Link href='/packages'>
         Package
     </Link>
 
     const countriesLinks = <ul className="p-2">
         {
-            sortedCountries.map(country => <li key={country.name}><Link href={`/destinations/${country.name.toLowerCase()}`}>{country.name}</Link></li>)
+            countries.map((country: country) => <li key={country.name}><Link href={`/destinations/${country.name.toLowerCase()}`}>{country.name}</Link></li>)
         }
     </ul>
 
