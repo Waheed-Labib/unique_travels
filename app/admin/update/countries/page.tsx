@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { country } from '../../../../lib/types';
 import { FaPlus } from "react-icons/fa";
-import { cn } from '../../../../lib/utils';
+import EditCountry from './editCountry';
 
 const Page = () => {
 
@@ -35,15 +35,18 @@ const Page = () => {
     }
 
     return (
-        <div className='text-neutral flex flex-col items-center gap-4'>
+        <div className='text-neutral flex flex-col items-center gap-12 w-full'>
             <button className='btn btn-primary glass bg-primary'>
                 <FaPlus></FaPlus>
                 <p className=''>Add New Country</p>
             </button>
 
-            <div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full'>
                 {
-                    originalCountries.map(country => <p key={country._id}>{country.name}</p>)
+                    originalCountries.map(country => <EditCountry
+                        key={country._id}
+                        country={country}
+                    ></EditCountry>)
                 }
             </div>
         </div>
