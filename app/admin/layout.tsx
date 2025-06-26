@@ -12,7 +12,10 @@ export default function Layout({
                 {children}
             </AdminProvider>
 
-            <GoToHomeBtn></GoToHomeBtn>
+            <div className="mb-8">
+                <GoToHomeBtn></GoToHomeBtn>
+            </div>
+
         </div>
     );
 }

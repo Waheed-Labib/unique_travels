@@ -56,6 +56,7 @@ const Page = () => {
     const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNewAddress(e.target.value);
         setChanged(true);
+
     }
 
     const handleUpdateContact = async (e: React.FormEvent<HTMLFormElement>) => {
