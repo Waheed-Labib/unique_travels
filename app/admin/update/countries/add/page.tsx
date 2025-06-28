@@ -6,6 +6,8 @@ import ErrorAlert from '../../../../../ui/modals/error-alert/ErrorAlert';
 import CountryImage from './countryImage';
 import { UnsplashImage } from '../../../../../lib/types';
 
+const unsplashClientId = process.env.NEXT_PUBLIC_UNSPLASH_CLIENT_ID;
+
 const Page = () => {
 
     const [name, setName] = useState('');
@@ -52,15 +54,20 @@ const Page = () => {
     };
 
     useEffect(() => {
-
         if (!name) {
             setNameSubmitted(false);
         }
+    }, [name])
+
+    useEffect(() => {
 
         if (nameSubmitted) {
-            fetch(`https://api.unsplash.com/search/photos/?client_id=Y-Zv6OTYaQQ8ZpINzFTxP60tCuSwUAkrAni5IMsSApk&query=${name}&page=1&orientation=landscape`)
+
+            fetch(`https://api.unsplash.com/search/photos/?client_id=${unsplashClientId}&query=${name}&page=1&orientation=landscape`)
                 .then(res => res.json())
-                .then(data => setImages(data.results))
+                .then(data => {
+                    setImages(data.results)
+                })
                 .catch(error => {
                     if (error instanceof Error) {
                         setError(error.message);
