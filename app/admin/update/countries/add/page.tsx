@@ -52,6 +52,11 @@ const Page = () => {
     };
 
     useEffect(() => {
+
+        if (!name) {
+            setNameSubmitted(false);
+        }
+
         if (nameSubmitted) {
             fetch(`https://api.unsplash.com/search/photos/?client_id=Y-Zv6OTYaQQ8ZpINzFTxP60tCuSwUAkrAni5IMsSApk&query=${name}&page=1&orientation=landscape`)
                 .then(res => res.json())
