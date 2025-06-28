@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { country } from '../../../../lib/types';
-import EditCountry from './editCountry';
 import AddCountryBtn from './addCountryBtn';
+import Country from './country';
 
 const Page = () => {
 
@@ -39,10 +39,10 @@ const Page = () => {
                     :
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 w-full'>
                         {
-                            originalCountries.map(country => <EditCountry
+                            originalCountries.map(country => <Country
                                 key={country._id}
                                 country={country}
-                            ></EditCountry>)
+                            ></Country>)
                         }
                     </div>
             }

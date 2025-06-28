@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Contact } from '../../../../lib/types';
 import SuccessAlert from '../../../../ui/modals/success-alert/SuccessAlert';
 import ErrorAlert from '../../../../ui/modals/error-alert/ErrorAlert';
+import DashboardHeading from '../../dashboardHeading';
 
 const Page = () => {
 
@@ -102,7 +103,7 @@ const Page = () => {
 
     return (
         <div className='text-neutral flex flex-col items-center gap-4'>
-            <p className='text-xl font-semibold text-neutral/90'>Update Your Contact</p>
+            <DashboardHeading>Update Your Contact</DashboardHeading>
 
             <form onSubmit={handleUpdateContact} className="mt-8 text-neutral">
                 <label className="label text-sm font-semibold text-primary">Hotline</label>

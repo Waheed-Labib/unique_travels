@@ -5,7 +5,7 @@ import { country } from "../../../../lib/types";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 
-const EditCountry = ({ country }: { country: country }) => {
+const Country = ({ country }: { country: country }) => {
 
     return (
         <div className="">
@@ -48,4 +48,4 @@ const EditCountry = ({ country }: { country: country }) => {
     );
 };
 
-export default EditCountry;
+export default Country;
