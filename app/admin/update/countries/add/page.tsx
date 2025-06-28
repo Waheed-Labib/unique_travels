@@ -13,6 +13,9 @@ const Page = () => {
     const [nameSubmitting, setNameSubmitting] = useState(false);
 
     const [images, setImages] = useState<UnsplashImage[]>([]);
+    const [selectedImage, setSelectedImage] = useState<UnsplashImage | null>(null);
+
+    const [formSubmitting, setFormSubmitting] = useState(false);
 
     const [error, setError] = useState('');
 
@@ -73,6 +76,7 @@ const Page = () => {
                 Add New Country
             </DashboardHeading>
 
+            {/* TODO: This code needs to be cleaner */}
             <form onSubmit={handleAddCountry} className="mt-8 text-neutral">
                 <label className="label text-sm font-semibold text-primary">Country Name</label>
                 <input
@@ -111,7 +115,7 @@ const Page = () => {
                 ) : null}
 
                 {
-                    nameSubmitted ?
+                    name && nameSubmitted ?
                         <div className='mt-8'>
                             <label className="label text-sm font-semibold text-primary">Choose an Image</label>
 
@@ -122,6 +126,8 @@ const Page = () => {
                                             images.map(image => <CountryImage
                                                 key={image.id}
                                                 image={image}
+                                                selectedImage={selectedImage}
+                                                setSelectedImage={setSelectedImage}
                                             ></CountryImage>)
                                         }
                                     </div>
@@ -135,11 +141,55 @@ const Page = () => {
                         :
                         null
                 }
+
+                <div className='w-full flex justify-center'>
+                    {
+                        (nameSubmitted && !selectedImage) ?
+                            < button
+                                disabled
+                                className="btn bg-neutral/80 text-white mt-4 block w-64"
+                            >
+                                Submit
+                            </button>
+                            :
+                            null
+                    }
+
+
+                    {
+                        (nameSubmitted && selectedImage) ?
+                            <>
+                                {
+                                    formSubmitting ?
+                                        <button
+                                            disabled
+                                            className="btn bg-neutral/80 text-white mt-4 block w-64"
+                                        >
+                                            Loading ...
+                                        </button>
+                                        :
+                                        <button
+                                            type='submit'
+                                            className="btn bg-neutral/90 text-white hover:bg-neutral/95 mt-4 block w-64"
+                                        >
+                                            Submit
+                                        </button>
+                                }
+                            </>
+
+                            :
+                            null
+
+                    }
+                </div>
+
             </form >
 
-            {error && (
-                <ErrorAlert error={error} setError={setError} />
-            )}
+            {
+                error && (
+                    <ErrorAlert error={error} setError={setError} />
+                )
+            }
         </div >
     );
 };
