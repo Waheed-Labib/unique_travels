@@ -43,3 +43,15 @@ export type Contact = {
     address: string,
     email: string
 }
+
+export type UnsplashImage = {
+    id: string;
+    alt_description: string;
+    urls: {
+        small: string;
+        regular: string;
+        full: string;
+        thumb: string;
+        raw: string;
+    };
+};

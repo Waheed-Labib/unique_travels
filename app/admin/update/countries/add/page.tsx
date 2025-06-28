@@ -1,14 +1,18 @@
 'use client'
 
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import DashboardHeading from '../../../dashboardHeading';
 import ErrorAlert from '../../../../../ui/modals/error-alert/ErrorAlert';
+import CountryImage from './countryImage';
+import { UnsplashImage } from '../../../../../lib/types';
 
 const Page = () => {
 
     const [name, setName] = useState('');
     const [nameSubmitted, setNameSubmitted] = useState(false);
     const [nameSubmitting, setNameSubmitting] = useState(false);
+
+    const [images, setImages] = useState<UnsplashImage[]>([]);
 
     const [error, setError] = useState('');
 
@@ -37,12 +41,27 @@ const Page = () => {
             if (error instanceof Error) {
                 setError(error.message);
             } else {
-                setError('Something Went Wrong');
+                setError('Something Went Wrong while Checking Country Name');
             }
         } finally {
             setNameSubmitting(false);
         }
     };
+
+    useEffect(() => {
+        if (nameSubmitted) {
+            fetch(`https://api.unsplash.com/search/photos/?client_id=Y-Zv6OTYaQQ8ZpINzFTxP60tCuSwUAkrAni5IMsSApk&query=${name}&page=1&orientation=landscape`)
+                .then(res => res.json())
+                .then(data => setImages(data.results))
+                .catch(error => {
+                    if (error instanceof Error) {
+                        setError(error.message);
+                    } else {
+                        setError('Something Went Wrong while Fetching Images');
+                    }
+                })
+        }
+    }, [name, nameSubmitted])
 
     const handleAddCountry = () => {
         // You can add the logic here later
@@ -90,12 +109,38 @@ const Page = () => {
                         </button>
                     )
                 ) : null}
-            </form>
+
+                {
+                    nameSubmitted ?
+                        <div className='mt-8'>
+                            <label className="label text-sm font-semibold text-primary">Choose an Image</label>
+
+                            <div>
+                                {images.length ?
+                                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+                                        {
+                                            images.map(image => <CountryImage
+                                                key={image.id}
+                                                image={image}
+                                            ></CountryImage>)
+                                        }
+                                    </div>
+                                    :
+                                    <div>
+                                        <p>Loading Images ...</p>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        :
+                        null
+                }
+            </form >
 
             {error && (
                 <ErrorAlert error={error} setError={setError} />
             )}
-        </div>
+        </div >
     );
 };
 
