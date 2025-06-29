@@ -12,7 +12,7 @@ const AddCountryImage = ({ images, selectedImage, setSelectedImage }: {
 
     return (
         <div>
-            <label className="label text-sm font-semibold text-primary">Choose an Image</label>
+            <label className="label text-sm font-semibold text-primary">2. Choose an Image</label>
 
             <div>
                 {images.length ?
