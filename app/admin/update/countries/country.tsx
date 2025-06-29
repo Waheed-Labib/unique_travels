@@ -17,12 +17,14 @@ const Country = ({ country }: { country: country }) => {
 
                         <div className="flex items-center gap-4 text-2xl">
 
-                            <div className="text-secondary relative group">
+                            <Link
+                                href={`/admin/update/countries/edit/${country.name}`}
+                                className="text-secondary relative group">
                                 <FaRegEdit></FaRegEdit>
                                 <span className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition transform bg-gray-700 text-white text-xs rounded py-1 px-2 whitespace-nowrap">
                                     Edit
                                 </span>
-                            </div>
+                            </Link>
 
                             <Link
                                 href={`/admin/update/countries/delete/${country.name}`}
