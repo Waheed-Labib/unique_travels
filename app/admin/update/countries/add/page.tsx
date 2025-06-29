@@ -7,6 +7,8 @@ import { UnsplashImage } from '../../../../../lib/types';
 import AddCountryImage from './add-country-image/addCountryImage';
 import AddVisaRequirements from './add-visa-requirements/addVisaRequirements';
 import AddCountryName from './add-country-name/addCountryName';
+import SuccessAlert from '../../../../../ui/modals/success-alert/SuccessAlert';
+import { useRouter } from 'next/navigation';
 
 const unsplashClientId = process.env.NEXT_PUBLIC_UNSPLASH_CLIENT_ID;
 
@@ -22,7 +24,10 @@ const Page = () => {
 
     const [formSubmitting, setFormSubmitting] = useState(false);
 
+    const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+
+    const router = useRouter();
 
     useEffect(() => {
         if (!name) {
@@ -49,8 +54,36 @@ const Page = () => {
         }
     }, [name, nameSubmitted])
 
-    const handleAddCountry = () => {
+    const handleAddCountry = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setFormSubmitting(true);
 
+        try {
+            const res = await fetch('/api/countries', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    image: selectedImage?.urls.regular,
+                    visaRequirements
+                })
+            });
+
+            if (res.ok) {
+                setSuccess('Country Added Successfully');
+            } else {
+                setError('Failed to Add Country');
+            }
+
+        } catch (error) {
+            console.error(error);
+            setError('Failed to Add Country');
+        } finally {
+            setFormSubmitting(false);
+            router.push('/admin/update/countries')
+        }
     };
 
     return (
@@ -79,7 +112,10 @@ const Page = () => {
                             ></AddCountryImage>
 
                             <div className='mt-8'>
-                                <AddVisaRequirements></AddVisaRequirements>
+                                <AddVisaRequirements
+                                    visaRequirements={visaRequirements}
+                                    setVisaRequirements={setVisaRequirements}
+                                ></AddVisaRequirements>
                             </div>
 
                         </div>
@@ -131,10 +167,17 @@ const Page = () => {
             </form >
 
             {
+                success && (
+                    <SuccessAlert success={success} setSuccess={setSuccess} />
+                )
+            }
+
+            {
                 error && (
                     <ErrorAlert error={error} setError={setError} />
                 )
             }
+
         </div >
     );
 };
