@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 
 const EditRequirements = ({ requirements }: {
     requirements: string[]
 }) => {
 
-    const handleAddInput = () => {
+    const [noOfNewInputs, setNoOfNewInputs] = useState(0);
 
+    const handleAddInput = () => {
+        setNoOfNewInputs(prev => prev + 1)
     }
 
     return (
@@ -21,6 +23,16 @@ const EditRequirements = ({ requirements }: {
                         defaultValue={requirement}
                         className='w-full border border-secondary rounded px-8 py-4 mb-2'
                     ></input>)
+                }
+
+                {
+                    Array.from({ length: noOfNewInputs }, (_, index) =>
+                        <input
+                            key={index}
+                            type='text'
+                            className='w-full border border-secondary rounded px-8 py-4 mb-2'
+                        ></input>
+                    )
                 }
 
                 <button
