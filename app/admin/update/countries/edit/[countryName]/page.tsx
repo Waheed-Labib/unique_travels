@@ -15,12 +15,16 @@ const Page = ({
     const { countryName } = React.use(params);
     const [country, setCountry] = useState<country | null>(null);
 
+    const [dataLoading, setDataLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
         fetch(`/api/countries?country=${countryName}`)
             .then(res => res.json())
-            .then(data => setCountry(data.data))
+            .then(data => {
+                setCountry(data.data)
+                setDataLoading(false);
+            })
             .catch(error => {
                 if (error instanceof Error) {
                     setError(error.message)
@@ -42,10 +46,19 @@ const Page = ({
                 <Name countryName={countryName}></Name>
             </div>
 
-            <div className='mt-8'>
-                <EditImage image={country?.image}></EditImage>
-            </div>
+            {
+                dataLoading ?
+                    <p>Loading Country Data ...</p>
+                    :
+                    <div>
+                        <div className='mt-8'>
+                            {
+                                country?.image && <EditImage image={country?.image}></EditImage>
+                            }
 
+                        </div>
+                    </div>
+            }
 
         </div>
     );
