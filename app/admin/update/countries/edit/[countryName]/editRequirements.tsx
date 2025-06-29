@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 
-const EditRequirements = ({ requirements }: {
-    requirements: string[]
+const EditRequirements = ({ oldRequirements, newRequirements, setNewRequirements }: {
+    oldRequirements: string[],
+    newRequirements: string[],
+    setNewRequirements: React.Dispatch<React.SetStateAction<string[]>>
 }) => {
 
     const [noOfNewInputs, setNoOfNewInputs] = useState(0);
 
+    const handleAddRequirement = (index: number, value: string) => {
+        const updated = [...newRequirements];
+        updated[index] = value;
+        setNewRequirements(updated);
+    }
+
     const handleAddInput = () => {
-        setNoOfNewInputs(prev => prev + 1)
+        setNoOfNewInputs(prev => prev + 1);
+        setNewRequirements(prev => [...prev, ""]);
     }
 
     return (
@@ -17,10 +26,11 @@ const EditRequirements = ({ requirements }: {
 
             <div className=''>
                 {
-                    requirements.map((requirement, index) => <input
+                    oldRequirements.map((requirement, index) => <input
                         key={index}
                         type='text'
                         defaultValue={requirement}
+                        onChange={e => handleAddRequirement(index, e.target.value)}
                         className='w-full border border-secondary rounded px-8 py-4 mb-2'
                     ></input>)
                 }
@@ -30,6 +40,7 @@ const EditRequirements = ({ requirements }: {
                         <input
                             key={index}
                             type='text'
+                            onChange={e => handleAddRequirement(index, e.target.value)}
                             className='w-full border border-secondary rounded px-8 py-4 mb-2'
                         ></input>
                     )
@@ -42,6 +53,8 @@ const EditRequirements = ({ requirements }: {
                     <FaPlus></FaPlus>
                     <p>Add Field</p>
                 </button>
+
+                <p className='italic text-xs mt-4'>*Empty lines will automatically be removed</p>
             </div>
         </div>
     );

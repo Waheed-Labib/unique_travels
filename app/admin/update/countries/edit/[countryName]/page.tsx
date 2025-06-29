@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import DashboardHeading from '../../../../dashboardHeading';
 import Name from './name';
 import EditImage from './editImage';
-import { country } from '../../../../../../lib/types';
+import { country, UnsplashImage } from '../../../../../../lib/types';
 import EditRequirements from './editRequirements';
+import ErrorAlert from '../../../../../../ui/modals/error-alert/ErrorAlert';
 
 const Page = ({
     params,
@@ -19,11 +20,14 @@ const Page = ({
     const [dataLoading, setDataLoading] = useState(true);
     const [error, setError] = useState('');
 
+    const [selectedImage, setSelectedImage] = useState<UnsplashImage | null>(null);
+    const [newRequirements, setNewRequirements] = useState<string[]>([]);
+
     useEffect(() => {
         fetch(`/api/countries?country=${countryName}`)
             .then(res => res.json())
             .then(data => {
-                setCountry(data.data)
+                setCountry(data.data);
                 setDataLoading(false);
             })
             .catch(error => {
@@ -34,6 +38,12 @@ const Page = ({
                 }
             })
     }, [countryName])
+
+    useEffect(() => {
+        if (country) {
+            setNewRequirements(country.visaRequirements)
+        }
+    }, [country])
 
     return (
         <div>
@@ -54,17 +64,30 @@ const Page = ({
                     <div>
                         <div className='mt-8'>
                             {
-                                country?.image && <EditImage countryName={countryName} image={country?.image}></EditImage>
+                                country?.image && <EditImage
+                                    countryName={countryName}
+                                    image={country?.image}
+                                    selectedImage={selectedImage}
+                                    setSelectedImage={setSelectedImage}
+                                ></EditImage>
                             }
 
                         </div>
                         <div className='my-8'>
                             {
-                                country?.visaRequirements && <EditRequirements requirements={country?.visaRequirements}></EditRequirements>
+                                country?.visaRequirements && <EditRequirements
+                                    oldRequirements={country?.visaRequirements}
+                                    newRequirements={newRequirements}
+                                    setNewRequirements={setNewRequirements}
+                                ></EditRequirements>
                             }
 
                         </div>
                     </div>
+            }
+
+            {
+                error && <ErrorAlert error={error} setError={setError} />
             }
 
         </div>

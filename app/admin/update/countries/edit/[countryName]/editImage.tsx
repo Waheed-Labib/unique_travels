@@ -6,15 +6,15 @@ import CountryImage from '../../countryImage';
 
 const unsplashClientId = process.env.NEXT_PUBLIC_UNSPLASH_CLIENT_ID;
 
-const EditImage = ({ countryName, image }: {
+const EditImage = ({ countryName, image, selectedImage, setSelectedImage }: {
     countryName: string,
-    image: string
+    image: string,
+    selectedImage: UnsplashImage | null,
+    setSelectedImage: React.Dispatch<React.SetStateAction<UnsplashImage | null>>
 }) => {
 
     const [imageOptions, setImageOptions] = useState<UnsplashImage[]>([])
     const [error, setError] = useState('');
-
-    const [selectedImage, setSelectedImage] = useState<UnsplashImage | null>(null);
 
     const handleUseAnotherImage = () => {
         fetch(`https://api.unsplash.com/search/photos/?client_id=${unsplashClientId}&query=${countryName}&page=1&orientation=landscape`)

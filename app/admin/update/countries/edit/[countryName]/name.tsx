@@ -12,7 +12,7 @@ const Name = ({ countryName }: {
                 readOnly
                 className="input w-64 border-base-200"
             />
-            <p className='italic text-xs mt-2'>Name cannot be changed</p>
+            <p className='italic text-xs mt-2'>*Name cannot be changed</p>
         </div>
     );
 };

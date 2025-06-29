@@ -77,6 +77,8 @@ export async function POST(request: NextRequest) {
         const body = await request.json();
         const { name, image, visaRequirements } = body;
 
+        const cleanedRequirements = visaRequirements.filter((str: string) => str != "")
+
         if (!name) {
             return NextResponse.json(
                 {
@@ -97,7 +99,7 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        if (!visaRequirements || !visaRequirements.length) {
+        if (!visaRequirements || !cleanedRequirements.length) {
             return NextResponse.json(
                 {
                     success: false,
@@ -107,7 +109,7 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const newCountry = await CountryModel.create({ name, image, visaRequirements });
+        const newCountry = await CountryModel.create({ name, image, visaRequirements: cleanedRequirements });
 
         if (newCountry) {
             return NextResponse.json(
@@ -148,6 +150,8 @@ export async function PATCH(req: NextRequest) {
         const body = await req.json();
         const { _id, name, image, visaRequirements } = body;
 
+        const cleanedRequirements = visaRequirements.filter((str: string) => str != "");
+
         if (!_id) {
             return NextResponse.json(
                 {
@@ -178,8 +182,8 @@ export async function PATCH(req: NextRequest) {
             country.image = image
         }
 
-        if (visaRequirements) {
-            country.visaRequirements = visaRequirements
+        if (cleanedRequirements.length) {
+            country.visaRequirements = cleanedRequirements
         }
 
         await country.save();

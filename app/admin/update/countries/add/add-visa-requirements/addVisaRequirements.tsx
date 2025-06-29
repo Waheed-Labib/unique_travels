@@ -42,6 +42,8 @@ const AddVisaRequirements = ({ visaRequirements, setVisaRequirements }: {
                     <FaPlus></FaPlus>
                     <p>Add Field</p>
                 </button>
+
+                <p className='italic text-xs mt-4'>*Empty lines will automatically be removed</p>
             </div>
 
         </div>
