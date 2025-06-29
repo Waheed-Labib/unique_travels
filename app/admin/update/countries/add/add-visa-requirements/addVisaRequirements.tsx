@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaPlus } from 'react-icons/fa';
 
 const AddVisaRequirements = () => {
+
+    const [noOfInputs, setNoOfInputs] = useState(1);
+
     return (
         <div>
             <label className="label text-sm font-semibold text-primary">3. Add Visa Requirements</label>
+
+            <div className='my-8'>
+                {
+                    Array.from({ length: noOfInputs }, (_, index) =>
+                        <input
+                            key={index}
+                            type='text'
+                            placeholder={`Requirement ${index + 1}`}
+                            className='w-full border border-secondary rounded px-8 py-4 mb-2'
+                        ></input>
+                    )
+                }
+                <button
+                    type='button'
+                    onClick={() => setNoOfInputs(prev => prev + 1)}
+                    className='mt-4 flex items-center justify-center gap-2 bg-primary/80 hover:bg-primary/90 rounded-sm text-sm text-base-100 px-2 py-1'>
+                    <FaPlus></FaPlus>
+                    <p>Add Field</p>
+                </button>
+            </div>
+
         </div>
     );
 };

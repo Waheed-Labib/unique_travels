@@ -59,7 +59,6 @@ const Page = () => {
                 Add New Country
             </DashboardHeading>
 
-            {/* TODO: This code needs to be cleaner */}
             <form onSubmit={handleAddCountry} className="mt-8 text-neutral">
 
                 <AddCountryName
