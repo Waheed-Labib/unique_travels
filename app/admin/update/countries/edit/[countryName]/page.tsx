@@ -5,6 +5,7 @@ import DashboardHeading from '../../../../dashboardHeading';
 import Name from './name';
 import EditImage from './editImage';
 import { country } from '../../../../../../lib/types';
+import EditRequirements from './editRequirements';
 
 const Page = ({
     params,
@@ -48,12 +49,18 @@ const Page = ({
 
             {
                 dataLoading ?
-                    <p>Loading Country Data ...</p>
+                    <p className='mt-8'>Loading Country Data ...</p>
                     :
                     <div>
                         <div className='mt-8'>
                             {
                                 country?.image && <EditImage image={country?.image}></EditImage>
+                            }
+
+                        </div>
+                        <div className='my-8'>
+                            {
+                                country?.visaRequirements && <EditRequirements requirements={country?.visaRequirements}></EditRequirements>
                             }
 
                         </div>
