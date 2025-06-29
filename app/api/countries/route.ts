@@ -212,19 +212,27 @@ export async function DELETE(request: Request) {
 
     try {
         const body = await request.json();
-        const { _id } = body;
+        const { _id, name } = body;
 
-        if (!_id) {
+        if (!_id && !name) {
             return NextResponse.json(
                 {
                     success: false,
-                    message: "_id not found"
+                    message: "_id or name not found"
                 },
                 { status: 400 }
             );
         }
 
-        const deletedCountry = await CountryModel.deleteOne({ _id });
+        let deletedCountry;
+
+        if (_id) {
+            deletedCountry = await CountryModel.deleteOne({ _id });
+        }
+
+        if (name) {
+            deletedCountry = await CountryModel.deleteOne({ name });
+        }
 
         if (deletedCountry) {
             return NextResponse.json(
