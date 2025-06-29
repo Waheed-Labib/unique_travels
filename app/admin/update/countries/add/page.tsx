@@ -3,8 +3,9 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import DashboardHeading from '../../../dashboardHeading';
 import ErrorAlert from '../../../../../ui/modals/error-alert/ErrorAlert';
-import CountryImage from './countryImage';
+import CountryImage from './add-country-image/addCountryImage';
 import { UnsplashImage } from '../../../../../lib/types';
+import AddCountryImage from './add-country-image/addCountryImage';
 
 const unsplashClientId = process.env.NEXT_PUBLIC_UNSPLASH_CLIENT_ID;
 
@@ -16,6 +17,8 @@ const Page = () => {
 
     const [images, setImages] = useState<UnsplashImage[]>([]);
     const [selectedImage, setSelectedImage] = useState<UnsplashImage | null>(null);
+
+    const [visaRequirements, setVisaRequirements] = useState<string[]>([]);
 
     const [formSubmitting, setFormSubmitting] = useState(false);
 
@@ -79,7 +82,7 @@ const Page = () => {
     }, [name, nameSubmitted])
 
     const handleAddCountry = () => {
-        // You can add the logic here later
+
     };
 
     return (
@@ -129,26 +132,12 @@ const Page = () => {
                 {
                     name && nameSubmitted ?
                         <div className='mt-8'>
-                            <label className="label text-sm font-semibold text-primary">Choose an Image</label>
+                            <AddCountryImage
+                                images={images}
+                                selectedImage={selectedImage}
+                                setSelectedImage={setSelectedImage}
+                            ></AddCountryImage>
 
-                            <div>
-                                {images.length ?
-                                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-                                        {
-                                            images.map(image => <CountryImage
-                                                key={image.id}
-                                                image={image}
-                                                selectedImage={selectedImage}
-                                                setSelectedImage={setSelectedImage}
-                                            ></CountryImage>)
-                                        }
-                                    </div>
-                                    :
-                                    <div>
-                                        <p>Loading Images ...</p>
-                                    </div>
-                                }
-                            </div>
                         </div>
                         :
                         null
@@ -156,7 +145,7 @@ const Page = () => {
 
                 <div className='w-full flex justify-center'>
                     {
-                        (nameSubmitted && !selectedImage) ?
+                        (nameSubmitted && (!selectedImage || !visaRequirements.length)) ?
                             < button
                                 disabled
                                 className="btn bg-neutral/80 text-white mt-4 block w-64"
@@ -169,7 +158,7 @@ const Page = () => {
 
 
                     {
-                        (nameSubmitted && selectedImage) ?
+                        (nameSubmitted && selectedImage && visaRequirements) ?
                             <>
                                 {
                                     formSubmitting ?
