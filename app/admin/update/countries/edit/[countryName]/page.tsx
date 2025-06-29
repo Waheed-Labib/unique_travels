@@ -2,6 +2,7 @@
 
 import React from 'react';
 import DashboardHeading from '../../../../dashboardHeading';
+import Name from './name';
 
 const Page = ({
     params,
@@ -17,6 +18,10 @@ const Page = ({
                 <DashboardHeading>
                     Edit {countryName}
                 </DashboardHeading>
+            </div>
+
+            <div className='mt-8'>
+                <Name countryName={countryName}></Name>
             </div>
 
 
