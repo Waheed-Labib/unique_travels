@@ -54,7 +54,7 @@ const Page = ({
                     <div>
                         <div className='mt-8'>
                             {
-                                country?.image && <EditImage image={country?.image}></EditImage>
+                                country?.image && <EditImage countryName={countryName} image={country?.image}></EditImage>
                             }
 
                         </div>

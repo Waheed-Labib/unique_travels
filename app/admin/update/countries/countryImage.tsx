@@ -1,5 +1,5 @@
 import React from 'react';
-import { UnsplashImage } from '../../../../../../lib/types';
+import { UnsplashImage } from '../../../../lib/types';
 import Image from 'next/image';
 
 const CountryImage = ({ image, selectedImage, setSelectedImage }: {
