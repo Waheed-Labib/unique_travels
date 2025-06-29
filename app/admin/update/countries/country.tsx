@@ -4,6 +4,7 @@ import Image from "next/image";
 import { country } from "../../../../lib/types";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import Link from "next/link";
 
 const Country = ({ country }: { country: country }) => {
 
@@ -23,12 +24,15 @@ const Country = ({ country }: { country: country }) => {
                                 </span>
                             </div>
 
-                            <div className="text-accent relative group">
+                            <Link
+                                href={`/admin/update/countries/delete/${country.name}`}
+                                className="text-accent relative group"
+                            >
                                 <MdDeleteForever></MdDeleteForever>
                                 <span className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition transform bg-gray-700 text-white text-xs rounded py-1 px-2 whitespace-nowrap">
                                     Delete
                                 </span>
-                            </div>
+                            </Link>
 
                         </div>
                     </div>
@@ -44,6 +48,7 @@ const Country = ({ country }: { country: country }) => {
 
                 </>
             }
+
         </div>
     );
 };
