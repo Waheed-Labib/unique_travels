@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import DashboardHeading from '../../../dashboardHeading';
 import AddCountries from './addCountries';
+import AddDetails from './addDetails';
 
 const Page = () => {
 
@@ -19,6 +20,8 @@ const Page = () => {
                 countries={countries}
                 setCountries={setCountries}
             ></AddCountries>
+
+            <AddDetails></AddDetails>
         </div>
     );
 };
