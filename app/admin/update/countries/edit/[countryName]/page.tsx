@@ -7,6 +7,8 @@ import EditImage from './editImage';
 import { country, UnsplashImage } from '../../../../../../lib/types';
 import EditRequirements from './editRequirements';
 import ErrorAlert from '../../../../../../ui/modals/error-alert/ErrorAlert';
+import SuccessAlert from '../../../../../../ui/modals/success-alert/SuccessAlert';
+import { useRouter } from 'next/navigation';
 
 const Page = ({
     params,
@@ -19,9 +21,14 @@ const Page = ({
 
     const [dataLoading, setDataLoading] = useState(true);
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const [selectedImage, setSelectedImage] = useState<UnsplashImage | null>(null);
     const [newRequirements, setNewRequirements] = useState<string[]>([]);
+
+    const [editing, setEditing] = useState(false);
+
+    const router = useRouter();
 
     useEffect(() => {
         fetch(`/api/countries?country=${countryName}`)
@@ -44,6 +51,37 @@ const Page = ({
             setNewRequirements(country.visaRequirements)
         }
     }, [country])
+
+    const handleEditCountry = async () => {
+        setEditing(true);
+
+        try {
+            const res = await fetch('/api/countries', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    _id: country?._id,
+                    image: selectedImage?.urls.regular,
+                    visaRequirements: newRequirements
+                })
+            });
+
+            if (res.ok) {
+                setSuccess('Country Edited Successfully');
+                router.push('/admin/update/countries');
+            } else {
+                setError('Failed to Edit Country');
+            }
+
+        } catch (error) {
+            console.error(error);
+            setError('Failed to Edit Country');
+        } finally {
+            setEditing(false);
+        }
+    };
 
     return (
         <div>
@@ -82,12 +120,45 @@ const Page = ({
                                     setNewRequirements={setNewRequirements}
                                 ></EditRequirements>
                             }
+                        </div>
 
+                        <div className='w-full flex justify-center'>
+                            {
+                                (selectedImage || country?.visaRequirements !== newRequirements) ?
+                                    <>
+                                        {
+                                            editing ?
+                                                <button
+                                                    disabled
+                                                    className="btn bg-neutral/80 text-white mt-4 block w-64"
+                                                >
+                                                    Loading ...
+                                                </button>
+                                                :
+                                                <button
+                                                    onClick={handleEditCountry}
+                                                    className="btn bg-neutral/90 text-white hover:bg-neutral/95 mt-4 block w-64"
+                                                >
+                                                    Submit
+                                                </button>
+                                        }
+                                    </>
+
+                                    :
+                                    < button
+                                        disabled
+                                        className="btn bg-neutral/80 text-white mt-4 block w-64"
+                                    >
+                                        Submit
+                                    </button>
+                            }
                         </div>
                     </div>
             }
 
-
+            {
+                success && <SuccessAlert success={success} setSuccess={setSuccess} />
+            }
 
             {
                 error && <ErrorAlert error={error} setError={setError} />

@@ -73,6 +73,7 @@ const Page = () => {
 
             if (res.ok) {
                 setSuccess('Country Added Successfully');
+                router.push('/admin/update/countries')
             } else {
                 setError('Failed to Add Country');
             }
@@ -82,7 +83,6 @@ const Page = () => {
             setError('Failed to Add Country');
         } finally {
             setFormSubmitting(false);
-            router.push('/admin/update/countries')
         }
     };
 

@@ -40,7 +40,7 @@ const EditRequirements = ({ oldRequirements, newRequirements, setNewRequirements
                         <input
                             key={index}
                             type='text'
-                            onChange={e => handleAddRequirement(index, e.target.value)}
+                            onChange={e => handleAddRequirement(oldRequirements.length + index, e.target.value)}
                             className='w-full border border-secondary rounded px-8 py-4 mb-2'
                         ></input>
                     )
