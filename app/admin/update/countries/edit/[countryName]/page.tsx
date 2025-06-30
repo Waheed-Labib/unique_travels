@@ -69,6 +69,7 @@ const Page = ({
                                     image={country?.image}
                                     selectedImage={selectedImage}
                                     setSelectedImage={setSelectedImage}
+
                                 ></EditImage>
                             }
 
@@ -85,6 +86,8 @@ const Page = ({
                         </div>
                     </div>
             }
+
+
 
             {
                 error && <ErrorAlert error={error} setError={setError} />

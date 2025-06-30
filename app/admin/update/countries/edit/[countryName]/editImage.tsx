@@ -10,10 +10,11 @@ const EditImage = ({ countryName, image, selectedImage, setSelectedImage }: {
     countryName: string,
     image: string,
     selectedImage: UnsplashImage | null,
-    setSelectedImage: React.Dispatch<React.SetStateAction<UnsplashImage | null>>
+    setSelectedImage: React.Dispatch<React.SetStateAction<UnsplashImage | null>>,
+
 }) => {
 
-    const [imageOptions, setImageOptions] = useState<UnsplashImage[]>([])
+    const [imageOptions, setImageOptions] = useState<UnsplashImage[] | null>(null)
     const [error, setError] = useState('');
 
     const handleUseAnotherImage = () => {
@@ -36,16 +37,23 @@ const EditImage = ({ countryName, image, selectedImage, setSelectedImage }: {
             <label className="label text-sm font-semibold text-primary">2. Country Image</label>
 
             {
-                imageOptions.length ?
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-                        {
-                            imageOptions.map(image => <CountryImage
-                                key={image.id}
-                                image={image}
-                                selectedImage={selectedImage}
-                                setSelectedImage={setSelectedImage}
-                            ></CountryImage>)
-                        }
+                imageOptions ?
+                    <div>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+                            {
+                                imageOptions.map(image => <CountryImage
+                                    key={image.id}
+                                    image={image}
+                                    selectedImage={selectedImage}
+                                    setSelectedImage={setSelectedImage}
+
+                                ></CountryImage>)
+                            }
+                        </div>
+
+
+                        <button onClick={() => setImageOptions(null)} className='btn btn-sm btn-accent'>Cancel</button>
+
                     </div>
                     :
                     <div>

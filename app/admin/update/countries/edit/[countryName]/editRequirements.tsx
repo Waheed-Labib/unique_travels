@@ -54,7 +54,7 @@ const EditRequirements = ({ oldRequirements, newRequirements, setNewRequirements
                     <p>Add Field</p>
                 </button>
 
-                <p className='italic text-xs mt-4'>*Empty lines will automatically be removed</p>
+                <p className='italic text-xs mt-4'>*Empty lines will be removed automatically</p>
             </div>
         </div>
     );
