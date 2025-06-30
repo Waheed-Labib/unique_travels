@@ -128,7 +128,9 @@ export async function POST(request: NextRequest) {
             )
         }
 
-        const newPackage = await PackageModel.create({ countries, details, isFeatured: false, code });
+        const cleanedCountries = countries.filter((str: string) => str !== "")
+
+        const newPackage = await PackageModel.create({ countries: cleanedCountries, details, isFeatured: false, code });
 
         if (newPackage) {
             const subscribers = await SubscriberModel.find({});
