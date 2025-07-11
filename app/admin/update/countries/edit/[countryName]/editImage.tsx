@@ -51,8 +51,9 @@ const EditImage = ({ countryName, image, selectedImage, setSelectedImage }: {
                             }
                         </div>
 
-
-                        <button onClick={() => setImageOptions(null)} className='btn btn-sm btn-accent'>Cancel</button>
+                        <div className='w-full flex justify-center'>
+                            <button onClick={() => setImageOptions(null)} className='btn btn-sm btn-outline btn-accent mt-2'>Cancel</button>
+                        </div>
 
                     </div>
                     :
