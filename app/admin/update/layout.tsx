@@ -32,7 +32,7 @@ export default function Layout({
 
     else {
         return (
-            <div className="w-full p-12">
+            <div className="w-full p-12 relative">
                 <Link
                     className="flex items-center gap-2 mb-8 text-xs btn btn-xs w-48"
                     href={'/admin'}>

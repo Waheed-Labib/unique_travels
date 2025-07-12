@@ -19,6 +19,7 @@ const Page = () => {
 
     const [images, setImages] = useState<UnsplashImage[]>([]);
     const [selectedImage, setSelectedImage] = useState<UnsplashImage | null>(null);
+    const [page, setPage] = useState(1);
 
     const [visaRequirements, setVisaRequirements] = useState<string[]>([]);
 
@@ -39,7 +40,7 @@ const Page = () => {
 
         if (nameSubmitted) {
 
-            fetch(`https://api.unsplash.com/search/photos/?client_id=${unsplashClientId}&query=${name}&page=1&orientation=landscape`)
+            fetch(`https://api.unsplash.com/search/photos/?client_id=${unsplashClientId}&query=${name}&page=${page}&orientation=landscape`)
                 .then(res => res.json())
                 .then(data => {
                     setImages(data.results)
@@ -52,7 +53,7 @@ const Page = () => {
                     }
                 })
         }
-    }, [name, nameSubmitted])
+    }, [name, nameSubmitted, page]);
 
     const handleAddCountry = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -107,8 +108,10 @@ const Page = () => {
                         <div className='mt-8'>
                             <AddCountryImage
                                 images={images}
+                                setImages={setImages}
                                 selectedImage={selectedImage}
                                 setSelectedImage={setSelectedImage}
+                                setPage={setPage}
                             ></AddCountryImage>
 
                             <div className='mt-8'>

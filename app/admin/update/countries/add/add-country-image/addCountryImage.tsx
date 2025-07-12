@@ -4,19 +4,37 @@ import React from 'react';
 import { UnsplashImage } from '../../../../../../lib/types';
 import CountryImage from '../../countryImage';
 
-const AddCountryImage = ({ images, selectedImage, setSelectedImage }: {
+const AddCountryImage = ({ images, setImages, selectedImage, setSelectedImage, setPage }: {
     images: UnsplashImage[],
+    setImages: React.Dispatch<React.SetStateAction<UnsplashImage[]>>,
     selectedImage: UnsplashImage | null,
-    setSelectedImage: React.Dispatch<React.SetStateAction<UnsplashImage | null>>
+    setSelectedImage: React.Dispatch<React.SetStateAction<UnsplashImage | null>>,
+    setPage: React.Dispatch<React.SetStateAction<number>>,
 }) => {
 
+    const scrollToImageSection = () => {
+        const addImageSection = document.getElementById('add-image');
+
+        if (addImageSection) {
+            addImageSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    const handleLoadMore = () => {
+        setImages([]);
+        setPage(prev => prev + 1);
+
+        scrollToImageSection();
+    }
+
     return (
-        <div>
+
+        <div id='add-image'>
             <label className="label text-sm font-semibold text-primary">2. Choose an Image</label>
 
             <div>
                 {images.length ?
-                    <div>
+                    <div className='flex flex-col gap-2 items-center'>
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                             {
                                 images.map(image => <CountryImage
@@ -26,8 +44,10 @@ const AddCountryImage = ({ images, selectedImage, setSelectedImage }: {
                                     setSelectedImage={setSelectedImage}
                                 ></CountryImage>)
                             }
+
                         </div>
 
+                        <button onClick={handleLoadMore} className='btn btn-sm btn-outline btn-secondary mt-4 w-32'>Load More</button>
                     </div>
                     :
                     <div>
