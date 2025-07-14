@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
         const { searchParams } = new URL(request.url);
         const country = searchParams.get('country');
         const type = searchParams.get('type');
+        const code = searchParams.get('code');
 
         const limitParam = searchParams.get('limit');
         const limit = limitParam ? parseInt(limitParam, 10) : undefined;
@@ -34,13 +35,20 @@ export async function GET(request: NextRequest) {
             } else if (type === 'unfeatured') {
                 if (limit) {
                     packages = await PackageModel.find({ isFeatured: false }).limit(limit);
-                } else {
+                }
+                else if (code) {
+                    packages = await PackageModel.findOne({ code });
+                }
+                else {
                     packages = await PackageModel.find({ isFeatured: false })
                 }
             } else {
                 if (limit) {
                     packages = await PackageModel.find().limit(limit);
-                } else {
+                } else if (code) {
+                    packages = await PackageModel.findOne({ code });
+                }
+                else {
                     packages = await PackageModel.find();
                 }
             }
@@ -276,13 +284,13 @@ export async function DELETE(request: Request) {
 
     try {
         const body = await request.json();
-        const { _id } = body;
+        const { code } = body;
 
-        if (!_id) {
+        if (!code) {
             return NextResponse.json(
                 {
                     success: false,
-                    message: '_id not found'
+                    message: 'code not found'
                 },
                 {
                     status: 400
@@ -290,7 +298,7 @@ export async function DELETE(request: Request) {
             )
         }
 
-        const deletedPackage = await PackageModel.deleteOne({ _id });
+        const deletedPackage = await PackageModel.deleteOne({ code });
 
         if (deletedPackage) {
             return NextResponse.json(
