@@ -298,7 +298,7 @@ export async function DELETE(request: Request) {
             )
         }
 
-        const deletedPackage = await PackageModel.deleteOne({ code });
+        const deletedPackage = await PackageModel.deleteOne({ code: parseInt(code) });
 
         if (deletedPackage) {
             return NextResponse.json(

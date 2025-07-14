@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { pkg } from '../../../../../../lib/types';
 import ErrorAlert from '../../../../../../ui/modals/error-alert/ErrorAlert';
 import SuccessAlert from '../../../../../../ui/modals/success-alert/SuccessAlert';
+import { useRouter } from 'next/navigation';
 
 const Page = ({ params }: {
     params: Promise<{ packageCode: string }>
@@ -15,6 +16,8 @@ const Page = ({ params }: {
     const [dataLoading, setDataLoading] = useState(true);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+
+    const router = useRouter();
 
     useEffect(() => {
         const fetchPackageDetails = async () => {
@@ -40,15 +43,19 @@ const Page = ({ params }: {
     }, [packageCode]);
 
     const handleDeletePackage = async () => {
-        const res = await fetch(`/api/packages/${packageCode}`, {
+        const res = await fetch(`/api/packages`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            }
-        });
+            },
+            body: JSON.stringify({
+                code: pkg?.code
+            })
+        })
 
         if (res.ok) {
             setSuccess('Package deleted successfully');
+            router.push('/admin/update/packages');
         } else {
             setError('Failed to delete package');
         }
