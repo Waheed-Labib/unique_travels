@@ -8,6 +8,7 @@ import AddDetails from './addDetails';
 const Page = () => {
 
     const [countries, setCountries] = useState<string[]>([]);
+    const [packageDetails, setPackageDetails] = useState<{ [key: string]: string }>({});
 
     return (
         <div>
@@ -21,7 +22,10 @@ const Page = () => {
                 setCountries={setCountries}
             ></AddCountries>
 
-            <AddDetails></AddDetails>
+            <AddDetails
+                packageDetails={packageDetails}
+                setPackageDetails={setPackageDetails}
+            ></AddDetails>
         </div>
     );
 };

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 
-const AddDetails = () => {
+const AddDetails = ({ packageDetails, setPackageDetails }: {
+    packageDetails: { [key: string]: string },
+    setPackageDetails: React.Dispatch<React.SetStateAction<{ [key: string]: string }>>
+}) => {
 
     const [noOfInputs, setNoOfInputs] = useState(4);
 
@@ -22,7 +25,7 @@ const AddDetails = () => {
                         >
                             <input
                                 type='text'
-                                placeholder={`key ${index + 1}`}
+                                placeholder={`key ${index + 1} :`}
                                 className='text-sm w-64 md:w-32 border border-secondary rounded px-2 py-1 mb-2 block'
                             ></input>
 
