@@ -6,6 +6,8 @@ export type pkg = {
     code: number
 }
 
+export type PackageDetails = { [key: string]: string };
+
 export type country = {
     _id: string,
     name: string,
