@@ -1,9 +1,10 @@
 import React from 'react';
 import { PackageDetails } from '../../../../../../lib/types';
 
-const EditDetails = ({ newDetails, setNewDetails }: {
+const EditDetails = ({ newDetails, setNewDetails, setChanged }: {
     newDetails: PackageDetails,
     setNewDetails: React.Dispatch<React.SetStateAction<PackageDetails>>
+    setChanged: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
     console.log('newDetails', newDetails);
     return (
@@ -15,13 +16,19 @@ const EditDetails = ({ newDetails, setNewDetails }: {
                     <input
                         type='text'
                         value={key}
-                        onChange={(e) => setNewDetails(prev => ({ ...prev, [e.target.value]: prev[key] }))}
+                        onChange={(e) => {
+                            setNewDetails(prev => ({ ...prev, [e.target.value]: prev[key] }))
+                            setChanged(true)
+                        }}
                         className='text-sm w-64 border border-secondary rounded px-2 py-1 block'
                     />
                     <input
                         type='text'
                         value={newDetails[key]}
-                        onChange={(e) => setNewDetails(prev => ({ ...prev, [key]: e.target.value }))}
+                        onChange={(e) => {
+                            setNewDetails(prev => ({ ...prev, [key]: e.target.value }))
+                            setChanged(true)
+                        }}
                         className='text-sm w-64 border border-secondary rounded px-2 py-1 block'
                     />
                 </div>
