@@ -34,7 +34,7 @@ export default function PackageCard({ pkg, className, isHome }: {
             countries.length ?
                 <>
                     <button className="btn hover:bg-transparent hover:border-transparent btn-sm">
-                        Package id <div className="badge badge-sm badge-primary text-white">00{pkg.code}</div>
+                        Package code <div className="badge badge-sm badge-primary text-white">{pkg.code}</div>
                     </button>
                     {
                         countries.map((country: country) => <CountryCard
