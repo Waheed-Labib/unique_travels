@@ -1,7 +1,7 @@
 'use client';
 
 import React, { use, useEffect, useState } from 'react';
-import { PackageDetails, pkg } from '../../../../../../lib/types';
+import { pkg } from '../../../../../../lib/types';
 import DashboardHeading from '../../../../dashboardHeading';
 import DisplayCountries from './displayCountries';
 import EditDetails from './editDetails';
@@ -20,10 +20,11 @@ const Page = ({ params }: {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
-    const [newDetails, setNewDetails] = useState<PackageDetails>({});
+    const [initialDetails, setInitialDetails] = useState<{ [key: string]: string }>({});
+    const [newDetails, setNewDetails] = useState<{ [key: string]: string }>({});
 
-    const [editing, setEditing] = useState(false);
     const [changed, setChanged] = useState(false);
+    const [editing, setEditing] = useState(false);
 
     const router = useRouter()
 
@@ -42,7 +43,9 @@ const Page = ({ params }: {
                 })
             });
 
-            if (res.ok) {
+            const data = await res.json();
+
+            if (data.success) {
                 setSuccess('Package updated successfully');
                 router.push('/admin/update/packages');
             } else {
@@ -63,11 +66,11 @@ const Page = ({ params }: {
             try {
                 const res = await fetch(`/api/packages?code=${packageCode}`);
                 if (!res.ok) {
-                    throw new Error('Failed to fetch package details');
+                    setError('Failed to fetch package details');
                 }
                 const data = await res.json();
                 setPkg(data.data);
-                setNewDetails(data.data.details || {});
+                setInitialDetails(data.data.details || {});
             } catch (error) {
                 if (error instanceof Error) {
                     setError(error.message);
@@ -103,39 +106,43 @@ const Page = ({ params }: {
             ></DisplayCountries>
 
             <EditDetails
-                newDetails={newDetails}
+                initialDetails={initialDetails}
                 setNewDetails={setNewDetails}
                 setChanged={setChanged}
             ></EditDetails>
 
-            {
-                changed ?
-                    <>
-                        {
-                            editing ?
-                                <button
-                                    disabled
-                                    className="btn bg-neutral/80 text-white mt-4 block w-64"
-                                >
-                                    Loading ...
-                                </button>
-                                :
-                                <button
-                                    onClick={handleEditPackage}
-                                    className="btn bg-neutral/90 text-white hover:bg-neutral/95 mt-4 block w-64"
-                                >
-                                    Submit
-                                </button>
-                        }
-                    </>
-                    :
-                    < button
-                        disabled
-                        className="btn bg-neutral/80 text-white mt-4 block w-64"
-                    >
-                        Submit
-                    </button>
-            }
+            <div className='mt-8'>
+                {
+                    changed ?
+                        <>
+                            {
+                                editing ?
+                                    <button
+                                        disabled
+                                        className="btn bg-neutral/80 text-white mt-4 block w-64"
+                                    >
+                                        Loading ...
+                                    </button>
+                                    :
+                                    <button
+                                        onClick={handleEditPackage}
+                                        className="btn bg-neutral/90 text-white hover:bg-neutral/95 mt-4 block w-64"
+                                    >
+                                        Submit
+                                    </button>
+                            }
+                        </>
+                        :
+                        < button
+                            disabled
+                            className="btn bg-neutral/80 text-white mt-4 block w-64"
+                        >
+                            Submit
+                        </button>
+                }
+
+
+            </div>
 
             {
                 error && <ErrorAlert error={error} setError={setError} />
