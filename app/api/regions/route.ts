@@ -203,13 +203,13 @@ export async function DELETE(request: Request) {
 
     try {
         const body = await request.json();
-        const { _id } = body;
+        const { name } = body;
 
-        if (!_id) {
+        if (!name) {
             return NextResponse.json(
                 {
                     success: false,
-                    message: "_id not found"
+                    message: "Region Name not found"
                 },
                 {
                     status: 400
@@ -217,7 +217,7 @@ export async function DELETE(request: Request) {
             )
         }
 
-        const deletedRegion = await RegionModel.deleteOne({ _id });
+        const deletedRegion = await RegionModel.deleteOne({ name });
 
         if (deletedRegion) {
             return NextResponse.json(

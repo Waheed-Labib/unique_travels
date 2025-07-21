@@ -7,11 +7,29 @@ import SimpleBtn from '../buttons/simpleBtn';
 import { FaArrowRight } from 'react-icons/fa';
 import { outfit } from '../../app/layout';
 
-const RegionCard = ({ region, isAdmin }: {
+const RegionCard = ({ region, isAdminDashboard }: {
     region: Region
-    isAdmin?: boolean
+    isAdminDashboard?: boolean
 }) => {
-    if (!isAdmin) return (
+    if (isAdminDashboard)
+        return (<div
+            className="card glass w-full group max-h-64 bg-neutral text-base-200">
+            <figure>
+                <Image
+                    src={region.image}
+                    alt="region ladscape image"
+                    width={1600}
+                    height={900}
+                ></Image>
+            </figure>
+            <div className="card-body">
+                <h2 className={`card-title text-2xl ${outfit.className} text-base-100`}>{region.name}</h2>
+
+            </div>
+
+        </div>)
+
+    return (
         <Link
             href={`/work-abroad/${region.name.toLowerCase()}`}
         >
@@ -43,22 +61,7 @@ const RegionCard = ({ region, isAdmin }: {
         </Link>
     );
 
-    return (<div
-        className="card glass w-full group max-h-64 bg-neutral text-base-200">
-        <figure>
-            <Image
-                src={region.image}
-                alt="region ladscape image"
-                width={1600}
-                height={900}
-            ></Image>
-        </figure>
-        <div className="card-body">
-            <h2 className={`card-title text-2xl ${outfit.className} text-base-100`}>{region.name}</h2>
 
-        </div>
-
-    </div>)
 };
 
 export default RegionCard;
