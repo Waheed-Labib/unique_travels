@@ -1,13 +1,10 @@
-import Image from "next/image";
 import Header from "../header";
-import { outfit } from "../../app/layout";
-import { FaArrowRight } from "react-icons/fa";
-import SimpleBtn from "../buttons/simpleBtn";
 import * as motion from "motion/react-client";
 import Section from "../Section";
 import Link from "next/link";
 import GoToHomeBtn from "../buttons/goToHomeBtn";
 import { Region } from "../../lib/types";
+import RegionCard from "./regionCard";
 
 export default async function WorkAbroad({ isMarginShort, isHome = true }: {
     isMarginShort: boolean,
@@ -21,37 +18,12 @@ export default async function WorkAbroad({ isMarginShort, isHome = true }: {
 
     const element = <>
         {
-            regions.map((region: Region) =>
-                <Link
+            regions.map((region: Region) => (
+                <RegionCard
                     key={region._id}
-                    href={`/work-abroad/${region.name.toLowerCase()}`}
-                >
-                    <motion.div
-                        whileHover={{ scale: 1.04 }}
-                        whileTap={{ scale: 0.97 }}
-                        className="card glass w-full group hover:shadow-lg max-h-64 bg-neutral text-base-200">
-                        <figure>
-                            <Image
-                                src={region.image}
-                                alt="region ladscape image"
-                                width={1600}
-                                height={900}
-                            ></Image>
-                        </figure>
-                        <div className="card-body">
-                            <h2 className={`card-title text-2xl ${outfit.className} text-base-100`}>{region.name}</h2>
-                            <div className="card-actions justify-end">
-                                <SimpleBtn
-                                    addOutline={true}
-                                    className="hover:border-base-200"
-                                >
-                                    <p>Job Circulars</p>
-                                    <FaArrowRight></FaArrowRight>
-                                </SimpleBtn>
-                            </div>
-                        </div>
-                    </motion.div>
-                </Link>)
+                    region={region}
+                />
+            ))
         }
     </>
 

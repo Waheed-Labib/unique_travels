@@ -4,12 +4,15 @@ import React, { useEffect, useState } from 'react';
 import { country } from '../../../../lib/types';
 import AddCountryBtn from './addCountryBtn';
 import Country from './country';
+import ErrorAlert from '../../../../ui/modals/error-alert/ErrorAlert';
 
 const Page = () => {
 
     const [originalCountries, setOriginalCountries] = useState<country[]>([])
 
     const [dataLoading, setDataLoading] = useState(true);
+
+    const [error, setError] = useState<string>('');
 
     useEffect(() => {
 
@@ -19,7 +22,11 @@ const Page = () => {
                 const data = await res.json();
                 setOriginalCountries(data.data);
             } catch (error) {
-                console.error(error)
+                if (error instanceof Error) {
+                    setError(error.message);
+                } else {
+                    setError('Failed to fetch regions');
+                }
             } finally {
                 setDataLoading(false)
             }
@@ -47,6 +54,9 @@ const Page = () => {
                     </div>
             }
 
+            {
+                error && <ErrorAlert error={error} setError={setError}></ErrorAlert>
+            }
         </div>
     );
 };
