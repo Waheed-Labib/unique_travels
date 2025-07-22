@@ -22,7 +22,7 @@ const Page = ({ params }: {
 
     const [newImage, setNewImage] = useState<string | null>(null);
 
-    const [originalCirculars, setOriginalCirculars] = useState<circular[]>([]);
+    const [circulars, setCirculars] = useState<circular[]>([]);
 
     useEffect(() => {
         const fetchRegionDetails = async () => {
@@ -40,7 +40,7 @@ const Page = ({ params }: {
                     setError('Failed to fetch circulars');
                 } else {
                     const circularData = await circularResponse.json();
-                    setOriginalCirculars(circularData.data);
+                    setCirculars(circularData.data);
                 }
 
             } catch (error) {
@@ -57,13 +57,11 @@ const Page = ({ params }: {
         fetchRegionDetails();
     }, [regionName]);
 
-    console.log(region);
-
     if (dataLoading) {
         return (
             <div>
                 <DashboardHeading>
-                    Edit Region {regionName}
+                    Edit {regionName}
                 </DashboardHeading>
 
                 <p>Loading region details...</p>
@@ -85,7 +83,8 @@ const Page = ({ params }: {
             ></UpdateImage>
 
             <Circulars
-                originalCirculars={originalCirculars}
+                circulars={circulars}
+                setCirculars={setCirculars}
             ></Circulars>
 
             {
