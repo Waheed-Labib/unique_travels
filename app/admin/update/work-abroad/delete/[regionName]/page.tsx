@@ -31,8 +31,26 @@ const Page = ({ params }: {
             const data = await res.json();
 
             if (data.success) {
+                const res = await fetch(`/api/circulars`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        region: regionName
+                    })
+                });
+
+                const circularData = await res.json();
+
+                if (!circularData.success) {
+                    setError(circularData.message || 'Failed to delete circulars');
+                    return
+                }
+
                 setSuccess('Region deleted successfully');
                 router.push('/admin/update/work-abroad');
+
             } else {
                 setError(data.message || 'Failed to delete region');
             }

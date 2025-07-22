@@ -130,9 +130,27 @@ export async function DELETE(request: Request) {
     try {
 
         const body = await request.json();
-        const { _id } = body;
+        const { _id, region } = body;
 
-        const deletedCircular = await CircularModel.deleteOne({ _id })
+        if (!_id && !region) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "_id or region not provided"
+                },
+                { status: 400 }
+            )
+        }
+
+        let deletedCircular;
+
+        if (_id) {
+            deletedCircular = await CircularModel.deleteOne({ _id })
+        }
+
+        if (region) {
+            deletedCircular = await CircularModel.deleteMany({ region: new RegExp(`^${region}$`, 'i') });
+        }
 
         if (deletedCircular) {
             return NextResponse.json(
