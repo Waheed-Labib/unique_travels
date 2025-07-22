@@ -2,7 +2,7 @@
 
 import React, { use, useEffect, useState } from 'react';
 import DashboardHeading from '../../../../dashboardHeading';
-import { Region } from '../../../../../../lib/types';
+import { circular, Region } from '../../../../../../lib/types';
 import ErrorAlert from '../../../../../../ui/modals/error-alert/ErrorAlert';
 import SuccessAlert from '../../../../../../ui/modals/success-alert/SuccessAlert';
 import Circulars from './circulars';
@@ -20,6 +20,10 @@ const Page = ({ params }: {
 
     const [region, setRegion] = useState<Region | null>(null);
 
+    const [newImage, setNewImage] = useState<string | null>(null);
+
+    const [originalCirculars, setOriginalCirculars] = useState<circular[]>([]);
+
     useEffect(() => {
         const fetchRegionDetails = async () => {
             try {
@@ -30,6 +34,14 @@ const Page = ({ params }: {
                 const data = await res.json();
 
                 setRegion(data.data);
+
+                const circularResponse = await fetch(`/api/circulars?region=${regionName}`);
+                if (!circularResponse.ok) {
+                    setError('Failed to fetch circulars');
+                } else {
+                    const circularData = await circularResponse.json();
+                    setOriginalCirculars(circularData.data);
+                }
 
             } catch (error) {
                 if (error instanceof Error) {
@@ -66,11 +78,14 @@ const Page = ({ params }: {
             </DashboardHeading>
 
             <UpdateImage
+                regionName={region?.name || ''}
                 originalImage={region?.image}
+                newImage={newImage}
+                setNewImage={setNewImage}
             ></UpdateImage>
 
             <Circulars
-                originalCirculars={[]}
+                originalCirculars={originalCirculars}
             ></Circulars>
 
             {
