@@ -5,7 +5,7 @@ const AddRegionBtn = () => {
 
 
     return (
-        <Link className='w-full lg:w-1/4' href={'/admin/update/packages/add'}>
+        <Link className='w-full lg:w-1/4' href={'/admin/update/work-abroad/add-region'}>
             <button className='btn btn-primary glass bg-primary w-full'>
                 <FaPlus></FaPlus>
                 <p className=''>Add New Region</p>
