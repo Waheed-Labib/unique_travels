@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { circular } from '../../../../../../../lib/types';
 import CircularItem from './circularItem';
-import { FaPlus } from 'react-icons/fa';
+import AddNewCircular from './addNewCircular';
 
 const Circulars = ({ circulars, setCirculars }: {
     circulars: circular[];
     setCirculars: React.Dispatch<React.SetStateAction<circular[]>>
 }) => {
 
-    const [addCircularClicked, setAddCircularClicked] = useState(false);
-
     return (
         <div>
             <label className="label font-semibold text-primary">2. Update Circulars</label>
 
-            <button
-                onClick={() => setAddCircularClicked(true)}
-                className='btn btn-sm btn-primary glass bg-primary w-full my-2'>
-                <FaPlus></FaPlus>
-                <p className=''>Add New Circular</p>
-            </button>
+            <AddNewCircular></AddNewCircular>
 
             {
                 circulars.length > 0 ? (
