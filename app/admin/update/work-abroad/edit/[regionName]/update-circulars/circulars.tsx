@@ -1,5 +1,5 @@
 import React from 'react';
-import { circular } from '../../../../../../lib/types';
+import { circular } from '../../../../../../../lib/types';
 import CircularItem from './circularItem';
 
 const Circulars = ({ circulars, setCirculars }: {

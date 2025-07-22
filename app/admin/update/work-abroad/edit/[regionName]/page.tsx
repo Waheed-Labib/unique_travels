@@ -5,7 +5,7 @@ import DashboardHeading from '../../../../dashboardHeading';
 import { circular, Region } from '../../../../../../lib/types';
 import ErrorAlert from '../../../../../../ui/modals/error-alert/ErrorAlert';
 import SuccessAlert from '../../../../../../ui/modals/success-alert/SuccessAlert';
-import Circulars from './circulars';
+import Circulars from './update-circulars/circulars';
 import UpdateImage from './updateImage';
 
 const Page = ({ params }: {
