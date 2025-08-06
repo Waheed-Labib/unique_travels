@@ -1,7 +1,7 @@
 import React from 'react';
 import { circular } from '../../../../../../../lib/types';
 import CircularItem from './circularItem';
-import AddNewCircular from './addNewCircular';
+import UploadCircular from './UploadCircular';
 
 const Circulars = ({ circulars, setCirculars }: {
     circulars: circular[];
@@ -11,8 +11,6 @@ const Circulars = ({ circulars, setCirculars }: {
     return (
         <div>
             <label className="label font-semibold text-primary">2. Update Circulars</label>
-
-            <AddNewCircular></AddNewCircular>
 
             {
                 circulars.length > 0 ? (
@@ -29,6 +27,8 @@ const Circulars = ({ circulars, setCirculars }: {
                     <p>No circulars available.</p>
                 )
             }
+
+            <UploadCircular></UploadCircular>
         </div >
     );
 };
