@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@imagekit/next": "^2.1.2",
     "bcrypt": "^6.0.0",
     "clsx": "^2.1.1",
     "cookie": "^1.0.2",

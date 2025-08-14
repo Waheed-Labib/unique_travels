@@ -83,6 +83,7 @@ const Page = ({ params }: {
             ></UpdateImage>
 
             <Circulars
+                regionName={regionName}
                 circulars={circulars}
                 setCirculars={setCirculars}
             ></Circulars>

@@ -4,11 +4,15 @@ import React, { useState, useCallback } from 'react';
 import Image from 'next/image';
 import SuccessAlert from '../../../../../../../ui/modals/success-alert/SuccessAlert';
 import ErrorAlert from '../../../../../../../ui/modals/error-alert/ErrorAlert';
+import { circular } from '../../../../../../../lib/types';
 
-const UploadCircular = () => {
+const UploadCircular = ({ regionName, setCirculars }: {
+  regionName: string;
+  setCirculars: React.Dispatch<React.SetStateAction<circular[]>>
+}) => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
+
   const [imgDimensions, setImgDimensions] = useState<{ width: number; height: number } | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -77,12 +81,13 @@ const UploadCircular = () => {
 
       // Step 2: Create form data to upload to ImageKit
       const formData = new FormData();
-      formData.append('file', imageFile); // Accepts File, base64, or URL
+      formData.append('file', imageFile); // File, base64 or URL
       formData.append('fileName', imageFile.name);
-      formData.append('publicKey', auth.publicKey);
-      formData.append('signature', auth.signature);
-      formData.append('expire', auth.expire);
-      formData.append('token', auth.token);
+      formData.append('publicKey', auth.publicKey);     // ✅ must match your actual public key
+      formData.append('signature', auth.signature);     // ✅ from server
+      formData.append('expire', auth.expire);           // ✅ from server
+      formData.append('token', auth.token);             // ✅ from server
+
 
       // Step 3: Upload to ImageKit
       const uploadRes = await fetch('https://upload.imagekit.io/api/v1/files/upload', {
@@ -93,8 +98,35 @@ const UploadCircular = () => {
       const uploadResult = await uploadRes.json();
 
       if (uploadResult && uploadResult.url) {
-        setUploadedImageUrl(uploadResult.url);
-        setSuccess('Upload successful!');
+
+        try {
+          const response = await fetch('/api/circulars', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              region: regionName,
+              image: uploadResult.url,
+            }),
+          });
+
+          if (!response.ok) {
+            setError('Failed to upload circular');
+          }
+
+          const data = await response.json();
+          setCirculars((prev) => [...prev, data.data]);
+          setSuccess('Upload successful!');
+
+        } catch (error) {
+          if (error instanceof Error) {
+            setError(error.message);
+          } else {
+            setError('Failed to upload circular');
+          }
+        }
+
       } else {
         setError('Upload failed');
       }
@@ -143,12 +175,6 @@ const UploadCircular = () => {
       >
         {uploading ? 'Uploading...' : 'Upload'}
       </button>
-
-      {uploadedImageUrl && (
-        <p className="text-green-600 text-sm mt-4 break-all">
-          ✅ Uploaded URL: <a href={uploadedImageUrl} target="_blank" rel="noopener noreferrer">{uploadedImageUrl}</a>
-        </p>
-      )}
 
       {
         success && <SuccessAlert success={success} setSuccess={setSuccess} />

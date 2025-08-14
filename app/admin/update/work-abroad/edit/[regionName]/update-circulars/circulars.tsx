@@ -3,7 +3,8 @@ import { circular } from '../../../../../../../lib/types';
 import CircularItem from './circularItem';
 import UploadCircular from './UploadCircular';
 
-const Circulars = ({ circulars, setCirculars }: {
+const Circulars = ({ regionName, circulars, setCirculars }: {
+    regionName: string;
     circulars: circular[];
     setCirculars: React.Dispatch<React.SetStateAction<circular[]>>
 }) => {
@@ -28,7 +29,10 @@ const Circulars = ({ circulars, setCirculars }: {
                 )
             }
 
-            <UploadCircular></UploadCircular>
+            <UploadCircular
+                regionName={regionName}
+                setCirculars={setCirculars}
+            ></UploadCircular>
         </div >
     );
 };

@@ -27,6 +27,7 @@ const UpdateImage = ({ regionName, originalImage, newImage, setNewImage }: {
                 setImageOptions(data.results)
             })
             .catch(error => {
+                console.error(error)
                 if (error instanceof Error) {
                     setError(error.message);
                 } else {

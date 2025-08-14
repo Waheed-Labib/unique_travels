@@ -1,3 +1,4 @@
+// app/api/imagekit-auth/route.ts
 import { NextResponse } from 'next/server';
 import ImageKit from 'imagekit';
 
@@ -9,5 +10,8 @@ const imagekit = new ImageKit({
 
 export async function GET() {
     const authParams = imagekit.getAuthenticationParameters();
-    return NextResponse.json(authParams);
+    return NextResponse.json({
+        ...authParams,
+        publicKey: process.env.IMAGEKIT_PUBLIC_KEY, // 🔁 Return this explicitly!
+    });
 }
