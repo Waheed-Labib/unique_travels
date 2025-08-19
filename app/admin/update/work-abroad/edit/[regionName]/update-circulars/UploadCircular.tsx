@@ -108,14 +108,18 @@ const UploadCircular = ({ regionName, setCirculars }: {
             body: JSON.stringify({
               region: regionName,
               image: uploadResult.url,
+              fileId: uploadResult.fileId
             }),
           });
 
-          if (!response.ok) {
-            setError('Failed to upload circular');
-          }
 
           const data = await response.json();
+
+          if (data.success === false) {
+            setError(data.message);
+            return;
+          }
+
           setCirculars((prev) => [...prev, data.data]);
           setSuccess('Upload successful!');
 

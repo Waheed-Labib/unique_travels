@@ -59,9 +59,33 @@ export async function POST(request: Request) {
     try {
 
         const body = await request.json();
-        const { region, image } = body;
+        const { region, image, fileId } = body;
 
-        const newCircular = await CircularModel.create({ region, image })
+        const circulars = await CircularModel.find({ region: new RegExp(`^${region}$`, 'i') });
+
+
+        if (circulars.length > 99) {
+
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Number of circulars for this region has exceeded the limit of 100. Please delete some circulars before adding a new one."
+                },
+                { status: 400 }
+            );
+        }
+
+        if (!region || !image || !fileId) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "All required data not provided"
+                },
+                { status: 400 }
+            );
+        }
+
+        const newCircular = await CircularModel.create({ region, image, fileId })
 
         if (newCircular) {
 
@@ -145,7 +169,9 @@ export async function DELETE(request: Request) {
         let deletedCircular;
 
         if (_id) {
-            deletedCircular = await CircularModel.deleteOne({ _id })
+            deletedCircular = await CircularModel.deleteOne({ _id });
+
+
         }
 
         if (region) {
