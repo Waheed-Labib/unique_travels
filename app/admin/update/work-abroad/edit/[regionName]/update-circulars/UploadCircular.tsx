@@ -122,6 +122,9 @@ const UploadCircular = ({ regionName, setCirculars }: {
 
           setCirculars((prev) => [...prev, data.data]);
           setSuccess('Upload successful!');
+          setImageFile(null);
+          setImagePreview(null);
+          setImgDimensions(null);
 
         } catch (error) {
           if (error instanceof Error) {
