@@ -154,7 +154,7 @@ export async function DELETE(request: Request) {
     try {
 
         const body = await request.json();
-        const { _id, region } = body;
+        const { _id, region, fileId } = body;
 
         if (!_id && !region) {
             return NextResponse.json(
@@ -166,15 +166,67 @@ export async function DELETE(request: Request) {
             )
         }
 
+        if (!fileId) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: " fileId not provided"
+                },
+                { status: 400 }
+            )
+        }
+
         let deletedCircular;
 
         if (_id) {
+
+            const imgKitResponse = await fetch(`https://api.imagekit.io/v1/files/${fileId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization:
+                        "Basic " +
+                        Buffer.from(process.env.IMAGEKIT_PRIVATE_KEY + ":").toString("base64"),
+                },
+            });
+
+            if (!imgKitResponse.ok) {
+                const err = await imgKitResponse.text();
+                return NextResponse.json(
+                    {
+                        success: false,
+                        message: "Failed to delete image from ImageKit: " + err
+                    },
+                    { status: 500 }
+                );
+            }
+
             deletedCircular = await CircularModel.deleteOne({ _id });
-
-
         }
 
         if (region) {
+
+            const circulars = await CircularModel.find({ region: new RegExp(`^${region}$`, 'i') });
+
+            for (const circular of circulars) {
+                const imgKitResponse = await fetch(`https://api.imagekit.io/v1/files/${circular.fileId}`, {
+                    method: "DELETE",
+                    headers: {
+                        Authorization:
+                            "Basic " +
+                            Buffer.from(process.env.IMAGEKIT_PRIVATE_KEY + ":").toString("base64"),
+                    },
+                });
+                if (!imgKitResponse.ok) {
+                    const err = await imgKitResponse.text();
+                    return NextResponse.json(
+                        {
+                            success: false,
+                            message: "Failed to delete image from ImageKit: " + err
+                        },
+                        { status: 500 }
+                    );
+                }
+            }
             deletedCircular = await CircularModel.deleteMany({ region: new RegExp(`^${region}$`, 'i') });
         }
 

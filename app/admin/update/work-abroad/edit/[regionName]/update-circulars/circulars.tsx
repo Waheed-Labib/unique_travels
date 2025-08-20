@@ -29,10 +29,16 @@ const Circulars = ({ regionName, circulars, setCirculars }: {
                 )
             }
 
-            <UploadCircular
-                regionName={regionName}
-                setCirculars={setCirculars}
-            ></UploadCircular>
+            {
+                circulars.length > 99 ?
+                    <p className='mt-8 italic font-medium text-red-700'>Number of Circulars has reached to 100. Please delete some circulars for uploading new ones.</p>
+                    :
+                    <UploadCircular
+                        regionName={regionName}
+                        setCirculars={setCirculars}
+                    ></UploadCircular>
+            }
+
         </div >
     );
 };

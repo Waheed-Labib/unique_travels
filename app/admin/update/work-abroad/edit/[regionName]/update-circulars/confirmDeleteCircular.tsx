@@ -1,18 +1,17 @@
 import { useState } from "react";
-import ErrorAlert from "../../../../../../../ui/modals/error-alert/ErrorAlert";
-import SuccessAlert from "../../../../../../../ui/modals/success-alert/SuccessAlert";
 import { circular } from "../../../../../../../lib/types";
 
-export const ConfirmDeleteCircular = ({ circularId, confirmDeleteCircularOpen, setConfirmDeleteCircularOpen, setCirculars }: {
+export const ConfirmDeleteCircular = ({ circularId, fileId, confirmDeleteCircularOpen, setConfirmDeleteCircularOpen, setCirculars, setSuccess, setError }: {
     circularId: string,
+    fileId: string,
     confirmDeleteCircularOpen: boolean,
     setConfirmDeleteCircularOpen: React.Dispatch<React.SetStateAction<boolean>>,
     setCirculars: React.Dispatch<React.SetStateAction<circular[]>>
+    setSuccess: React.Dispatch<React.SetStateAction<string>>,
+    setError: React.Dispatch<React.SetStateAction<string>>
 }) => {
 
     const [deleting, setDeleting] = useState(false);
-    const [success, setSuccess] = useState('');
-    const [error, setError] = useState('');
 
     const handleDeleteCircular = async (circularId: string) => {
 
@@ -24,7 +23,7 @@ export const ConfirmDeleteCircular = ({ circularId, confirmDeleteCircularOpen, s
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ _id: circularId })
+                body: JSON.stringify({ _id: circularId, fileId })
             });
 
             const data = await response.json();
@@ -33,7 +32,7 @@ export const ConfirmDeleteCircular = ({ circularId, confirmDeleteCircularOpen, s
                 setSuccess('Circular deleted successfully');
                 setCirculars(prevCirculars => prevCirculars.filter(item => item._id !== circularId));
             } else {
-                setError('Failed to delete circular');
+                setError('Failed to delete circular :' + data.message);
             }
 
         } catch (error) {
@@ -70,13 +69,6 @@ export const ConfirmDeleteCircular = ({ circularId, confirmDeleteCircularOpen, s
                         </div>
                     </div>
 
-                    {
-                        error && <ErrorAlert error={error} setError={setError}></ErrorAlert>
-                    }
-
-                    {
-                        success && <SuccessAlert success={success} setSuccess={setSuccess}></SuccessAlert>
-                    }
                 </div>
             </div>
         </div>

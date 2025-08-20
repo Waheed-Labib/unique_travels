@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { circular } from '../../../../../../../lib/types';
 import ConfirmDeleteCircular from './confirmDeleteCircular';
 import { MdDeleteForever } from 'react-icons/md';
+import SuccessAlert from '../../../../../../../ui/modals/success-alert/SuccessAlert';
+import ErrorAlert from '../../../../../../../ui/modals/error-alert/ErrorAlert';
 
 const CircularItem = ({ circularItem, setCirculars }: {
     circularItem: circular,
@@ -10,6 +12,8 @@ const CircularItem = ({ circularItem, setCirculars }: {
 }) => {
 
     const [confirmDeleteCircularOpen, setConfirmDeleteCircularOpen] = useState(false);
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
 
     return (
         <div className="mb-4">
@@ -40,14 +44,23 @@ const CircularItem = ({ circularItem, setCirculars }: {
                 confirmDeleteCircularOpen && (
                     <ConfirmDeleteCircular
                         circularId={circularItem._id}
+                        fileId={circularItem.fileId}
                         confirmDeleteCircularOpen={confirmDeleteCircularOpen}
                         setConfirmDeleteCircularOpen={setConfirmDeleteCircularOpen}
                         setCirculars={setCirculars}
+                        setSuccess={setSuccess}
+                        setError={setError}
                     ></ConfirmDeleteCircular>
                 )
             }
 
+            {
+                success && <SuccessAlert success={success} setSuccess={setSuccess}></SuccessAlert>
+            }
 
+            {
+                error && <ErrorAlert error={error} setError={setError}></ErrorAlert>
+            }
         </div>
     );
 };

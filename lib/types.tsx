@@ -19,6 +19,7 @@ export type circular = {
     _id: string,
     region: string,
     image: string,
+    fileId: string,
     createdAt: string,
     updatedAt: string
 }
