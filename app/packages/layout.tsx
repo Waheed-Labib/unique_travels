@@ -1,4 +1,5 @@
-import Accessories from "../../../ui/accessories";
+import Accessories from "../../ui/accessories";
+
 
 export default function Layout({
     children,

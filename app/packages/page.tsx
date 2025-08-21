@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Packages from "../../../ui/packages/packages";
+import Packages from "../../ui/packages/packages";
 
 export default function Page() {
     return (
